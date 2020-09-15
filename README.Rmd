@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# T4cluster <a href='https://kyoustat.com/T4cluster/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# T4cluster <a href='https://kyoustat.com/T4cluster/'><img src='man/figures/logo.png' align="right" height="150" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->

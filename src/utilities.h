@@ -12,6 +12,7 @@ using namespace std;
 arma::mat cpp_pdist(arma::mat X, int p);
 arma::mat cpp_pdist2(arma::mat X, arma::mat Y, int p);
 arma::mat cpp_pdistMP(arma::mat X, int p, int nCores);
+arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists);
 
 // SECTION 2 : K-MEANS AND GMM
 arma::urowvec label_kmeans(arma::mat data, int K, int maxiter);

@@ -107,6 +107,37 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_sc11Y
+Rcpp::List cpp_sc11Y(arma::umat& idmat, arma::mat& distmat, int K, bool usekmeans, int maxiter, double rho);
+RcppExport SEXP _T4cluster_cpp_sc11Y(SEXP idmatSEXP, SEXP distmatSEXP, SEXP KSEXP, SEXP usekmeansSEXP, SEXP maxiterSEXP, SEXP rhoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::umat& >::type idmat(idmatSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type distmat(distmatSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< bool >::type usekmeans(usekmeansSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_sc11Y(idmat, distmat, K, usekmeans, maxiter, rho));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_sc12L
+Rcpp::List cpp_sc12L(arma::mat& D, int K, bool usekmeans, int maxiter, double sigma);
+RcppExport SEXP _T4cluster_cpp_sc12L(SEXP DSEXP, SEXP KSEXP, SEXP usekmeansSEXP, SEXP maxiterSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< bool >::type usekmeans(usekmeansSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_sc12L(D, K, usekmeans, maxiter, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
 // arma_kmeans_random
 Rcpp::List arma_kmeans_random(arma::mat& X, int k, int maxiter);
 RcppExport SEXP _T4cluster_arma_kmeans_random(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
@@ -131,6 +162,18 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type k(kSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     rcpp_result_gen = Rcpp::wrap(arma_kmeans_kmeanspp(X, init, k, maxiter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_shortestpath
+arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists);
+RcppExport SEXP _T4cluster_cpp_shortestpath(SEXP locsSEXP, SEXP distsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::umat >::type locs(locsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type dists(distsSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_shortestpath(locs, dists));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -249,8 +292,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_sc05Z", (DL_FUNC) &_T4cluster_cpp_sc05Z, 5},
     {"_T4cluster_cpp_sc09G", (DL_FUNC) &_T4cluster_cpp_sc09G, 5},
     {"_T4cluster_cpp_sc10Z", (DL_FUNC) &_T4cluster_cpp_sc10Z, 4},
+    {"_T4cluster_cpp_sc11Y", (DL_FUNC) &_T4cluster_cpp_sc11Y, 6},
+    {"_T4cluster_cpp_sc12L", (DL_FUNC) &_T4cluster_cpp_sc12L, 5},
     {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
     {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
+    {"_T4cluster_cpp_shortestpath", (DL_FUNC) &_T4cluster_cpp_shortestpath, 2},
     {"_T4cluster_cpp_pdist", (DL_FUNC) &_T4cluster_cpp_pdist, 2},
     {"_T4cluster_cpp_pdist2", (DL_FUNC) &_T4cluster_cpp_pdist2, 3},
     {"_T4cluster_cpp_pdistMP", (DL_FUNC) &_T4cluster_cpp_pdistMP, 3},

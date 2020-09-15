@@ -10,6 +10,8 @@
  * (05) cpp_sc05Z : Zelnik-Manor and Perona (2005)
  * (06) cpp_sc09G : Gu and Wang             (2009)
  * (07) cpp_sc10Z : Zhang et al.            (2010)
+ * (08) cpp_sc11Y : Yang et al.             (2011)
+ * (09) cpp_sc12L : Li and Guo              (2012)
  */
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -174,4 +176,93 @@ Rcpp::List cpp_sc10Z(arma::mat& D, int K, bool usekmeans, int maxiter){
   // run the clustering
   return(sc_normalNJW(matA, K, usekmeans, maxiter));
 }
+// (08) cpp_sc11Y : Yang et al.             (2011) =============================
+// [[Rcpp::export]]
+Rcpp::List cpp_sc11Y(arma::umat& idmat, arma::mat& distmat, int K, bool usekmeans, int maxiter, double rho){
+  // 1. parameters
+  int N = distmat.n_rows;
+  int P = distmat.n_cols;
   
+  // 2. compute adjustable line segment
+  arma::mat dmat(N,P,fill::zeros);
+  for (int n=0;n<N;n++){
+    for (int p=0;p<P;p++){
+      dmat(n,p) = std::pow(static_cast<float>(std::exp(rho*distmat(n,p)) - 1.0), 1.0/rho);
+    }
+  }
+  
+  // 3. compute shortestpath and affinity
+  arma::mat matD = cpp_shortestpath(idmat, dmat);
+  arma::mat matA = 1.0/(matD + 1.0);
+  matA.diag().fill(0.0);
+  
+  // 4. run clustering with random-walk
+  return(sc_normalSM(matA, K, usekmeans, maxiter));
+}
+
+// (09) cpp_sc12L : Li and Guo              (2012) =============================
+// [[Rcpp::export]]
+Rcpp::List cpp_sc12L(arma::mat& D, int K, bool usekmeans, int maxiter, double sigma){
+  // 1. parameters
+  int N = D.n_rows;
+  double sig2 = sigma*sigma;
+  
+  // 2.   compute
+  // 2-1. distance matrix : matB <- D
+  // 2-2. similarity matrix
+  arma::mat matW = arma::exp(-(D%D)/(2.0*sig2));
+  // 2-3. neighbor relation
+  double epsthr = 0.0;
+  double epstmp = 0.0;
+  arma::vec pdvec(N,fill::zeros);
+  for (int n=0;n<N;n++){
+    pdvec    = D.col(n);
+    pdvec(n) = arma::datum::inf;
+    epstmp   = pdvec.min();
+    if (epstmp > epsthr){
+      epsthr = epstmp;
+    }
+  }
+  arma::umat matN(N,N,fill::zeros);
+  for (int i=0;i<(N-1);i++){
+    for (int j=(i+1);j<N;j++){
+      if (D(i,j) < epsthr){
+        matN(i,j) = 1;
+        matN(j,i) = 1;
+      }
+    }
+  }
+  // 3. neighborhood propagation
+  for (int i=0;i<N;i++){
+    for (int j=(i+1);j<N;j++){
+      if (matN(i,j) == 0){
+        for (int k=0;k<N;k++){
+          if (((k<i)&&(k<j))||((k>i)&&(k>j))){
+            matN(i,j) = matN(i,k)*matN(k,j);
+            if (matN(i,j)==1){
+              matN(j,i) = 1;
+              if (matW(i,k) < matW(k,j)){
+                matW(i,j) = matW(i,k);
+              } else {
+                matW(i,j) = matW(k,j);
+              }
+              matW(j,i) = matW(i,j);
+            }
+          }
+        }
+      }
+    }
+  }
+  double minsim = matW.min();
+  for (int i=0;i<N;i++){
+    for (int j=(i+1);j<N;j++){
+      if ((matN(i,j) == 0)&&(matW(i,j) > minsim)){
+        matW(i,j) = minsim;
+        matW(j,i) = minsim;
+      }
+    }
+    matW(i,i) = 0.0;
+  }
+  // 4. run clustering with NJW
+  return(sc_normalNJW(matW, K, usekmeans, maxiter));
+}

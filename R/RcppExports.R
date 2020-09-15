@@ -29,12 +29,24 @@ cpp_sc10Z <- function(D, K, usekmeans, maxiter) {
     .Call('_T4cluster_cpp_sc10Z', PACKAGE = 'T4cluster', D, K, usekmeans, maxiter)
 }
 
+cpp_sc11Y <- function(idmat, distmat, K, usekmeans, maxiter, rho) {
+    .Call('_T4cluster_cpp_sc11Y', PACKAGE = 'T4cluster', idmat, distmat, K, usekmeans, maxiter, rho)
+}
+
+cpp_sc12L <- function(D, K, usekmeans, maxiter, sigma) {
+    .Call('_T4cluster_cpp_sc12L', PACKAGE = 'T4cluster', D, K, usekmeans, maxiter, sigma)
+}
+
 arma_kmeans_random <- function(X, k, maxiter) {
     .Call('_T4cluster_arma_kmeans_random', PACKAGE = 'T4cluster', X, k, maxiter)
 }
 
 arma_kmeans_kmeanspp <- function(X, init, k, maxiter) {
     .Call('_T4cluster_arma_kmeans_kmeanspp', PACKAGE = 'T4cluster', X, init, k, maxiter)
+}
+
+cpp_shortestpath <- function(locs, dists) {
+    .Call('_T4cluster_cpp_shortestpath', PACKAGE = 'T4cluster', locs, dists)
 }
 
 cpp_pdist <- function(X, p) {

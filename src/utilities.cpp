@@ -12,6 +12,40 @@ using namespace std;
 
 // SECTION 1 : ELEMENTARY COMPUTATION ==========================================
 // [[Rcpp::export]]
+arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists){
+  // parameters
+  unsigned int N = dists.n_rows;
+  unsigned int K = dists.n_cols;
+  // step 0. initialize
+  arma::mat DIST(N,N); DIST.fill(arma::datum::inf);
+  // step 1. assign with 'intersection' rule
+  for (unsigned int n=0;n<N;n++){
+    for (unsigned int k=0;k<K;k++){
+      DIST(n,locs(n,k)-1) = dists(n,k);
+    }
+    DIST(n,n) = 0.0;
+  }
+  for (unsigned int i=0;i<(N-1);i++){
+    for (unsigned int j=(i+1);j<N;j++){
+      if (!(std::isfinite(DIST(i,j))&&std::isfinite(DIST(j,i)))){
+        DIST(i,j) = arma::datum::inf;
+        DIST(j,i) = arma::datum::inf;
+      }
+    }
+  }
+  // step 2. run iteration
+  for (unsigned int k=0;k<N;k++){
+    for (unsigned int i=0;i<N;i++){
+      for (unsigned int j=0;j<N;j++){
+        if (DIST(i,j) > DIST(i,k) + DIST(k,j)){
+          DIST(i,j) = DIST(i,k) + DIST(k,j);
+        }
+      }
+    }
+  }
+  return(DIST);
+}
+// [[Rcpp::export]]
 arma::mat cpp_pdist(arma::mat X, int p){
   // prepare
   int N = X.n_rows;
