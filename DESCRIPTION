@@ -6,7 +6,7 @@ Author: Who wrote it
 Encoding: UTF-8
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
-License: What license is it under?
+License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.5), Rdpack, Rdimtools, maotai, stats, utils
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
