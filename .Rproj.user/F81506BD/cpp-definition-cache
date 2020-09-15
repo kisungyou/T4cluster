@@ -1,0 +1,178 @@
+[
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+        "file_last_write": 1600139220.0,
+        "definitions": [
+            {
+                "usr": "c:@F@sc_2015LB_commute#&$@N@arma@S@Mat>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sc_2015LB_commute(arma::mat &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 23,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cpp_scNJW#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scNJW(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 57,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_scSM#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scSM(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 71,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_scUL#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scUL(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 85,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc05Z#&$@N@arma@S@Mat>#d#I#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc05Z(arma::mat &, int, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 99,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc09G#&$@N@arma@S@Mat>#d#I#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc09G(arma::mat &, int, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 126,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc10Z#&$@N@arma@S@Mat>#d#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc10Z(arma::mat &, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
+                "line": 153,
+                "column": 12
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_kmeans.cpp",
+        "file_last_write": 1600126890.0,
+        "definitions": [
+            {
+                "usr": "c:@F@arma_kmeans_random#&$@N@arma@S@Mat>#d#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "arma_kmeans_random(arma::mat &, int, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_kmeans.cpp",
+                "line": 10,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@arma_kmeans_kmeanspp#&$@N@arma@S@Mat>#d#S0_#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "arma_kmeans_kmeanspp(arma::mat &, arma::mat &, int, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_kmeans.cpp",
+                "line": 24,
+                "column": 12
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+        "file_last_write": 1600126877.0,
+        "definitions": [
+            {
+                "usr": "c:@F@cpp_pdist#$@N@arma@S@Mat>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_pdist(arma::mat, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 15,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cpp_pdist2#$@N@arma@S@Mat>#d#S0_#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_pdist2(arma::mat, arma::mat, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 30,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cpp_pdistMP#$@N@arma@S@Mat>#d#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_pdistMP(arma::mat, int, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 43,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@label_kmeans#$@N@arma@S@Mat>#d#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "label_kmeans(arma::mat, int, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 84,
+                "column": 15
+            },
+            {
+                "usr": "c:@F@label_gmm#$@N@arma@S@Mat>#d#I#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "label_gmm(arma::mat, int, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 107,
+                "column": 15
+            },
+            {
+                "usr": "c:@F@sc_unnormalized#$@N@arma@S@Mat>#d#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sc_unnormalized(arma::mat, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 119,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@sc_normalNJW#$@N@arma@S@Mat>#d#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sc_normalNJW(arma::mat, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 144,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@sc_normalSM#$@N@arma@S@Mat>#d#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sc_normalSM(arma::mat, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 179,
+                "column": 12
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/utilities.h",
+        "file_last_write": 1600126828.0,
+        "definitions": []
+    }
+]

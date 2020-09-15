@@ -1,0 +1,13 @@
+Package: T4cluster
+Type: Package
+Title: Tools for Cluster Analysis
+Version: 1.0
+Author: Who wrote it
+Encoding: UTF-8
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+Imports: Rcpp (>= 1.0.5), Rdpack, Rdimtools, maotai, stats, utils
+LinkingTo: Rcpp, RcppArmadillo
+RdMacros: Rdpack
+RoxygenNote: 7.1.1
