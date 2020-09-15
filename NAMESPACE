@@ -2,6 +2,8 @@
 
 export(kmeans)
 export(kmeanspp)
+export(pcm)
+export(psm)
 export(sc05Z)
 export(sc09G)
 export(sc10Z)

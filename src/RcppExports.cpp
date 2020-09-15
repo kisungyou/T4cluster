@@ -138,6 +138,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// src_pcm
+arma::mat src_pcm(arma::imat& clmat);
+RcppExport SEXP _T4cluster_src_pcm(SEXP clmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_pcm(clmat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// src_psm
+arma::mat src_psm(arma::imat& clmat);
+RcppExport SEXP _T4cluster_src_psm(SEXP clmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_psm(clmat));
+    return rcpp_result_gen;
+END_RCPP
+}
 // arma_kmeans_random
 Rcpp::List arma_kmeans_random(arma::mat& X, int k, int maxiter);
 RcppExport SEXP _T4cluster_arma_kmeans_random(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
@@ -294,6 +316,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_sc10Z", (DL_FUNC) &_T4cluster_cpp_sc10Z, 4},
     {"_T4cluster_cpp_sc11Y", (DL_FUNC) &_T4cluster_cpp_sc11Y, 6},
     {"_T4cluster_cpp_sc12L", (DL_FUNC) &_T4cluster_cpp_sc12L, 5},
+    {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
+    {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
     {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
     {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
     {"_T4cluster_cpp_shortestpath", (DL_FUNC) &_T4cluster_cpp_shortestpath, 2},

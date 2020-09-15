@@ -37,6 +37,14 @@ cpp_sc12L <- function(D, K, usekmeans, maxiter, sigma) {
     .Call('_T4cluster_cpp_sc12L', PACKAGE = 'T4cluster', D, K, usekmeans, maxiter, sigma)
 }
 
+src_pcm <- function(clmat) {
+    .Call('_T4cluster_src_pcm', PACKAGE = 'T4cluster', clmat)
+}
+
+src_psm <- function(clmat) {
+    .Call('_T4cluster_src_psm', PACKAGE = 'T4cluster', clmat)
+}
+
 arma_kmeans_random <- function(X, k, maxiter) {
     .Call('_T4cluster_arma_kmeans_random', PACKAGE = 'T4cluster', X, k, maxiter)
 }

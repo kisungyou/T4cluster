@@ -7,7 +7,9 @@
 
 <!-- badges: end -->
 
-The goal of T4cluster is to …
+**T4cluster** is an **R** package designed as a computational toolkit
+with comprehensive coverage in relevant topics around the study of
+cluster analysis.
 
 ## Installation
 

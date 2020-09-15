@@ -33,3 +33,6 @@ reference:
   - title: "Clustering Algorithms"
     contents:
       - has_concept("algorithm")
+  - title: "Learning with Multiple Clusterings"
+    contents:
+      - has_concept("soc")

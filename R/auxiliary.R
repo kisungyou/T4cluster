@@ -1,6 +1,7 @@
 ## AUXILIARY FUNCTIONS
 #  (01) prec_input_matrix : return output as row-stacked matrix
 #       prec_input_dist   : return matrix of dist object
+#  (02) soc_preproc       : SOC-type algorithm preprocessing
 
 
 # (01) prec_input_matrix & prec_input_dist --------------------------------
@@ -33,4 +34,30 @@ prec_input_dist <- function(x){
   } else {
     stop("* T4cluster : input should be either 'vector','matrix', or 'dist' object.")
   }
+}
+
+#  (02) soc_preproc       : SOC-type algorithm preprocessing -------------------
+#' @keywords internal
+#' @noRd
+soc_preproc <- function(partitions, fname){
+  if (is.list(partitions)){
+    M = length(partitions)
+    if (length(unique(unlist(lapply(partitions, length)))) > 1){
+      stop(paste0("* ",fname," : when a list is given, all element vectors should be of same length 
+                  since they must be clustering vectors on the same-size data."))
+    }
+    N = length(partitions[[1]])
+    clmat = array(0,c(M,N))
+    for (m in 1:M){
+      clmat[m,] = as.integer(as.factor(as.vector(partitions[[m]])))
+    }
+  } else {
+    M = nrow(partitions)
+    N = ncol(partitions)
+    clmat = array(0,c(M,N))
+    for (m in 1:M){
+      clmat[m,] = as.integer(as.factor(as.vector(partitions[m,])))
+    }
+  }
+  return(clmat)
 }

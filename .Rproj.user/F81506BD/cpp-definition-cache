@@ -87,6 +87,39 @@
         ]
     },
     {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_SOC.cpp",
+        "file_last_write": 1600194522.0,
+        "definitions": [
+            {
+                "usr": "c:@F@single_coocurrence#$@N@arma@S@Row>#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "single_coocurrence(arma::irowvec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_SOC.cpp",
+                "line": 18,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@src_pcm#&$@N@arma@S@Mat>#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "src_pcm(arma::imat &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_SOC.cpp",
+                "line": 32,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@src_psm#&$@N@arma@S@Mat>#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "src_psm(arma::imat &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_SOC.cpp",
+                "line": 47,
+                "column": 11
+            }
+        ]
+    },
+    {
         "file": "/home/kisung/Desktop/T4cluster/src/src_kmeans.cpp",
         "file_last_write": 1600126890.0,
         "definitions": [
