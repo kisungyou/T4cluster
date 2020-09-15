@@ -3,6 +3,7 @@
 #' @docType package
 #' @name T4cluster
 #' @aliases package-T4cluster
+#' @noRd
 #' @import Rdpack
 #' @import maotai
 #' @importFrom Rdimtools do.pca

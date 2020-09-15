@@ -1,13 +1,14 @@
 Package: T4cluster
 Type: Package
 Title: Tools for Cluster Analysis
-Version: 1.0
-Author: Who wrote it
+Version: 0.1.0
+Authors@R: c(person("Kisung", "You", role = c("aut", "cre"), email = "kyoustat@gmail.com",comment=c(ORCID="0000-0002-8584-459X")))
 Encoding: UTF-8
-Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.5), Rdpack, Rdimtools, maotai, stats, utils
+URL: http://kyoustat.com/T4cluster/
+BugReports: https://github.com/kyoustat/T4cluster/issues
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
 RoxygenNote: 7.1.1

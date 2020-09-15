@@ -1,0 +1,35 @@
+# themes:  https://bootswatch.com/ {flatly, united}
+# icons:   https://fontawesome.com/
+# pkgdown: https://pkgdown.r-lib.org/reference/index.html
+
+url: https://kyoustat.com/T4cluster/
+
+destination: docs
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics: UA-163713603-1
+
+home:
+  strip_header: false
+
+navbar:
+  title: "T4cluster"
+  left:
+    - text: "Functions"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fa-twitter
+      href: https://twitter.com/kyoustat
+    - icon: fa-github
+      href: https://github.com/kyoustat/T4cluster
+    - icon: fa-envelope
+      href: mailto:kyoustat@gmail.com
+
+reference:
+  - title: "Clustering Algorithms"
+    contents:
+      - has_concept("algorithm")
