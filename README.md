@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# T4cluster <a href='https://kyoustat.com/T4cluster/'><img src='man/figures/logo.png' align="right" height="150" /></a>
+# T4cluster : Tools for Cluster Analysis <a href='https://kyoustat.com/T4cluster/'><img src='man/figures/logo.png' align="right" height="150" /></a>
 
 <!-- badges: start -->
 
