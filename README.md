@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/kyoustat/T4cluster.svg?branch=master)](https://travis-ci.com/kyoustat/T4cluster)
 <!-- badges: end -->
 
 **T4cluster** is an **R** package designed as a computational toolkit
