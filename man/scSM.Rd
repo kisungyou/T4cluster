@@ -38,10 +38,11 @@ the row-space of eigenvectors for the random-walk graph laplacian matrix
 # -------------------------------------------------------------
 #            clustering with 'iris' dataset
 # -------------------------------------------------------------
-## PREPARE
+## PREPARE WITH SUBSET OF DATA
 data(iris)
-X   = as.matrix(iris[,1:4])
-lab = as.integer(as.factor(iris[,5]))
+sid = sample(1:150, 50)
+X   = as.matrix(iris[sid,1:4])
+lab = as.integer(as.factor(iris[sid,5]))
 
 ## EMBEDDING WITH PCA
 X2d = Rdimtools::do.pca(X, ndim=2)$Y

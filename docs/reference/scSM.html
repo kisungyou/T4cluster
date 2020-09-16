@@ -19,7 +19,7 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
@@ -201,10 +201,11 @@ ISSN 01628828, doi: <a href='https://doi.org/10.1109/34.868688'>10.1109/34.86868
     <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
 <span class='co'>#            clustering with 'iris' dataset</span>
 <span class='co'># -------------------------------------------------------------</span>
-<span class='co'>## PREPARE</span>
+<span class='co'>## PREPARE WITH SUBSET OF DATA</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>iris</span>)
-<span class='no'>X</span>   <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>iris</span>[,<span class='fl'>1</span>:<span class='fl'>4</span>])
-<span class='no'>lab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>iris</span>[,<span class='fl'>5</span>]))
+<span class='no'>sid</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>150</span>, <span class='fl'>50</span>)
+<span class='no'>X</span>   <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>iris</span>[<span class='no'>sid</span>,<span class='fl'>1</span>:<span class='fl'>4</span>])
+<span class='no'>lab</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>iris</span>[<span class='no'>sid</span>,<span class='fl'>5</span>]))
 
 <span class='co'>## EMBEDDING WITH PCA</span>
 <span class='no'>X2d</span> <span class='kw'>=</span> <span class='kw pkg'>Rdimtools</span><span class='kw ns'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span>(<span class='no'>X</span>, <span class='kw'>ndim</span><span class='kw'>=</span><span class='fl'>2</span>)$<span class='no'>Y</span>
