@@ -24,4 +24,9 @@ Rcpp::List sc_unnormalized(arma::mat W, int K, bool usekmeans, int maxiter); // 
 Rcpp::List sc_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter);    // L=D^{-1/2}(D-A)D^{-1/2}
 Rcpp::List sc_normalSM(arma::mat W, int K, bool usekmeans, int maxiter);     // L=D\(D-A)
 
+// SECTION 4 : GMM-RELATED FUNCTIONS
+arma::uvec gmm_predict(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+arma::mat gmm_sample(int n, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+
 #endif

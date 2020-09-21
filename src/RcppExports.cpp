@@ -6,6 +6,125 @@
 
 using namespace Rcpp;
 
+// src_pcm
+arma::mat src_pcm(arma::imat& clmat);
+RcppExport SEXP _T4cluster_src_pcm(SEXP clmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_pcm(clmat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// src_psm
+arma::mat src_psm(arma::imat& clmat);
+RcppExport SEXP _T4cluster_src_psm(SEXP clmatSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
+    rcpp_result_gen = Rcpp::wrap(src_psm(clmat));
+    return rcpp_result_gen;
+END_RCPP
+}
+// eval_label
+arma::uvec eval_label(arma::mat& X, arma::mat parMU, arma::cube parSIG, arma::vec parPI);
+RcppExport SEXP _T4cluster_eval_label(SEXP XSEXP, SEXP parMUSEXP, SEXP parSIGSEXP, SEXP parPISEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type parMU(parMUSEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type parSIG(parSIGSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type parPI(parPISEXP);
+    rcpp_result_gen = Rcpp::wrap(eval_label(X, parMU, parSIG, parPI));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_skeleton
+Rcpp::List gmm_skeleton(arma::mat& X, int k);
+RcppExport SEXP _T4cluster_gmm_skeleton(SEXP XSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_skeleton(X, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_armadillo
+Rcpp::List gmm_armadillo(arma::mat& X, int k, int maxiter, bool usediag);
+RcppExport SEXP _T4cluster_gmm_armadillo(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP, SEXP usediagSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< bool >::type usediag(usediagSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_armadillo(X, k, maxiter, usediag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_11R
+Rcpp::List gmm_11R(arma::mat& X, int K, double lambda, int maxiter, bool usediag);
+RcppExport SEXP _T4cluster_gmm_11R(SEXP XSEXP, SEXP KSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP usediagSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< bool >::type usediag(usediagSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_11R(X, K, lambda, maxiter, usediag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_16Gfix
+Rcpp::List gmm_16Gfix(arma::mat& X, int k, arma::vec weight, int maxiter, bool usediag);
+RcppExport SEXP _T4cluster_gmm_16Gfix(SEXP XSEXP, SEXP kSEXP, SEXP weightSEXP, SEXP maxiterSEXP, SEXP usediagSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< bool >::type usediag(usediagSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_16Gfix(X, k, weight, maxiter, usediag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_kmeans_random
+Rcpp::List arma_kmeans_random(arma::mat& X, int k, int maxiter);
+RcppExport SEXP _T4cluster_arma_kmeans_random(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_kmeans_random(X, k, maxiter));
+    return rcpp_result_gen;
+END_RCPP
+}
+// arma_kmeans_kmeanspp
+Rcpp::List arma_kmeans_kmeanspp(arma::mat& X, arma::mat& init, int k, int maxiter);
+RcppExport SEXP _T4cluster_arma_kmeans_kmeanspp(SEXP XSEXP, SEXP initSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type init(initSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    rcpp_result_gen = Rcpp::wrap(arma_kmeans_kmeanspp(X, init, k, maxiter));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sc_2015LB_commute
 arma::mat sc_2015LB_commute(arma::mat& D, int K);
 RcppExport SEXP _T4cluster_sc_2015LB_commute(SEXP DSEXP, SEXP KSEXP) {
@@ -138,55 +257,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// src_pcm
-arma::mat src_pcm(arma::imat& clmat);
-RcppExport SEXP _T4cluster_src_pcm(SEXP clmatSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
-    rcpp_result_gen = Rcpp::wrap(src_pcm(clmat));
-    return rcpp_result_gen;
-END_RCPP
-}
-// src_psm
-arma::mat src_psm(arma::imat& clmat);
-RcppExport SEXP _T4cluster_src_psm(SEXP clmatSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::imat& >::type clmat(clmatSEXP);
-    rcpp_result_gen = Rcpp::wrap(src_psm(clmat));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_kmeans_random
-Rcpp::List arma_kmeans_random(arma::mat& X, int k, int maxiter);
-RcppExport SEXP _T4cluster_arma_kmeans_random(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_kmeans_random(X, k, maxiter));
-    return rcpp_result_gen;
-END_RCPP
-}
-// arma_kmeans_kmeanspp
-Rcpp::List arma_kmeans_kmeanspp(arma::mat& X, arma::mat& init, int k, int maxiter);
-RcppExport SEXP _T4cluster_arma_kmeans_kmeanspp(SEXP XSEXP, SEXP initSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
-    Rcpp::traits::input_parameter< arma::mat& >::type init(initSEXP);
-    Rcpp::traits::input_parameter< int >::type k(kSEXP);
-    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
-    rcpp_result_gen = Rcpp::wrap(arma_kmeans_kmeanspp(X, init, k, maxiter));
-    return rcpp_result_gen;
-END_RCPP
-}
 // cpp_shortestpath
 arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists);
 RcppExport SEXP _T4cluster_cpp_shortestpath(SEXP locsSEXP, SEXP distsSEXP) {
@@ -305,8 +375,59 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// gmm_predict
+arma::uvec gmm_predict(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+RcppExport SEXP _T4cluster_gmm_predict(SEXP XSEXP, SEXP oldweightSEXP, SEXP oldmeansSEXP, SEXP oldcovsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::colvec >::type oldweight(oldweightSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type oldmeans(oldmeansSEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type oldcovs(oldcovsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_predict(X, oldweight, oldmeans, oldcovs));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_sample
+arma::mat gmm_sample(int n, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+RcppExport SEXP _T4cluster_gmm_sample(SEXP nSEXP, SEXP oldweightSEXP, SEXP oldmeansSEXP, SEXP oldcovsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< arma::colvec >::type oldweight(oldweightSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type oldmeans(oldmeansSEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type oldcovs(oldcovsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_sample(n, oldweight, oldmeans, oldcovs));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_loglkd
+double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
+RcppExport SEXP _T4cluster_gmm_loglkd(SEXP XSEXP, SEXP oldweightSEXP, SEXP oldmeansSEXP, SEXP oldcovsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::colvec >::type oldweight(oldweightSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type oldmeans(oldmeansSEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type oldcovs(oldcovsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_loglkd(X, oldweight, oldmeans, oldcovs));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
+    {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
+    {"_T4cluster_eval_label", (DL_FUNC) &_T4cluster_eval_label, 4},
+    {"_T4cluster_gmm_skeleton", (DL_FUNC) &_T4cluster_gmm_skeleton, 2},
+    {"_T4cluster_gmm_armadillo", (DL_FUNC) &_T4cluster_gmm_armadillo, 4},
+    {"_T4cluster_gmm_11R", (DL_FUNC) &_T4cluster_gmm_11R, 5},
+    {"_T4cluster_gmm_16Gfix", (DL_FUNC) &_T4cluster_gmm_16Gfix, 5},
+    {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
+    {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
     {"_T4cluster_sc_2015LB_commute", (DL_FUNC) &_T4cluster_sc_2015LB_commute, 2},
     {"_T4cluster_cpp_scNJW", (DL_FUNC) &_T4cluster_cpp_scNJW, 5},
     {"_T4cluster_cpp_scSM", (DL_FUNC) &_T4cluster_cpp_scSM, 5},
@@ -316,10 +437,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_sc10Z", (DL_FUNC) &_T4cluster_cpp_sc10Z, 4},
     {"_T4cluster_cpp_sc11Y", (DL_FUNC) &_T4cluster_cpp_sc11Y, 6},
     {"_T4cluster_cpp_sc12L", (DL_FUNC) &_T4cluster_cpp_sc12L, 5},
-    {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
-    {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
-    {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
-    {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
     {"_T4cluster_cpp_shortestpath", (DL_FUNC) &_T4cluster_cpp_shortestpath, 2},
     {"_T4cluster_cpp_pdist", (DL_FUNC) &_T4cluster_cpp_pdist, 2},
     {"_T4cluster_cpp_pdist2", (DL_FUNC) &_T4cluster_cpp_pdist2, 3},
@@ -329,6 +446,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_sc_unnormalized", (DL_FUNC) &_T4cluster_sc_unnormalized, 4},
     {"_T4cluster_sc_normalNJW", (DL_FUNC) &_T4cluster_sc_normalNJW, 4},
     {"_T4cluster_sc_normalSM", (DL_FUNC) &_T4cluster_sc_normalSM, 4},
+    {"_T4cluster_gmm_predict", (DL_FUNC) &_T4cluster_gmm_predict, 4},
+    {"_T4cluster_gmm_sample", (DL_FUNC) &_T4cluster_gmm_sample, 4},
+    {"_T4cluster_gmm_loglkd", (DL_FUNC) &_T4cluster_gmm_loglkd, 4},
     {NULL, NULL, 0}
 };
 

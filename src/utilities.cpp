@@ -244,3 +244,54 @@ Rcpp::List sc_normalSM(arma::mat W, int K, bool usekmeans, int maxiter){
                             Rcpp::Named("embeds")=dat,
                             Rcpp::Named("labels")=output);
 }
+
+// SECTION 4   : GMM-RELATED FUNCTIONS =========================================
+// gmm_predict : prediction given new data and old model's fits 
+//               be careful for transpose on X and Means
+// [[Rcpp::export]]
+arma::uvec gmm_predict(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs){
+  // model sizes
+  int k = oldcovs.n_slices;
+  int p = oldcovs.n_cols;
+  
+  arma::gmm_full model;
+  model.reset(p, k);
+  model.set_means(arma::trans(oldmeans)); // column centroids
+  model.set_fcovs(oldcovs);
+  model.set_hefts(arma::trans(oldweight));
+  
+  arma::uvec output = arma::trans(model.assign(arma::trans(X), prob_dist));
+  return(output);
+}
+// gmm_sample    : sample from the gmm model 
+// [[Rcpp::export]]
+arma::mat gmm_sample(int n, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs){
+  // model sizes
+  int k = oldcovs.n_slices;
+  int p = oldcovs.n_cols;
+  
+  arma::gmm_full model;
+  model.reset(p, k);
+  model.set_means(arma::trans(oldmeans)); // column centroids
+  model.set_fcovs(oldcovs);
+  model.set_hefts(arma::trans(oldweight));
+  
+  arma::mat output = arma::trans(model.generate(n));
+  return(output);
+}
+// gmm_loglkd    : compute the log-likelihood of the data and the model ===
+// [[Rcpp::export]]
+double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs){
+  // model sizes
+  int k = oldcovs.n_slices;
+  int p = oldcovs.n_cols;
+  
+  arma::gmm_full model;
+  model.reset(p, k);
+  model.set_means(arma::trans(oldmeans)); // column centroids
+  model.set_fcovs(oldcovs);
+  model.set_hefts(arma::trans(oldweight));
+  
+  double output = model.sum_log_p(arma::trans(X));
+  return(output);
+}

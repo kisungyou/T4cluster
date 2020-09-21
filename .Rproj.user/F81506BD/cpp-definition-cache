@@ -1,92 +1,5 @@
 [
     {
-        "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-        "file_last_write": 1600191942.0,
-        "definitions": [
-            {
-                "usr": "c:@F@sc_2015LB_commute#&$@N@arma@S@Mat>#d#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "sc_2015LB_commute(arma::mat &, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 25,
-                "column": 11
-            },
-            {
-                "usr": "c:@F@cpp_scNJW#&$@N@arma@S@Mat>#d#I#d#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_scNJW(arma::mat &, int, double, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 59,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_scSM#&$@N@arma@S@Mat>#d#I#d#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_scSM(arma::mat &, int, double, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 73,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_scUL#&$@N@arma@S@Mat>#d#I#d#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_scUL(arma::mat &, int, double, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 87,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_sc05Z#&$@N@arma@S@Mat>#d#I#I#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_sc05Z(arma::mat &, int, int, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 101,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_sc09G#&$@N@arma@S@Mat>#d#I#I#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_sc09G(arma::mat &, int, int, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 128,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_sc10Z#&$@N@arma@S@Mat>#d#I#b#I#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_sc10Z(arma::mat &, int, bool, int)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 155,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_sc11Y#&$@N@arma@S@Mat>#i#&$@N@arma@S@Mat>#d#I#b#I#d#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_sc11Y(arma::umat &, arma::mat &, int, bool, int, double)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 181,
-                "column": 12
-            },
-            {
-                "usr": "c:@F@cpp_sc12L#&$@N@arma@S@Mat>#d#I#b#I#d#",
-                "kind": 6,
-                "parent_name": "",
-                "name": "cpp_sc12L(arma::mat &, int, bool, int, double)",
-                "file": "/home/kisung/Desktop/T4cluster/src/algorithms_spectral.cpp",
-                "line": 205,
-                "column": 12
-            }
-        ]
-    },
-    {
         "file": "/home/kisung/Desktop/T4cluster/src/src_SOC.cpp",
         "file_last_write": 1600194522.0,
         "definitions": [
@@ -120,6 +33,183 @@
         ]
     },
     {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+        "file_last_write": 1600715678.0,
+        "definitions": [
+            {
+                "usr": "c:@F@eval_gaussian#$@N@arma@S@Mat>#d#$@N@arma@S@Row>#d#S0_#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "eval_gaussian(arma::mat, arma::rowvec, arma::mat, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 25,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@eval_gaussian_single#$@N@arma@S@Row>#d#S0_#$@N@arma@S@Mat>#d#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "eval_gaussian_single(arma::rowvec, arma::rowvec, arma::mat, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 46,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@eval_label#&$@N@arma@S@Mat>#d#S1_#$@N@arma@S@Cube>#d#$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "eval_label(arma::mat &, arma::mat, arma::cube, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 62,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_standard_gamma#$@N@arma@S@Mat>#d#S0_#$@N@arma@S@Cube>#d#$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_standard_gamma(arma::mat, arma::mat, arma::cube, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 78,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_standard_pi#$@N@arma@S@Mat>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_standard_pi(arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 100,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_standard_mean#$@N@arma@S@Mat>#d#S0_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_standard_mean(arma::mat, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 110,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_standard_cov#$@N@arma@S@Mat>#d#S0_#S0_#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_standard_cov(arma::mat, arma::mat, arma::mat, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 128,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_skeleton#&$@N@arma@S@Mat>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_skeleton(arma::mat &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 159,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_armadillo#&$@N@arma@S@Mat>#d#I#I#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_armadillo(arma::mat &, int, int, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 229,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm11R_objective#$@N@arma@S@Mat>#d#S0_#S0_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm11R_objective(arma::mat, arma::mat, arma::mat, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 268,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gmm11R_shrinkage#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm11R_shrinkage(double, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 275,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gmm11R_ADMMprecision#$@N@arma@S@Mat>#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm11R_ADMMprecision(arma::mat, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 283,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm11R_precision#$@N@arma@S@Mat>#d#S0_#S0_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm11R_precision(arma::mat, arma::mat, arma::mat, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 346,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_11R#&$@N@arma@S@Mat>#d#I#d#I#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_11R(arma::mat &, int, double, int, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 372,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_16Gfix_mean#$@N@arma@S@Mat>#d#S0_#$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_16Gfix_mean(arma::mat, arma::mat, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 492,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_16Gfix_cov#$@N@arma@S@Mat>#d#S0_#S0_#$@N@arma@S@Col>#d#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_16Gfix_cov(arma::mat, arma::mat, arma::mat, arma::vec, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 513,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_16Gfix_loglkd#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#S0_#$@N@arma@S@Cube>#d#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_16Gfix_loglkd(arma::mat, arma::vec, arma::mat, arma::cube, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 543,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gmm_16Gfix_label#&$@N@arma@S@Mat>#d#S1_#$@N@arma@S@Cube>#d#$@N@arma@S@Col>#d#S3_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_16Gfix_label(arma::mat &, arma::mat, arma::cube, arma::vec, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 566,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_16Gfix#&$@N@arma@S@Mat>#d#I#$@N@arma@S@Col>#d#I#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_16Gfix(arma::mat &, int, arma::vec, int, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 586,
+                "column": 12
+            }
+        ]
+    },
+    {
         "file": "/home/kisung/Desktop/T4cluster/src/src_kmeans.cpp",
         "file_last_write": 1600126890.0,
         "definitions": [
@@ -144,8 +234,95 @@
         ]
     },
     {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+        "file_last_write": 1600191942.0,
+        "definitions": [
+            {
+                "usr": "c:@F@sc_2015LB_commute#&$@N@arma@S@Mat>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "sc_2015LB_commute(arma::mat &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 25,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cpp_scNJW#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scNJW(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 59,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_scSM#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scSM(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 73,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_scUL#&$@N@arma@S@Mat>#d#I#d#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_scUL(arma::mat &, int, double, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 87,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc05Z#&$@N@arma@S@Mat>#d#I#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc05Z(arma::mat &, int, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 101,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc09G#&$@N@arma@S@Mat>#d#I#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc09G(arma::mat &, int, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 128,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc10Z#&$@N@arma@S@Mat>#d#I#b#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc10Z(arma::mat &, int, bool, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 155,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc11Y#&$@N@arma@S@Mat>#i#&$@N@arma@S@Mat>#d#I#b#I#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc11Y(arma::umat &, arma::mat &, int, bool, int, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 181,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_sc12L#&$@N@arma@S@Mat>#d#I#b#I#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_sc12L(arma::mat &, int, bool, int, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_spectral.cpp",
+                "line": 205,
+                "column": 12
+            }
+        ]
+    },
+    {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-        "file_last_write": 1600189982.0,
+        "file_last_write": 1600660461.0,
         "definitions": [
             {
                 "usr": "c:@F@cpp_shortestpath#$@N@arma@S@Mat>#i#$@N@arma@S@Mat>#d#",
@@ -227,12 +404,39 @@
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
                 "line": 213,
                 "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_predict#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#S0_#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_predict(arma::mat, arma::colvec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 252,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_sample#I#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_sample(int, arma::colvec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 268,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_loglkd#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#d#S0_#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_loglkd(arma::mat, arma::colvec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 284,
+                "column": 8
             }
         ]
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.h",
-        "file_last_write": 1600189959.0,
+        "file_last_write": 1600659340.0,
         "definitions": []
     }
 ]

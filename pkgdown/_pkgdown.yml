@@ -30,9 +30,12 @@ navbar:
       href: mailto:kyoustat@gmail.com
 
 reference:
-  - title: "Clustering Algorithms"
+  - title: "[1] Clustering Algorithms"
     contents:
       - has_concept("algorithm")
-  - title: "Learning with Multiple Clusterings"
+  - title: "[2] Learning with Multiple Clusterings"
     contents:
       - has_concept("soc")
+  - title: "[3] Other Utilities"
+    contents:
+      - has_concept("utility")

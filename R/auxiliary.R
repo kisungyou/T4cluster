@@ -2,7 +2,8 @@
 #  (01) prec_input_matrix : return output as row-stacked matrix
 #       prec_input_dist   : return matrix of dist object
 #  (02) soc_preproc       : SOC-type algorithm preprocessing
-
+#  (03) gmm_check_alldiag : check whether all covariances are diagonal or not
+#  (04) gmm_name_segment  : extract the first 3 letters of algorithm name
 
 # (01) prec_input_matrix & prec_input_dist --------------------------------
 #' @keywords internal
@@ -60,4 +61,25 @@ soc_preproc <- function(partitions, fname){
     }
   }
   return(clmat)
+}
+
+# (03) gmm_check_alldiag =======================================================
+#' @keywords internal
+#' @noRd
+gmm_check_alldiag <- function(covariance){
+  k = dim(covariance)[3]
+  for (i in 1:k){
+    tgt = covariance[,,i]
+    if (any(as.vector(tgt[upper.tri(tgt)])!=0)){
+      return(FALSE)
+    }
+  }
+  return(TRUE)
+}
+# (04) gmm_name_segment ========================================================
+#' @keywords internal
+#' @noRd
+gmm_name_segment <- function(strname){
+  letter3 = paste(unlist(strsplit(strname,""))[1:3], collapse = "")
+  return(letter3)
 }
