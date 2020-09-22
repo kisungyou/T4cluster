@@ -1,6 +1,8 @@
 #include <RcppArmadillo.h>
+#include <RcppArmadilloExtensions/sample.h>
 #include "utilities.h"
 #include <cassert>
+#include <algorithm>
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -112,6 +114,27 @@ arma::mat cpp_pdistMP(arma::mat X, int p, int nCores){
 #endif
   return(output);
 }
+// [[Rcpp::export]]
+arma::uvec cpp_sample(int N, int m, arma::vec prob, bool replace){
+  arma::uvec x     = arma::linspace<arma::uvec>(0L, N-1L, N);
+  arma::vec myprob = prob/arma::accu(prob);
+  arma::uvec output = Rcpp::RcppArmadillo::sample(x, m, replace, myprob);
+  return(output);
+}
+// setdiff implementation
+// https://stackoverflow.com/questions/29724083/trying-to-write-a-setdiff-function-using-rcpparmadillo-gives-compilation-error
+// [[Rcpp::export]]
+arma::uvec cpp_setdiff(arma::uvec& x, arma::uvec& y){
+  std::vector<int> a = arma::conv_to< std::vector<int> >::from(arma::sort(x));
+  std::vector<int> b = arma::conv_to< std::vector<int> >::from(arma::sort(y));
+  std::vector<int> out;
+  
+  std::set_difference(a.begin(), a.end(), b.begin(), b.end(),
+                      std::inserter(out, out.end()));
+  
+  return arma::conv_to<arma::uvec>::from(out);
+}
+
 
 // SECTION 2 : K-MEANS AND GMM =================================================
 // [[Rcpp::export]]

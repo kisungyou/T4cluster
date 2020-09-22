@@ -9,10 +9,12 @@ using namespace arma;
 using namespace std;
 
 // SECTION 1 : ELEMENTARY COMPUTATION
-arma::mat cpp_pdist(arma::mat X, int p);
-arma::mat cpp_pdist2(arma::mat X, arma::mat Y, int p);
-arma::mat cpp_pdistMP(arma::mat X, int p, int nCores);
-arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists);
+arma::mat  cpp_pdist(arma::mat X, int p);
+arma::mat  cpp_pdist2(arma::mat X, arma::mat Y, int p);
+arma::mat  cpp_pdistMP(arma::mat X, int p, int nCores);
+arma::mat  cpp_shortestpath(arma::umat locs, arma::mat dists);
+arma::uvec cpp_sample(int N, int m, arma::vec prob, bool replace);
+arma::uvec cpp_setdiff(arma::uvec& x, arma::uvec& y);
 
 // SECTION 2 : K-MEANS AND GMM
 arma::urowvec label_kmeans(arma::mat data, int K, int maxiter);

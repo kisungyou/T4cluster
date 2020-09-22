@@ -28,6 +28,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// coreset_18B
+Rcpp::List coreset_18B(arma::mat& X, int K, int M, int maxiter);
+RcppExport SEXP _T4cluster_coreset_18B(SEXP XSEXP, SEXP KSEXP, SEXP MSEXP, SEXP maxiterSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    rcpp_result_gen = Rcpp::wrap(coreset_18B(X, K, M, maxiter));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_label
 arma::uvec eval_label(arma::mat& X, arma::mat parMU, arma::cube parSIG, arma::vec parPI);
 RcppExport SEXP _T4cluster_eval_label(SEXP XSEXP, SEXP parMUSEXP, SEXP parSIGSEXP, SEXP parPISEXP) {
@@ -307,6 +321,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_sample
+arma::uvec cpp_sample(int N, int m, arma::vec prob, bool replace);
+RcppExport SEXP _T4cluster_cpp_sample(SEXP NSEXP, SEXP mSEXP, SEXP probSEXP, SEXP replaceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type prob(probSEXP);
+    Rcpp::traits::input_parameter< bool >::type replace(replaceSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_sample(N, m, prob, replace));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_setdiff
+arma::uvec cpp_setdiff(arma::uvec& x, arma::uvec& y);
+RcppExport SEXP _T4cluster_cpp_setdiff(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::uvec& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::uvec& >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_setdiff(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
 // label_kmeans
 arma::urowvec label_kmeans(arma::mat data, int K, int maxiter);
 RcppExport SEXP _T4cluster_label_kmeans(SEXP dataSEXP, SEXP KSEXP, SEXP maxiterSEXP) {
@@ -421,6 +461,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
     {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
+    {"_T4cluster_coreset_18B", (DL_FUNC) &_T4cluster_coreset_18B, 4},
     {"_T4cluster_eval_label", (DL_FUNC) &_T4cluster_eval_label, 4},
     {"_T4cluster_gmm_skeleton", (DL_FUNC) &_T4cluster_gmm_skeleton, 2},
     {"_T4cluster_gmm_armadillo", (DL_FUNC) &_T4cluster_gmm_armadillo, 4},
@@ -441,6 +482,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_pdist", (DL_FUNC) &_T4cluster_cpp_pdist, 2},
     {"_T4cluster_cpp_pdist2", (DL_FUNC) &_T4cluster_cpp_pdist2, 3},
     {"_T4cluster_cpp_pdistMP", (DL_FUNC) &_T4cluster_cpp_pdistMP, 3},
+    {"_T4cluster_cpp_sample", (DL_FUNC) &_T4cluster_cpp_sample, 4},
+    {"_T4cluster_cpp_setdiff", (DL_FUNC) &_T4cluster_cpp_setdiff, 2},
     {"_T4cluster_label_kmeans", (DL_FUNC) &_T4cluster_label_kmeans, 3},
     {"_T4cluster_label_gmm", (DL_FUNC) &_T4cluster_label_gmm, 3},
     {"_T4cluster_sc_unnormalized", (DL_FUNC) &_T4cluster_sc_unnormalized, 4},

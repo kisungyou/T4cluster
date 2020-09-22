@@ -9,6 +9,10 @@ src_psm <- function(clmat) {
     .Call('_T4cluster_src_psm', PACKAGE = 'T4cluster', clmat)
 }
 
+coreset_18B <- function(X, K, M, maxiter) {
+    .Call('_T4cluster_coreset_18B', PACKAGE = 'T4cluster', X, K, M, maxiter)
+}
+
 eval_label <- function(X, parMU, parSIG, parPI) {
     .Call('_T4cluster_eval_label', PACKAGE = 'T4cluster', X, parMU, parSIG, parPI)
 }
@@ -87,6 +91,14 @@ cpp_pdist2 <- function(X, Y, p) {
 
 cpp_pdistMP <- function(X, p, nCores) {
     .Call('_T4cluster_cpp_pdistMP', PACKAGE = 'T4cluster', X, p, nCores)
+}
+
+cpp_sample <- function(N, m, prob, replace) {
+    .Call('_T4cluster_cpp_sample', PACKAGE = 'T4cluster', N, m, prob, replace)
+}
+
+cpp_setdiff <- function(x, y) {
+    .Call('_T4cluster_cpp_setdiff', PACKAGE = 'T4cluster', x, y)
 }
 
 label_kmeans <- function(data, K, maxiter) {
