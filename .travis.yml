@@ -1,4 +1,5 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# https://github.com/giabaio/BCEA/blob/master/.travis.yml
 
 language: R
 sudo: true
@@ -43,5 +44,7 @@ env:
   global:
     - R_CHECK_ARGS="--no-build-vignettes --no-manual --ignore-vignettes --no-examples"
     - R_BUILD_ARGS="--no-build-vignettes"
+    - NOT_CRAN=TRUE
+    - RGL_USE_NULL=TRUE
 
 warnings_are_errors: false
