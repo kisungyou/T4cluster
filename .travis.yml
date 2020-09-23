@@ -33,7 +33,6 @@ r:
 
 r-packages:
   - Rcpp
-  - RcppArmadillo
   - Rdpack
   - Rdimtools
   - maotai
@@ -44,6 +43,5 @@ env:
   global:
     - R_CHECK_ARGS="--no-build-vignettes --no-manual --ignore-vignettes --no-examples"
     - R_BUILD_ARGS="--no-build-vignettes"
-    - RGL_USE_NULL=TRUE
 
 warnings_are_errors: false

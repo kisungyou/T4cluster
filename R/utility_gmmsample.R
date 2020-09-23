@@ -1,6 +1,6 @@
 #' Generate Data from Fitted GMM Models
 #' 
-#' Given a fitted GMM model in \eqn{\mathbb{R}^p}, it generates \eqn{n} samples 
+#' Given a fitted GMM model in \eqn{\mathbf{R}^p}, it generates \eqn{n} samples 
 #' according to the fitted model. 
 #' 
 #' @param n the number of observations to be drawn.
