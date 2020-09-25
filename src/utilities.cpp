@@ -135,7 +135,6 @@ arma::uvec cpp_setdiff(arma::uvec& x, arma::uvec& y){
   return arma::conv_to<arma::uvec>::from(out);
 }
 
-
 // SECTION 2 : K-MEANS AND GMM =================================================
 // [[Rcpp::export]]
 arma::urowvec label_kmeans(arma::mat data, int K, int maxiter){

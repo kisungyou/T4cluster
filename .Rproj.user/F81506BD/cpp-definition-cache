@@ -337,7 +337,7 @@
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-        "file_last_write": 1600781632.0,
+        "file_last_write": 1600969218.0,
         "definitions": [
             {
                 "usr": "c:@F@cpp_shortestpath#$@N@arma@S@Mat>#i#$@N@arma@S@Mat>#d#",
@@ -399,7 +399,7 @@
                 "parent_name": "",
                 "name": "label_kmeans(arma::mat, int, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 141,
+                "line": 140,
                 "column": 15
             },
             {
@@ -408,7 +408,7 @@
                 "parent_name": "",
                 "name": "label_gmm(arma::mat, int, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 164,
+                "line": 163,
                 "column": 15
             },
             {
@@ -417,7 +417,7 @@
                 "parent_name": "",
                 "name": "sc_unnormalized(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 176,
+                "line": 175,
                 "column": 12
             },
             {
@@ -426,7 +426,7 @@
                 "parent_name": "",
                 "name": "sc_normalNJW(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 201,
+                "line": 200,
                 "column": 12
             },
             {
@@ -435,7 +435,7 @@
                 "parent_name": "",
                 "name": "sc_normalSM(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 236,
+                "line": 235,
                 "column": 12
             },
             {
@@ -444,7 +444,7 @@
                 "parent_name": "",
                 "name": "gmm_predict(arma::mat, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 275,
+                "line": 274,
                 "column": 12
             },
             {
@@ -453,7 +453,7 @@
                 "parent_name": "",
                 "name": "gmm_sample(int, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 291,
+                "line": 290,
                 "column": 11
             },
             {
@@ -462,14 +462,14 @@
                 "parent_name": "",
                 "name": "gmm_loglkd(arma::mat, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 307,
+                "line": 306,
                 "column": 8
             }
         ]
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.h",
-        "file_last_write": 1600781646.0,
+        "file_last_write": 1600969217.0,
         "definitions": []
     }
 ]
