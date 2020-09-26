@@ -13,6 +13,10 @@ coreset_18B <- function(X, K, M, maxiter) {
     .Call('_T4cluster_coreset_18B', PACKAGE = 'T4cluster', X, K, M, maxiter)
 }
 
+fpp_pdist_lp <- function(vect, vecf, myp) {
+    .Call('_T4cluster_fpp_pdist_lp', PACKAGE = 'T4cluster', vect, vecf, myp)
+}
+
 eval_label <- function(X, parMU, parSIG, parPI) {
     .Call('_T4cluster_eval_label', PACKAGE = 'T4cluster', X, parMU, parSIG, parPI)
 }

@@ -37,6 +37,7 @@ r-packages:
   - Rdimtools
   - maotai
   - stats
+  - fda
   - utils
 
 env:

@@ -42,6 +42,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fpp_pdist_lp
+arma::mat fpp_pdist_lp(arma::vec vect, arma::mat& vecf, double myp);
+RcppExport SEXP _T4cluster_fpp_pdist_lp(SEXP vectSEXP, SEXP vecfSEXP, SEXP mypSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type vect(vectSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type vecf(vecfSEXP);
+    Rcpp::traits::input_parameter< double >::type myp(mypSEXP);
+    rcpp_result_gen = Rcpp::wrap(fpp_pdist_lp(vect, vecf, myp));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_label
 arma::uvec eval_label(arma::mat& X, arma::mat parMU, arma::cube parSIG, arma::vec parPI);
 RcppExport SEXP _T4cluster_eval_label(SEXP XSEXP, SEXP parMUSEXP, SEXP parSIGSEXP, SEXP parPISEXP) {
@@ -462,6 +475,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
     {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
     {"_T4cluster_coreset_18B", (DL_FUNC) &_T4cluster_coreset_18B, 4},
+    {"_T4cluster_fpp_pdist_lp", (DL_FUNC) &_T4cluster_fpp_pdist_lp, 3},
     {"_T4cluster_eval_label", (DL_FUNC) &_T4cluster_eval_label, 4},
     {"_T4cluster_gmm_skeleton", (DL_FUNC) &_T4cluster_gmm_skeleton, 2},
     {"_T4cluster_gmm_armadillo", (DL_FUNC) &_T4cluster_gmm_armadillo, 4},

@@ -6,7 +6,7 @@ Authors@R: c(person("Kisung", "You", role = c("aut", "cre"), email = "kyoustat@g
 Encoding: UTF-8
 Description: Cluster analysis is one of the most fundamental problems in data science. We provide a variety of algorithms from clustering to the learning on the space of partitions. See Hennig, Meila, and Rocci (2016, ISBN:9781466551886) for general exposition to cluster analysis.
 License: MIT + file LICENSE
-Imports: Rcpp (>= 1.0.5), Rdpack, Rdimtools, maotai, stats, utils
+Imports: Rcpp (>= 1.0.5), Rdpack, Rdimtools, fda, maotai, stats, utils
 URL: http://kyoustat.com/T4cluster/
 BugReports: https://github.com/kyoustat/T4cluster/issues
 LinkingTo: Rcpp, RcppArmadillo

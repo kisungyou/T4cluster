@@ -48,6 +48,30 @@
         ]
     },
     {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_functional.cpp",
+        "file_last_write": 1601089621.0,
+        "definitions": [
+            {
+                "usr": "c:@F@fpp_pdist_single#$@N@arma@S@Col>#d#S0_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "fpp_pdist_single(arma::vec, arma::vec, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_functional.cpp",
+                "line": 14,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@fpp_pdist_lp#$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "fpp_pdist_lp(arma::vec, arma::mat &, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_functional.cpp",
+                "line": 25,
+                "column": 11
+            }
+        ]
+    },
+    {
         "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
         "file_last_write": 1600715678.0,
         "definitions": [
