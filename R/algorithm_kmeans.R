@@ -63,7 +63,6 @@ kmeans <- function(data, k=2, ...){
   mynstart = ifelse(("nstart"%in%pnames), max(5,round(pars$nstart)), 5)
   
   ## MULTIPLE STARTS
-  dmatrix   = cpp_pdistMP(mydata, 2, 4)
   rec_class = list()
   rec_kmeans = list()
   if (all(myinit=="random")){
@@ -71,6 +70,7 @@ kmeans <- function(data, k=2, ...){
       rec_kmeans[[i]] = arma_kmeans_random(t(data), myk, myiter)
     }
   } else {
+    dmatrix = cpp_pdistMP(mydata, 2, 4)
     distobj = stats::as.dist(dmatrix)
     for (i in 1:mynstart){
       tmplab = extra_kmeanspp(distobj, k=myk)$id.center

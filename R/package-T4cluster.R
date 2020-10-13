@@ -4,7 +4,7 @@
 #' @name T4cluster
 #' @aliases package-T4cluster
 #' @noRd
-#' @importFrom fda eval.fd create.bspline.basis smooth.basis
+#' @importFrom fda eval.fd create.bspline.basis smooth.basis pca.fd
 #' @import Rdpack
 #' @import maotai
 #' @importFrom Rdimtools do.pca

@@ -317,3 +317,46 @@ double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma:
   double output = model.sum_log_p(arma::trans(X));
   return(output);
 }
+
+// SECTION 5 : INTERNAL CRITERIA / CLUSTER VALIDITY INDEX ======================
+arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label){
+  int n = X.n_rows;
+  int p = X.n_cols;
+  int k = label.max() + 1;
+  
+  arma::uvec cid;
+  arma::mat output(k,p,fill::zeros);
+  for (int i=0; i<k; i++){
+    cid.reset();
+    cid = arma::find(label==i);
+    if (cid.n_elem < 2){
+      output.row(i) = X.row(cid(0));
+    } else {
+      output.row(i) = arma::mean(X.rows(cid), 0);
+    }
+  }
+  return(output);
+}
+arma::field<arma::uvec> cvi_helper_classindex(arma::uvec label){
+  int N = label.n_elem;
+  int K = label.max() + 1;
+  
+  arma::field<arma::uvec> output(K);
+  for (int k=0; k<K; k++){
+    output(k) = arma::find(label==k);
+  }
+  return(output);
+}
+int cvi_helper_nw(arma::uvec label){
+  arma::field<arma::uvec> classindex = cvi_helper_classindex(label);
+  int K = classindex.n_elem;
+  
+  int tmp = 0;
+  int output = 0;
+  for (int k=0; k<K; k++){
+    tmp = classindex(k).n_elem;
+    output += tmp*(tmp-1)/2;
+  }
+  return(output);
+}
+

@@ -59,5 +59,9 @@ matplot(datx, daty[,21:40], type="l", main="Curves Type 2")
 plot(hcsingle, main="hclust with 'single' linkage")
 par(opar)
 
+
+}
+\references{
+\insertRef{ferreira_comparison_2009}{T4cluster}
 }
 \concept{functional}

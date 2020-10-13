@@ -31,4 +31,9 @@ arma::uvec gmm_predict(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, 
 arma::mat gmm_sample(int n, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
 double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma::cube oldcovs);
 
+// SECTION 5 : INTERNAL CRITERIA / CLUSTER VALIDITY INDEX
+arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label);   // compute class-wise mean
+arma::field<arma::uvec> cvi_helper_classindex(arma::uvec label); // index for each label
+int cvi_helper_nw(arma::uvec label);                             // number of pairs in the same cluster
+
 #endif

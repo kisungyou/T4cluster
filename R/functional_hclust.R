@@ -41,6 +41,10 @@
 #' plot(hcsingle, main="hclust with 'single' linkage")
 #' par(opar)
 #' 
+#' 
+#' @references 
+#' \insertRef{ferreira_comparison_2009}{T4cluster}
+#' 
 #' @concept functional
 #' @export
 funhclust <- function(fdobj, p=2, 

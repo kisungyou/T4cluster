@@ -361,7 +361,7 @@
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-        "file_last_write": 1600969218.0,
+        "file_last_write": 1602137098.0,
         "definitions": [
             {
                 "usr": "c:@F@cpp_shortestpath#$@N@arma@S@Mat>#i#$@N@arma@S@Mat>#d#",
@@ -488,12 +488,39 @@
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
                 "line": 306,
                 "column": 8
+            },
+            {
+                "usr": "c:@F@cvi_helper_classmean#$@N@arma@S@Mat>#d#$@N@arma@S@Col>#i#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cvi_helper_classmean(arma::mat, arma::uvec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 322,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cvi_helper_classindex#$@N@arma@S@Col>#i#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cvi_helper_classindex(arma::uvec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 340,
+                "column": 25
+            },
+            {
+                "usr": "c:@F@cvi_helper_nw#$@N@arma@S@Col>#i#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cvi_helper_nw(arma::uvec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 350,
+                "column": 5
             }
         ]
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.h",
-        "file_last_write": 1600969217.0,
+        "file_last_write": 1602136931.0,
         "definitions": []
     }
 ]
