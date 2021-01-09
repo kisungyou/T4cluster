@@ -15,6 +15,10 @@ using namespace arma;
  * gmm_standard_mean  : update Mean     (M-STEP)
  * gmm_standard_cov   : update Variance (M-STEP)
  * gmm_skeleton       : exemplary skeletal code for GMM
+ * gmm_combine_wsum   : weighted sum
+ * gmm_density        : density of a gmm model
+ * gmm_pdist_wass2    : compute pairwise distance between GMM components (Wass2)
+ * gmm_w2barycenter   : W2 barycenter of Gaussian distributions
  */
 
 /* FUNCTIONS FOR GAUSSIAN MIXTURE MODELS
@@ -32,7 +36,7 @@ arma::vec eval_gaussian(arma::mat X, arma::rowvec mu, arma::mat Sig, bool logret
   double add2 = std::log(arma::det(Sig))*(-0.5);
   arma::vec outvec(n,fill::zeros);
   arma::rowvec xdiff(d,fill::zeros);
-  arma::mat Sinv = arma::pinv(Sig);
+  arma::mat Sinv = arma::inv_sympd(Sig);
   for (int i=0;i<n;i++){
     xdiff = X.row(i) - mu;
     outvec(i) = -(arma::accu(xdiff*Sinv*xdiff.t())/2.0) + add1 + add2;
@@ -645,5 +649,143 @@ Rcpp::List gmm_16Gfix(arma::mat& X, int k, arma::vec weight, int maxiter, bool u
   output["weight"]  = oldPI;
   output["loglkd"]  = model.sum_log_p(arma::trans(X));
   output["cluster"] = gmm_16Gfix_label(X, oldMU, oldSIG, oldPI, weight);
+  return(output);
+}
+
+// gmm_combine_wsum   : weighted sum -------------------------------------------
+// [[Rcpp::export]]
+Rcpp::List gmm_combine_wsum(Rcpp::List &gmmlist, arma::vec &weight){
+  int K = weight.n_elem;
+  
+  // access the first one
+  Rcpp::List tgtgmm   = gmmlist[0];
+  arma::vec  myweight = Rcpp::as<arma::vec>(tgtgmm["weight"])*weight(0);
+  arma::mat  mymean   = Rcpp::as<arma::mat>(tgtgmm["mean"]);
+  arma::cube myvar    = Rcpp::as<arma::cube>(tgtgmm["variance"]);
+  
+  // iterate
+  arma::vec  tmp_pi;
+  arma::mat  tmp_mu;
+  arma::cube tmp_var;
+  for (int k=1; k<K; k++){
+    tgtgmm = gmmlist[k];
+    tmp_pi.reset();
+    tmp_mu.reset();
+    tmp_var.reset();
+    
+    tmp_pi  = Rcpp::as<arma::vec>(tgtgmm["weight"])*weight(k);
+    tmp_mu  = Rcpp::as<arma::mat>(tgtgmm["mean"]);
+    tmp_var = Rcpp::as<arma::cube>(tgtgmm["variance"]);
+    
+    myweight = arma::join_vert(myweight, tmp_pi);
+    mymean   = arma::join_vert(mymean,   tmp_mu);
+    myvar    = arma::join_slices(myvar,  tmp_var);
+  }
+  
+  Rcpp::List output;
+  output["means"]   = mymean;
+  output["covs"]    = myvar;
+  output["weight"]  = myweight;
+  return(output);
+}
+
+// gmm_density -----------------------------------------------------------------
+// [[Rcpp::export]]
+arma::vec gmm_density(arma::mat &coords, arma::vec &weight, arma::mat &mean, arma::cube &variance){
+  // parameters
+  int N = coords.n_rows;
+  int p = coords.n_cols;
+  int K = weight.n_elem;
+  
+  // evaluate per Gaussian + weight
+  arma::vec myweight = weight/arma::accu(weight);
+  arma::mat eval_class(N,K,fill::zeros);
+  for (int k=0; k<K; k++){
+    eval_class.col(k) = eval_gaussian(coords, mean.row(k), variance.slice(k), false)*myweight(k);
+  }
+  
+  // finalize
+  arma::vec output(N,fill::zeros);
+  for (int n=0; n<N; n++){
+    output(n) = arma::accu(eval_class.row(n));
+  }
+  return(output);
+}
+  
+// gmm_pdist_wass2 : compute pairwise distance between GMM components (Wass2) --
+// [[Rcpp::export]]
+arma::mat gmm_pdist_wass2(arma::mat& mean, arma::cube& variance){
+  int N = variance.n_slices;
+  int p = variance.n_rows;
+  
+  arma::cube varsqrt(p,p,N,fill::zeros);
+  for (int n=0; n<N; n++){
+    varsqrt.slice(n) = arma::sqrtmat_sympd(variance.slice(n));
+  }
+  
+  arma::mat output(N,N,fill::zeros);
+  for (int i=0; i<(N-1); i++){
+    for (int j=(i+1); j<N; j++){
+      output(i,j) = gauss2dist_wass2(mean.row(i),variance.slice(i),mean.row(j),variance.slice(j),varsqrt.slice(j));
+      output(j,i) = output(i,j);
+    }
+  }
+  return(output);
+}
+
+// gmm_w2barycenter : W2 barycenter of Gaussian distributions ------------------
+// weight : (K)         vector
+// mean   : (K x P)     matrix of row-stacked means
+// vars   : (P x P x K) cube of stacked covariance matrices
+
+// [[Rcpp::export]]
+Rcpp::List gmm_w2barycenter(arma::vec &weight, arma::mat &mean, arma::cube &vars){
+  // parameter & weight normalize
+  int K = weight.n_elem;
+  int P = mean.n_cols;
+  arma::vec vecpi = weight/arma::accu(weight);
+  
+  // compute : mean
+  arma::rowvec out_mean(P,fill::zeros);
+  for (int k=0; k<K; k++){
+    out_mean = out_mean + vecpi(k)*mean.row(k);
+  }
+  
+  // compute : covariance
+  // initialize
+  arma::mat oldvar(P,P,fill::zeros);
+  arma::mat newvar(P,P,fill::zeros);
+  
+  arma::mat oldvarsqrt(P,P,fill::zeros);
+  arma::mat tmpvar(P,P,fill::zeros);
+  for (int k=0; k<K; k++){
+    oldvar = oldvar + vars.slice(k)*vecpi(k);
+  }
+  // iteration
+  double incvar = 1000.0;
+  int maxiter   = 200;
+  double abstol = (1e-10)*static_cast<double>(P*P);
+  for (int it=0; it<maxiter; it++){
+    // compute sqrtmat for the old variance
+    oldvarsqrt = arma::sqrtmat_sympd(oldvar);
+    // fill newvar with zeros
+    newvar.fill(0.0);
+    // iterate over objects
+    for (int k=0; k<K; k++){
+      tmpvar = oldvarsqrt*vars.slice(k)*oldvarsqrt;
+      newvar = newvar + (vecpi(k)*arma::sqrtmat_sympd(tmpvar));
+    }
+    // updater
+    incvar = arma::norm(newvar-oldvar,"fro");
+    oldvar = newvar;
+    if (incvar < abstol){
+      break;
+    }
+  }
+  
+  // return
+  Rcpp::List output;
+  output["mean"]     = out_mean;
+  output["variance"] = oldvar;
   return(output);
 }

@@ -5,8 +5,7 @@
 #' GMM might incur singular covariance components. Authors proposed to use 
 #' \eqn{\lambda} as a regularization parameter as normally used in 
 #' sparse covariance/precision estimation problems and suggested to use the 
-#' model with the smallest BIC values. Consult \code{\link{gmmscore}} for 
-#' information criteria for model selection.
+#' model with the smallest BIC values. 
 #' 
 #' @param data an \eqn{(n\times p)} matrix of row-stacked observations.
 #' @param k the number of clusters (default: 2).

@@ -36,9 +36,12 @@ reference:
   - title: "[2] Clustering : Functional Data"
     contents:
       - has_concept("functional")
-  - title: "[3] Learning with Multiple Clusterings"
+  - title: "[3] Subspace Clustering"
+    contents:
+      - has_concept("subspace")
+  - title: "[4] Learning with Multiple Clusterings"
     contents:
       - has_concept("soc")
-  - title: "[4] Other Utilities"
+  - title: "[5] Utilities"
     contents:
       - has_concept("utility")

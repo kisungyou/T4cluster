@@ -13,6 +13,12 @@
     <loc>https://kyoustat.com/T4cluster/reference/funkmeans03A.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/T4cluster/reference/genLP.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/gensmiley.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/T4cluster/reference/gmm.html</loc>
   </url>
   <url>
@@ -20,15 +26,6 @@
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/gmm16G.html</loc>
-  </url>
-  <url>
-    <loc>https://kyoustat.com/T4cluster/reference/gmmpred.html</loc>
-  </url>
-  <url>
-    <loc>https://kyoustat.com/T4cluster/reference/gmmsample.html</loc>
-  </url>
-  <url>
-    <loc>https://kyoustat.com/T4cluster/reference/gmmscore.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/kmeans.html</loc>
@@ -40,7 +37,13 @@
     <loc>https://kyoustat.com/T4cluster/reference/kmeanspp.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/T4cluster/reference/msm.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/T4cluster/reference/pcm.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/predict.msm.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/psm.html</loc>

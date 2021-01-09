@@ -36,8 +36,7 @@ graphical lasso to cope with high-dimensional scenario where conventional
 GMM might incur singular covariance components. Authors proposed to use 
 \eqn{\lambda} as a regularization parameter as normally used in 
 sparse covariance/precision estimation problems and suggested to use the 
-model with the smallest BIC values. Consult \code{\link{gmmscore}} for 
-information criteria for model selection.
+model with the smallest BIC values.
 }
 \examples{
 # -------------------------------------------------------------

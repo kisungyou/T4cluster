@@ -72,8 +72,41 @@
         ]
     },
     {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_gauss.cpp",
+        "file_last_write": 1605290152.0,
+        "definitions": [
+            {
+                "usr": "c:@F@gauss_w2median_dist#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss_w2median_dist(arma::rowvec, arma::mat, arma::rowvec, arma::mat, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gauss.cpp",
+                "line": 10,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss_w2median_subproblem#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss_w2median_subproblem(arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gauss.cpp",
+                "line": 19,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gauss_w2median#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#I#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss_w2median(arma::vec &, arma::mat &, arma::cube &, int, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gauss.cpp",
+                "line": 69,
+                "column": 12
+            }
+        ]
+    },
+    {
         "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-        "file_last_write": 1600715678.0,
+        "file_last_write": 1604947815.0,
         "definitions": [
             {
                 "usr": "c:@F@eval_gaussian#$@N@arma@S@Mat>#d#$@N@arma@S@Row>#d#S0_#b#",
@@ -81,7 +114,7 @@
                 "parent_name": "",
                 "name": "eval_gaussian(arma::mat, arma::rowvec, arma::mat, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 25,
+                "line": 29,
                 "column": 11
             },
             {
@@ -90,7 +123,7 @@
                 "parent_name": "",
                 "name": "eval_gaussian_single(arma::rowvec, arma::rowvec, arma::mat, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 46,
+                "line": 50,
                 "column": 8
             },
             {
@@ -99,7 +132,7 @@
                 "parent_name": "",
                 "name": "eval_label(arma::mat &, arma::mat, arma::cube, arma::vec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 62,
+                "line": 66,
                 "column": 12
             },
             {
@@ -108,7 +141,7 @@
                 "parent_name": "",
                 "name": "gmm_standard_gamma(arma::mat, arma::mat, arma::cube, arma::vec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 78,
+                "line": 82,
                 "column": 11
             },
             {
@@ -117,7 +150,7 @@
                 "parent_name": "",
                 "name": "gmm_standard_pi(arma::mat)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 100,
+                "line": 104,
                 "column": 11
             },
             {
@@ -126,7 +159,7 @@
                 "parent_name": "",
                 "name": "gmm_standard_mean(arma::mat, arma::mat)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 110,
+                "line": 114,
                 "column": 11
             },
             {
@@ -135,7 +168,7 @@
                 "parent_name": "",
                 "name": "gmm_standard_cov(arma::mat, arma::mat, arma::mat, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 128,
+                "line": 132,
                 "column": 12
             },
             {
@@ -144,7 +177,7 @@
                 "parent_name": "",
                 "name": "gmm_skeleton(arma::mat &, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 159,
+                "line": 163,
                 "column": 12
             },
             {
@@ -153,7 +186,7 @@
                 "parent_name": "",
                 "name": "gmm_armadillo(arma::mat &, int, int, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 229,
+                "line": 233,
                 "column": 12
             },
             {
@@ -162,7 +195,7 @@
                 "parent_name": "",
                 "name": "gmm11R_objective(arma::mat, arma::mat, arma::mat, double)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 268,
+                "line": 272,
                 "column": 8
             },
             {
@@ -171,7 +204,7 @@
                 "parent_name": "",
                 "name": "gmm11R_shrinkage(double, double)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 275,
+                "line": 279,
                 "column": 8
             },
             {
@@ -180,7 +213,7 @@
                 "parent_name": "",
                 "name": "gmm11R_ADMMprecision(arma::mat, double)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 283,
+                "line": 287,
                 "column": 11
             },
             {
@@ -189,7 +222,7 @@
                 "parent_name": "",
                 "name": "gmm11R_precision(arma::mat, arma::mat, arma::mat, double)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 346,
+                "line": 350,
                 "column": 12
             },
             {
@@ -198,7 +231,7 @@
                 "parent_name": "",
                 "name": "gmm_11R(arma::mat &, int, double, int, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 372,
+                "line": 376,
                 "column": 12
             },
             {
@@ -207,7 +240,7 @@
                 "parent_name": "",
                 "name": "gmm_16Gfix_mean(arma::mat, arma::mat, arma::vec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 492,
+                "line": 496,
                 "column": 11
             },
             {
@@ -216,7 +249,7 @@
                 "parent_name": "",
                 "name": "gmm_16Gfix_cov(arma::mat, arma::mat, arma::mat, arma::vec, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 513,
+                "line": 517,
                 "column": 12
             },
             {
@@ -225,7 +258,7 @@
                 "parent_name": "",
                 "name": "gmm_16Gfix_loglkd(arma::mat, arma::vec, arma::mat, arma::cube, arma::vec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 543,
+                "line": 547,
                 "column": 8
             },
             {
@@ -234,7 +267,7 @@
                 "parent_name": "",
                 "name": "gmm_16Gfix_label(arma::mat &, arma::mat, arma::cube, arma::vec, arma::vec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 566,
+                "line": 570,
                 "column": 12
             },
             {
@@ -243,8 +276,242 @@
                 "parent_name": "",
                 "name": "gmm_16Gfix(arma::mat &, int, arma::vec, int, bool)",
                 "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
-                "line": 586,
+                "line": 590,
                 "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_combine_wsum#&$@N@Rcpp@S@Vector>#VI19#@N@Rcpp@ST>1#T@PreserveStorage#&$@N@arma@S@Col>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_combine_wsum(Rcpp::List &, arma::vec &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 657,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@gmm_density#&$@N@arma@S@Mat>#d#&$@N@arma@S@Col>#d#S0_#&$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_density(arma::mat &, arma::vec &, arma::mat &, arma::cube &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 694,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_pdist_wass2#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_pdist_wass2(arma::mat &, arma::cube &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 717,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@gmm_w2barycenter#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gmm_w2barycenter(arma::vec &, arma::mat &, arma::cube &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm.cpp",
+                "line": 742,
+                "column": 12
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+        "file_last_write": 1605297717.0,
+        "definitions": [
+            {
+                "usr": "c:@F@cpp_collapse_W2#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_collapse_W2(arma::vec &, arma::mat &, arma::cube &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+                "line": 26,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_collapse_MPM#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_collapse_MPM(arma::vec &, arma::mat &, arma::cube &)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+                "line": 79,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_reduction_1990S#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_reduction_1990S(arma::vec &, arma::mat &, arma::cube &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+                "line": 107,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_reduction_2003W#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_reduction_2003W(arma::vec &, arma::mat &, arma::cube &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+                "line": 215,
+                "column": 12
+            },
+            {
+                "usr": "c:@F@cpp_reduction_2007R#&$@N@arma@S@Col>#d#&$@N@arma@S@Mat>#d#&$@N@arma@S@Cube>#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_reduction_2007R(arma::vec &, arma::mat &, arma::cube &, int)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmm_reduction.cpp",
+                "line": 319,
+                "column": 12
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_gmmcombine.cpp",
+        "file_last_write": 1605152202.0,
+        "definitions": [
+            {
+                "usr": "c:@F@cpp_gmmcombine_tsl#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmcombine_tsl(arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmcombine.cpp",
+                "line": 19,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_barybregman15#&$@N@arma@S@field>#$@N@arma@S@Mat>#d#&$@N@arma@S@field>#$@N@arma@S@Col>#d#S5_#d#d#I#d#b#S5_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_barybregman15(arma::field<arma::mat> &, arma::field<arma::vec> &, arma::vec, double, double, int, double, bool, arma::vec)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmcombine.cpp",
+                "line": 39,
+                "column": 11
+            }
+        ]
+    },
+    {
+        "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+        "file_last_write": 1606189790.0,
+        "definitions": [
+            {
+                "usr": "c:@F@cpp_gmmdist_l2#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_l2(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 35,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_base#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#$@N@std@N@__cxx11@S@basic_string>#C#$@N@std@S@char_traits>#C#$@N@std@S@allocator>#C#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_base(arma::mat, arma::cube, arma::mat, arma::cube, std::string)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 80,
+                "column": 11
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_cs#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_cs(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 122,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_jrentropy#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_jrentropy(arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 164,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_jr#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_jr(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 179,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_tsl#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_tsl(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 196,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klga#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klga(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 237,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klsel#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klsel(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 275,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klpog#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klpog(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 293,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klmb#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klmb(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 339,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klvlb#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klvlb(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 386,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_klvub#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_klvub(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 431,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@cpp_gmmdist_he#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#$@N@arma@S@Cube>#d#S0_#S1_#S2_#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "cpp_gmmdist_he(arma::vec, arma::mat, arma::cube, arma::vec, arma::mat, arma::cube, double)",
+                "file": "/home/kisung/Desktop/T4cluster/src/src_gmmdist.cpp",
+                "line": 511,
+                "column": 8
             }
         ]
     },
@@ -361,7 +628,7 @@
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-        "file_last_write": 1602137098.0,
+        "file_last_write": 1605195704.0,
         "definitions": [
             {
                 "usr": "c:@F@cpp_shortestpath#$@N@arma@S@Mat>#i#$@N@arma@S@Mat>#d#",
@@ -423,7 +690,7 @@
                 "parent_name": "",
                 "name": "label_kmeans(arma::mat, int, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 140,
+                "line": 141,
                 "column": 15
             },
             {
@@ -432,7 +699,7 @@
                 "parent_name": "",
                 "name": "label_gmm(arma::mat, int, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 163,
+                "line": 164,
                 "column": 15
             },
             {
@@ -441,7 +708,7 @@
                 "parent_name": "",
                 "name": "sc_unnormalized(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 175,
+                "line": 176,
                 "column": 12
             },
             {
@@ -450,7 +717,7 @@
                 "parent_name": "",
                 "name": "sc_normalNJW(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 200,
+                "line": 201,
                 "column": 12
             },
             {
@@ -459,7 +726,7 @@
                 "parent_name": "",
                 "name": "sc_normalSM(arma::mat, int, bool, int)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 235,
+                "line": 236,
                 "column": 12
             },
             {
@@ -468,7 +735,7 @@
                 "parent_name": "",
                 "name": "gmm_predict(arma::mat, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 274,
+                "line": 275,
                 "column": 12
             },
             {
@@ -477,7 +744,7 @@
                 "parent_name": "",
                 "name": "gmm_sample(int, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 290,
+                "line": 291,
                 "column": 11
             },
             {
@@ -486,7 +753,7 @@
                 "parent_name": "",
                 "name": "gmm_loglkd(arma::mat, arma::colvec, arma::mat, arma::cube)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 306,
+                "line": 307,
                 "column": 8
             },
             {
@@ -495,7 +762,7 @@
                 "parent_name": "",
                 "name": "cvi_helper_classmean(arma::mat, arma::uvec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 322,
+                "line": 323,
                 "column": 11
             },
             {
@@ -504,7 +771,7 @@
                 "parent_name": "",
                 "name": "cvi_helper_classindex(arma::uvec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 340,
+                "line": 341,
                 "column": 25
             },
             {
@@ -513,14 +780,95 @@
                 "parent_name": "",
                 "name": "cvi_helper_nw(arma::uvec)",
                 "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
-                "line": 350,
+                "line": 351,
                 "column": 5
+            },
+            {
+                "usr": "c:@F@single_gaussian#$@N@arma@S@Row>#d#S0_#$@N@arma@S@Mat>#d#b#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "single_gaussian(arma::rowvec, arma::rowvec, arma::mat, bool)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 365,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_l2#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_l2(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 384,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_wass2#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_wass2(arma::rowvec, arma::mat, arma::rowvec, arma::mat, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 388,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_cs#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_cs(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 395,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_kl#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_kl(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 403,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_jr#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_jr(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 416,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_tsl#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_tsl(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 425,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss2dist_sl#$@N@arma@S@Row>#d#$@N@arma@S@Mat>#d#S0_#S1_#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss2dist_sl(arma::rowvec, arma::mat, arma::rowvec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 435,
+                "column": 8
+            },
+            {
+                "usr": "c:@F@gauss_rmvnorm#I#$@N@arma@S@Col>#d#$@N@arma@S@Mat>#d#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "gauss_rmvnorm(int, arma::vec, arma::mat)",
+                "file": "/home/kisung/Desktop/T4cluster/src/utilities.cpp",
+                "line": 448,
+                "column": 12
             }
         ]
     },
     {
         "file": "/home/kisung/Desktop/T4cluster/src/utilities.h",
-        "file_last_write": 1602136931.0,
+        "file_last_write": 1605195737.0,
         "definitions": []
     }
 ]

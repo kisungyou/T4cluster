@@ -135,6 +135,7 @@ arma::uvec cpp_setdiff(arma::uvec& x, arma::uvec& y){
   return arma::conv_to<arma::uvec>::from(out);
 }
 
+
 // SECTION 2 : K-MEANS AND GMM =================================================
 // [[Rcpp::export]]
 arma::urowvec label_kmeans(arma::mat data, int K, int maxiter){
@@ -360,3 +361,99 @@ int cvi_helper_nw(arma::uvec label){
   return(output);
 }
 
+// SECTION 6 : DISTANCE BETWEEN GAUSSIAN DISTRIBUTIONS + EVALUATION
+double single_gaussian(arma::rowvec x, arma::rowvec mu, arma::mat sig, bool logreturn){
+  double output = 0.0;
+  int d     = sig.n_rows;
+  double dd = static_cast<double>(d);
+  double add1 = -(dd/2.0)*std::log(2.0*arma::datum::pi);
+  double add2 = std::log(arma::det(sig))*(-0.5);
+  
+  if (arma::norm(x-mu, 2) > 10*arma::datum::eps){
+    arma::vec xdiff = arma::trans(x-mu);
+    output = -arma::dot(arma::vectorise(arma::solve(sig, xdiff)), xdiff)/2.0 + add1 + add2;
+  } else {
+    output = add1+add2;
+  }
+  if (logreturn==true){
+    return(output);
+  } else {
+    return(std::exp(output));
+  }
+}
+double gauss2dist_l2(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  double output = std::sqrt(single_gaussian(m1,m1,2.0*s1) + single_gaussian(m2,m2,2.0*s2) - 2.0*single_gaussian(m1,m2,(s1+s2)));
+  return(output);
+}
+double gauss2dist_wass2(arma::rowvec m1, arma::mat c1, arma::rowvec m2, arma::mat c2, arma::mat c2sqrt){
+  arma::mat tmpmat = arma::sqrtmat_sympd(c2sqrt*c1*c2sqrt);
+  double term1  = std::pow(arma::norm(m1-m2,2), 2.0);
+  double term2  = arma::trace(c1 + c2 - 2.0*tmpmat);
+  double output = std::sqrt(term1+term2);
+  return(output);
+}
+double gauss2dist_cs(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  double term1 = single_gaussian(m1,m2,s1+s2,true);
+  double term2 = single_gaussian(m1,m1,(2.0*s1),true);
+  double term3 = single_gaussian(m2,m2,(2.0*s2),true);
+  
+  double output = -term1 + 0.5*(term2+term3);
+  return(output);
+}
+double gauss2dist_kl(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  int k = s1.n_rows;
+  arma::vec xdiff = arma::trans(m1-m2);
+  arma::mat s2inv = arma::inv_sympd(s2);
+  
+  double term1 = arma::trace(s2inv*s1);
+  double term2 = arma::dot(arma::vectorise(s2inv*xdiff), xdiff);
+  double term3 = -static_cast<double>(k);
+  double term4 = std::log(arma::det(s2))-std::log(arma::det(s1));
+  
+  double output = (term1+term2+term3+term4)/2.0;
+  return(output);
+}
+double gauss2dist_jr(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  double logval1 = single_gaussian(m1,m1,(2.0*s1),true);
+  double logval2 = single_gaussian(m2,m2,(2.0*s2),true);
+  
+  double term1 = -std::log(0.25*std::exp(logval1) + 0.25*std::exp(logval2) + 0.5*single_gaussian(m1,m2,(s1+s2)));
+  double term2 = 0.5*logval1;
+  double term3 = 0.5*logval2;
+  return(term1+term2+term3);
+}
+double gauss2dist_tsl(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  double d1  = single_gaussian(m1,m1,(2.0*s1));
+  double d2  = single_gaussian(m2,m2,(2.0*s2));
+  double d12 = single_gaussian(m1,m2,(s1+s2));
+  
+  double term_top = d1+d2-(2.0*d12);
+  double term_bot = std::sqrt(1.0 + (4.0*d2));
+  double output   = term_top/term_bot;
+  return(output);
+}
+double gauss2dist_sl(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s2){
+  double d1  = single_gaussian(m1,m1,(2.0*s1));
+  double d2  = single_gaussian(m2,m2,(2.0*s2));
+  double d12 = single_gaussian(m1,m2,(s1+s2));
+  
+  double term_top = d1+d2-(2.0*d12);
+  return(term_top);
+}
+
+
+// SECTION 7 : GAUSSIAN DISTRIBUTION ===========================================
+// https://juanitorduz.github.io/multivariate_normal/ convention with lower chol
+// [[Rcpp::export]]
+arma::mat  gauss_rmvnorm(int N, arma::vec mu, arma::mat var){
+  int d = mu.n_elem;
+  arma::mat L = arma::chol(var, "lower");
+  arma::rowvec murow = arma::trans(mu);
+  
+  arma::mat tmat = L*(arma::randn<arma::mat>(d,N));
+  arma::mat output(N,d,fill::zeros);
+  for (int n=0; n<N; n++){
+    output.row(n) = murow + arma::trans(tmat.col(n));
+  }
+  return(output);
+}

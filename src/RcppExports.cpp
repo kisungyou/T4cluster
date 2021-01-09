@@ -55,6 +55,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// gauss_w2median
+Rcpp::List gauss_w2median(arma::vec& weight, arma::mat& mean, arma::cube& vars, int maxiter, double abstol);
+RcppExport SEXP _T4cluster_gauss_w2median(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP, SEXP maxiterSEXP, SEXP abstolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    rcpp_result_gen = Rcpp::wrap(gauss_w2median(weight, mean, vars, maxiter, abstol));
+    return rcpp_result_gen;
+END_RCPP
+}
 // eval_label
 arma::uvec eval_label(arma::mat& X, arma::mat parMU, arma::cube parSIG, arma::vec parPI);
 RcppExport SEXP _T4cluster_eval_label(SEXP XSEXP, SEXP parMUSEXP, SEXP parSIGSEXP, SEXP parPISEXP) {
@@ -122,6 +137,285 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< bool >::type usediag(usediagSEXP);
     rcpp_result_gen = Rcpp::wrap(gmm_16Gfix(X, k, weight, maxiter, usediag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_combine_wsum
+Rcpp::List gmm_combine_wsum(Rcpp::List& gmmlist, arma::vec& weight);
+RcppExport SEXP _T4cluster_gmm_combine_wsum(SEXP gmmlistSEXP, SEXP weightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::List& >::type gmmlist(gmmlistSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_combine_wsum(gmmlist, weight));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_density
+arma::vec gmm_density(arma::mat& coords, arma::vec& weight, arma::mat& mean, arma::cube& variance);
+RcppExport SEXP _T4cluster_gmm_density(SEXP coordsSEXP, SEXP weightSEXP, SEXP meanSEXP, SEXP varianceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type coords(coordsSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type variance(varianceSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_density(coords, weight, mean, variance));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_pdist_wass2
+arma::mat gmm_pdist_wass2(arma::mat& mean, arma::cube& variance);
+RcppExport SEXP _T4cluster_gmm_pdist_wass2(SEXP meanSEXP, SEXP varianceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type variance(varianceSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_pdist_wass2(mean, variance));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gmm_w2barycenter
+Rcpp::List gmm_w2barycenter(arma::vec& weight, arma::mat& mean, arma::cube& vars);
+RcppExport SEXP _T4cluster_gmm_w2barycenter(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_w2barycenter(weight, mean, vars));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_collapse_W2
+Rcpp::List cpp_collapse_W2(arma::vec& weight, arma::mat& mean, arma::cube& vars);
+RcppExport SEXP _T4cluster_cpp_collapse_W2(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_collapse_W2(weight, mean, vars));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_collapse_MPM
+Rcpp::List cpp_collapse_MPM(arma::vec& weight, arma::mat& mean, arma::cube& vars);
+RcppExport SEXP _T4cluster_cpp_collapse_MPM(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_collapse_MPM(weight, mean, vars));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_reduction_1990S
+Rcpp::List cpp_reduction_1990S(arma::vec& weight, arma::mat& mean, arma::cube& vars, int M);
+RcppExport SEXP _T4cluster_cpp_reduction_1990S(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_reduction_1990S(weight, mean, vars, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_reduction_2003W
+Rcpp::List cpp_reduction_2003W(arma::vec& weight, arma::mat& mean, arma::cube& vars, int M);
+RcppExport SEXP _T4cluster_cpp_reduction_2003W(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_reduction_2003W(weight, mean, vars, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_reduction_2007R
+Rcpp::List cpp_reduction_2007R(arma::vec& weight, arma::mat& mean, arma::cube& vars, int M);
+RcppExport SEXP _T4cluster_cpp_reduction_2007R(SEXP weightSEXP, SEXP meanSEXP, SEXP varsSEXP, SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube& >::type vars(varsSEXP);
+    Rcpp::traits::input_parameter< int >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_reduction_2007R(weight, mean, vars, M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmcombine_tsl
+double cpp_gmmcombine_tsl(arma::vec weight, arma::mat mean, arma::cube variance);
+RcppExport SEXP _T4cluster_cpp_gmmcombine_tsl(SEXP weightSEXP, SEXP meanSEXP, SEXP varianceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight(weightSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean(meanSEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance(varianceSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmcombine_tsl(weight, mean, variance));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_barybregman15
+arma::vec cpp_barybregman15(arma::field<arma::mat>& listdXY, arma::field<arma::vec>& marginals, arma::vec weights, double p, double lambda, int maxiter, double abstol, bool printer, arma::vec initvec);
+RcppExport SEXP _T4cluster_cpp_barybregman15(SEXP listdXYSEXP, SEXP marginalsSEXP, SEXP weightsSEXP, SEXP pSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP abstolSEXP, SEXP printerSEXP, SEXP initvecSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::field<arma::mat>& >::type listdXY(listdXYSEXP);
+    Rcpp::traits::input_parameter< arma::field<arma::vec>& >::type marginals(marginalsSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weights(weightsSEXP);
+    Rcpp::traits::input_parameter< double >::type p(pSEXP);
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    Rcpp::traits::input_parameter< bool >::type printer(printerSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type initvec(initvecSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_barybregman15(listdXY, marginals, weights, p, lambda, maxiter, abstol, printer, initvec));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_l2
+double cpp_gmmdist_l2(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_l2(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_l2(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_base
+arma::mat cpp_gmmdist_base(arma::mat mean1, arma::cube variance1, arma::mat mean2, arma::cube variance2, std::string basedist);
+RcppExport SEXP _T4cluster_cpp_gmmdist_base(SEXP mean1SEXP, SEXP variance1SEXP, SEXP mean2SEXP, SEXP variance2SEXP, SEXP basedistSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    Rcpp::traits::input_parameter< std::string >::type basedist(basedistSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_base(mean1, variance1, mean2, variance2, basedist));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_cs
+double cpp_gmmdist_cs(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_cs(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_cs(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_jr
+double cpp_gmmdist_jr(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_jr(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_jr(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_tsl
+double cpp_gmmdist_tsl(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_tsl(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_tsl(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_klga
+double cpp_gmmdist_klga(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_klga(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_klga(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_klsel
+double cpp_gmmdist_klsel(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2);
+RcppExport SEXP _T4cluster_cpp_gmmdist_klsel(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_klsel(weight1, mean1, variance1, weight2, mean2, variance2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_gmmdist_he
+double cpp_gmmdist_he(arma::vec weight1, arma::mat mean1, arma::cube variance1, arma::vec weight2, arma::mat mean2, arma::cube variance2, double theta);
+RcppExport SEXP _T4cluster_cpp_gmmdist_he(SEXP weight1SEXP, SEXP mean1SEXP, SEXP variance1SEXP, SEXP weight2SEXP, SEXP mean2SEXP, SEXP variance2SEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type weight1(weight1SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean1(mean1SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance1(variance1SEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type weight2(weight2SEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type mean2(mean2SEXP);
+    Rcpp::traits::input_parameter< arma::cube >::type variance2(variance2SEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_gmmdist_he(weight1, mean1, variance1, weight2, mean2, variance2, theta));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -281,6 +575,22 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
     rcpp_result_gen = Rcpp::wrap(cpp_sc12L(D, K, usekmeans, maxiter, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// fast_loss_prj
+arma::vec fast_loss_prj(int nS, int dS, int mS, arma::mat PS, arma::mat xS, arma::vec muS);
+RcppExport SEXP _T4cluster_fast_loss_prj(SEXP nSSEXP, SEXP dSSEXP, SEXP mSSEXP, SEXP PSSEXP, SEXP xSSEXP, SEXP muSSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type nS(nSSEXP);
+    Rcpp::traits::input_parameter< int >::type dS(dSSEXP);
+    Rcpp::traits::input_parameter< int >::type mS(mSSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type PS(PSSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type xS(xSSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type muS(muSSEXP);
+    rcpp_result_gen = Rcpp::wrap(fast_loss_prj(nS, dS, mS, PS, xS, muS));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -470,17 +780,50 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// gauss_rmvnorm
+arma::mat gauss_rmvnorm(int N, arma::vec mu, arma::mat var);
+RcppExport SEXP _T4cluster_gauss_rmvnorm(SEXP NSEXP, SEXP muSEXP, SEXP varSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type var(varSEXP);
+    rcpp_result_gen = Rcpp::wrap(gauss_rmvnorm(N, mu, var));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
     {"_T4cluster_src_psm", (DL_FUNC) &_T4cluster_src_psm, 1},
     {"_T4cluster_coreset_18B", (DL_FUNC) &_T4cluster_coreset_18B, 4},
     {"_T4cluster_fpp_pdist_lp", (DL_FUNC) &_T4cluster_fpp_pdist_lp, 3},
+    {"_T4cluster_gauss_w2median", (DL_FUNC) &_T4cluster_gauss_w2median, 5},
     {"_T4cluster_eval_label", (DL_FUNC) &_T4cluster_eval_label, 4},
     {"_T4cluster_gmm_skeleton", (DL_FUNC) &_T4cluster_gmm_skeleton, 2},
     {"_T4cluster_gmm_armadillo", (DL_FUNC) &_T4cluster_gmm_armadillo, 4},
     {"_T4cluster_gmm_11R", (DL_FUNC) &_T4cluster_gmm_11R, 5},
     {"_T4cluster_gmm_16Gfix", (DL_FUNC) &_T4cluster_gmm_16Gfix, 5},
+    {"_T4cluster_gmm_combine_wsum", (DL_FUNC) &_T4cluster_gmm_combine_wsum, 2},
+    {"_T4cluster_gmm_density", (DL_FUNC) &_T4cluster_gmm_density, 4},
+    {"_T4cluster_gmm_pdist_wass2", (DL_FUNC) &_T4cluster_gmm_pdist_wass2, 2},
+    {"_T4cluster_gmm_w2barycenter", (DL_FUNC) &_T4cluster_gmm_w2barycenter, 3},
+    {"_T4cluster_cpp_collapse_W2", (DL_FUNC) &_T4cluster_cpp_collapse_W2, 3},
+    {"_T4cluster_cpp_collapse_MPM", (DL_FUNC) &_T4cluster_cpp_collapse_MPM, 3},
+    {"_T4cluster_cpp_reduction_1990S", (DL_FUNC) &_T4cluster_cpp_reduction_1990S, 4},
+    {"_T4cluster_cpp_reduction_2003W", (DL_FUNC) &_T4cluster_cpp_reduction_2003W, 4},
+    {"_T4cluster_cpp_reduction_2007R", (DL_FUNC) &_T4cluster_cpp_reduction_2007R, 4},
+    {"_T4cluster_cpp_gmmcombine_tsl", (DL_FUNC) &_T4cluster_cpp_gmmcombine_tsl, 3},
+    {"_T4cluster_cpp_barybregman15", (DL_FUNC) &_T4cluster_cpp_barybregman15, 9},
+    {"_T4cluster_cpp_gmmdist_l2", (DL_FUNC) &_T4cluster_cpp_gmmdist_l2, 6},
+    {"_T4cluster_cpp_gmmdist_base", (DL_FUNC) &_T4cluster_cpp_gmmdist_base, 5},
+    {"_T4cluster_cpp_gmmdist_cs", (DL_FUNC) &_T4cluster_cpp_gmmdist_cs, 6},
+    {"_T4cluster_cpp_gmmdist_jr", (DL_FUNC) &_T4cluster_cpp_gmmdist_jr, 6},
+    {"_T4cluster_cpp_gmmdist_tsl", (DL_FUNC) &_T4cluster_cpp_gmmdist_tsl, 6},
+    {"_T4cluster_cpp_gmmdist_klga", (DL_FUNC) &_T4cluster_cpp_gmmdist_klga, 6},
+    {"_T4cluster_cpp_gmmdist_klsel", (DL_FUNC) &_T4cluster_cpp_gmmdist_klsel, 6},
+    {"_T4cluster_cpp_gmmdist_he", (DL_FUNC) &_T4cluster_cpp_gmmdist_he, 7},
     {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
     {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
     {"_T4cluster_sc_2015LB_commute", (DL_FUNC) &_T4cluster_sc_2015LB_commute, 2},
@@ -492,6 +835,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_sc10Z", (DL_FUNC) &_T4cluster_cpp_sc10Z, 4},
     {"_T4cluster_cpp_sc11Y", (DL_FUNC) &_T4cluster_cpp_sc11Y, 6},
     {"_T4cluster_cpp_sc12L", (DL_FUNC) &_T4cluster_cpp_sc12L, 5},
+    {"_T4cluster_fast_loss_prj", (DL_FUNC) &_T4cluster_fast_loss_prj, 6},
     {"_T4cluster_cpp_shortestpath", (DL_FUNC) &_T4cluster_cpp_shortestpath, 2},
     {"_T4cluster_cpp_pdist", (DL_FUNC) &_T4cluster_cpp_pdist, 2},
     {"_T4cluster_cpp_pdist2", (DL_FUNC) &_T4cluster_cpp_pdist2, 3},
@@ -506,6 +850,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_gmm_predict", (DL_FUNC) &_T4cluster_gmm_predict, 4},
     {"_T4cluster_gmm_sample", (DL_FUNC) &_T4cluster_gmm_sample, 4},
     {"_T4cluster_gmm_loglkd", (DL_FUNC) &_T4cluster_gmm_loglkd, 4},
+    {"_T4cluster_gauss_rmvnorm", (DL_FUNC) &_T4cluster_gauss_rmvnorm, 3},
     {NULL, NULL, 0}
 };
 

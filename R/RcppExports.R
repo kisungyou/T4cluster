@@ -17,6 +17,10 @@ fpp_pdist_lp <- function(vect, vecf, myp) {
     .Call('_T4cluster_fpp_pdist_lp', PACKAGE = 'T4cluster', vect, vecf, myp)
 }
 
+gauss_w2median <- function(weight, mean, vars, maxiter = 100L, abstol = 1e-8) {
+    .Call('_T4cluster_gauss_w2median', PACKAGE = 'T4cluster', weight, mean, vars, maxiter, abstol)
+}
+
 eval_label <- function(X, parMU, parSIG, parPI) {
     .Call('_T4cluster_eval_label', PACKAGE = 'T4cluster', X, parMU, parSIG, parPI)
 }
@@ -35,6 +39,82 @@ gmm_11R <- function(X, K, lambda, maxiter, usediag) {
 
 gmm_16Gfix <- function(X, k, weight, maxiter, usediag) {
     .Call('_T4cluster_gmm_16Gfix', PACKAGE = 'T4cluster', X, k, weight, maxiter, usediag)
+}
+
+gmm_combine_wsum <- function(gmmlist, weight) {
+    .Call('_T4cluster_gmm_combine_wsum', PACKAGE = 'T4cluster', gmmlist, weight)
+}
+
+gmm_density <- function(coords, weight, mean, variance) {
+    .Call('_T4cluster_gmm_density', PACKAGE = 'T4cluster', coords, weight, mean, variance)
+}
+
+gmm_pdist_wass2 <- function(mean, variance) {
+    .Call('_T4cluster_gmm_pdist_wass2', PACKAGE = 'T4cluster', mean, variance)
+}
+
+gmm_w2barycenter <- function(weight, mean, vars) {
+    .Call('_T4cluster_gmm_w2barycenter', PACKAGE = 'T4cluster', weight, mean, vars)
+}
+
+cpp_collapse_W2 <- function(weight, mean, vars) {
+    .Call('_T4cluster_cpp_collapse_W2', PACKAGE = 'T4cluster', weight, mean, vars)
+}
+
+cpp_collapse_MPM <- function(weight, mean, vars) {
+    .Call('_T4cluster_cpp_collapse_MPM', PACKAGE = 'T4cluster', weight, mean, vars)
+}
+
+cpp_reduction_1990S <- function(weight, mean, vars, M) {
+    .Call('_T4cluster_cpp_reduction_1990S', PACKAGE = 'T4cluster', weight, mean, vars, M)
+}
+
+cpp_reduction_2003W <- function(weight, mean, vars, M) {
+    .Call('_T4cluster_cpp_reduction_2003W', PACKAGE = 'T4cluster', weight, mean, vars, M)
+}
+
+cpp_reduction_2007R <- function(weight, mean, vars, M) {
+    .Call('_T4cluster_cpp_reduction_2007R', PACKAGE = 'T4cluster', weight, mean, vars, M)
+}
+
+cpp_gmmcombine_tsl <- function(weight, mean, variance) {
+    .Call('_T4cluster_cpp_gmmcombine_tsl', PACKAGE = 'T4cluster', weight, mean, variance)
+}
+
+cpp_barybregman15 <- function(listdXY, marginals, weights, p, lambda, maxiter, abstol, printer, initvec) {
+    .Call('_T4cluster_cpp_barybregman15', PACKAGE = 'T4cluster', listdXY, marginals, weights, p, lambda, maxiter, abstol, printer, initvec)
+}
+
+cpp_gmmdist_l2 <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_l2', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_base <- function(mean1, variance1, mean2, variance2, basedist) {
+    .Call('_T4cluster_cpp_gmmdist_base', PACKAGE = 'T4cluster', mean1, variance1, mean2, variance2, basedist)
+}
+
+cpp_gmmdist_cs <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_cs', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_jr <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_jr', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_tsl <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_tsl', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_klga <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_klga', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_klsel <- function(weight1, mean1, variance1, weight2, mean2, variance2) {
+    .Call('_T4cluster_cpp_gmmdist_klsel', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2)
+}
+
+cpp_gmmdist_he <- function(weight1, mean1, variance1, weight2, mean2, variance2, theta) {
+    .Call('_T4cluster_cpp_gmmdist_he', PACKAGE = 'T4cluster', weight1, mean1, variance1, weight2, mean2, variance2, theta)
 }
 
 arma_kmeans_random <- function(X, k, maxiter) {
@@ -79,6 +159,10 @@ cpp_sc11Y <- function(idmat, distmat, K, usekmeans, maxiter, rho) {
 
 cpp_sc12L <- function(D, K, usekmeans, maxiter, sigma) {
     .Call('_T4cluster_cpp_sc12L', PACKAGE = 'T4cluster', D, K, usekmeans, maxiter, sigma)
+}
+
+fast_loss_prj <- function(nS, dS, mS, PS, xS, muS) {
+    .Call('_T4cluster_fast_loss_prj', PACKAGE = 'T4cluster', nS, dS, mS, PS, xS, muS)
 }
 
 cpp_shortestpath <- function(locs, dists) {
@@ -135,5 +219,9 @@ gmm_sample <- function(n, oldweight, oldmeans, oldcovs) {
 
 gmm_loglkd <- function(X, oldweight, oldmeans, oldcovs) {
     .Call('_T4cluster_gmm_loglkd', PACKAGE = 'T4cluster', X, oldweight, oldmeans, oldcovs)
+}
+
+gauss_rmvnorm <- function(N, mu, var) {
+    .Call('_T4cluster_gauss_rmvnorm', PACKAGE = 'T4cluster', N, mu, var)
 }
 
