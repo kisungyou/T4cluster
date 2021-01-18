@@ -49,7 +49,7 @@
 #' par(opar)
 #' 
 #' @references 
-#' \insertRef{vonluxburg_tutorial_2007a}{T4cluster}
+#' \insertRef{von_luxburg_tutorial_2007}{T4cluster}
 #' 
 #' @concept algorithm
 #' @export

@@ -30,18 +30,21 @@ navbar:
       href: mailto:kyoustat@gmail.com
 
 reference:
-  - title: "[1] Clustering : Euclidean Data"
+  - title: "[1] Clustering with Euclidean Data"
     contents:
       - has_concept("algorithm")
-  - title: "[2] Clustering : Functional Data"
+  - title: "[2] Clustering with Functional Data"
     contents:
       - has_concept("functional")
   - title: "[3] Subspace Clustering"
     contents:
       - has_concept("subspace")
-  - title: "[4] Learning with Multiple Clusterings"
+  - title: "[4] Measures : Comparing Two Clusterings"
+    contents:
+      - has_concept("comparison")
+  - title: "[6] Learning with Multiple Clusterings"
     contents:
       - has_concept("soc")
-  - title: "[5] Utilities"
+  - title: "[7] Utilities"
     contents:
       - has_concept("utility")

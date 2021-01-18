@@ -60,6 +60,6 @@ par(opar)
 
 }
 \references{
-\insertRef{kulis_revisiting_2012a}{T4cluster}
+\insertRef{kulis_revisiting_2012}{T4cluster}
 }
 \concept{algorithm}

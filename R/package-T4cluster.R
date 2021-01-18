@@ -8,12 +8,14 @@
 #' @import Rdpack
 #' @import maotai
 #' @import ggplot2
+#' @importFrom ADMM admm.bp
 #' @importFrom lpSolve lp
 #' @importFrom Rdimtools do.pca
 #' @importFrom stats as.dist dist rnorm runif hclust cutree kmeans density rmultinom
 #' @importFrom utils packageVersion getFromNamespace 
 #' @importFrom Rcpp evalCpp
 #' @importFrom rstiefel rustiefel
+#' @importFrom mclustcomp mclustcomp
 #' @importFrom MASS mvrnorm Null
 #' @importFrom scatterplot3d scatterplot3d
 #' @useDynLib T4cluster

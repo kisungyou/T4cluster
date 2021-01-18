@@ -58,6 +58,6 @@ par(opar)
 
 }
 \references{
-\insertRef{sanderson_armadillo_2016c}{T4cluster}
+\insertRef{sanderson_armadillo:_2016}{T4cluster}
 }
 \concept{algorithm}

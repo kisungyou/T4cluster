@@ -40,7 +40,7 @@
 #' par(opar)
 #' 
 #' @references 
-#' \insertRef{arthur_kmeans_2007a}{T4cluster}
+#' \insertRef{arthur_k-means++:_2007}{T4cluster}
 #' 
 #' @concept algorithm
 #' @export

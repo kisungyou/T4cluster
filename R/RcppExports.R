@@ -165,6 +165,26 @@ fast_loss_prj <- function(nS, dS, mS, PS, xS, muS) {
     .Call('_T4cluster_fast_loss_prj', PACKAGE = 'T4cluster', nS, dS, mS, PS, xS, muS)
 }
 
+cpp_LRR <- function(X, par_k, par_r) {
+    .Call('_T4cluster_cpp_LRR', PACKAGE = 'T4cluster', X, par_k, par_r)
+}
+
+cpp_LRSC <- function(X, K, algtype, tau) {
+    .Call('_T4cluster_cpp_LRSC', PACKAGE = 'T4cluster', X, K, algtype, tau)
+}
+
+cpp_EKSS_0 <- function(X, K, d) {
+    .Call('_T4cluster_cpp_EKSS_0', PACKAGE = 'T4cluster', X, K, d)
+}
+
+cpp_EKSS_T <- function(X, K, d, maxiter) {
+    .Call('_T4cluster_cpp_EKSS_T', PACKAGE = 'T4cluster', X, K, d, maxiter)
+}
+
+cpp_EKSS_affinity <- function(labels) {
+    .Call('_T4cluster_cpp_EKSS_affinity', PACKAGE = 'T4cluster', labels)
+}
+
 cpp_shortestpath <- function(locs, dists) {
     .Call('_T4cluster_cpp_shortestpath', PACKAGE = 'T4cluster', locs, dists)
 }

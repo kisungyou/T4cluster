@@ -6,6 +6,7 @@
 #  (04) gmm_name_segment  : extract the first 3 letters of algorithm name
 #  (05) gmm_check_list    : check list of gmm objects
 #  (06) gmm_barycenter    : given multiple models + support, compute opt.weight
+#  (07) prec_twolabel     : check the labels for 'mclustcomp' import
 
 # (01) prec_input_matrix & prec_input_dist --------------------------------
 #' @keywords internal
@@ -153,3 +154,17 @@ gmm_barycenter <- function(gmmquery, gmmlist, lambda, maxiter, abstol){
                              par_p, par_lbd, par_iter, par_tol, printer, par_init)
   return(as.vector(output))
 }
+
+# (07) prec_twolabel     : check the labels for 'mclustcomp' import -------
+#' @keywords internal
+#' @noRd
+prec_twolabel <- function(x, y, fname){
+  if ((!is.vector(x))||(!is.vector(y))){
+    stop(paste0("* ",fname," : input 'x' and 'y' should both be a vector of class labels."))
+  }
+  if (length(x)!=length(y)){
+    stop(paste0("* ",fname," : two vectors should be of same size."))
+  }
+}
+
+

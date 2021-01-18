@@ -49,7 +49,7 @@
 #' par(opar)
 #' 
 #' @references 
-#' \insertRef{zelnik-manor_selftuning_2005a}{T4cluster}
+#' \insertRef{zelnik-manor_self-tuning_2005}{T4cluster}
 #' 
 #' @concept algorithm
 #' @export

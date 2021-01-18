@@ -629,27 +629,10 @@ mygibbs.step.b <- function(eik, kappa=1){
   return(wi)
 }
 
-# n234 = length(output2)
-# vec2 = rep(0,n234)
-# vec3 = rep(0,n234)
-# vec4 = rep(0,n234)
-# 
-# for (i in 1:n234){
-#   vec2[i] = length(unique(output2[[i]]$cluster))
-#   vec3[i] = length(unique(output3[[i]]$cluster))
-#   vec4[i] = length(unique(output4[[i]]$cluster))
-# }
-# 
-# par(mfrow=c(1,3))
-# hist(vec2, main="K=2")
-# hist(vec3, main="K=3")
-# hist(vec4, main="K=4")
-
-
-
-
 #' S3 method to predict class label of new data with 'msm' object
 #' 
+#' Given an instance of \code{msm} class from \code{\link{msm}} function, predict 
+#' class label of a new data.
 #' 
 #' @param object an \code{'msm'} object from \code{\link{msm}} function.
 #' @param newdata an \eqn{(m\times p)} matrix of row-stacked observations.
@@ -663,6 +646,13 @@ predict.msm <- function(object, newdata, ...){
   ## PREPARE : EXPLICIT INPUTS
   X = prec_input_matrix(newdata)
   msmlist = list(object)
+  
+  p1 = base::ncol(X)
+  p2 = base::nrow(object$P[[1]])
+  
+  if (p1!=p2){
+    stop("* predict.msm : new data and the 'msm' object have different dimensions.")
+  }
   
   output = predict_msm_single(X, msmlist)
   return(as.vector(output))

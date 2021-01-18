@@ -11,12 +11,13 @@
 
 \item{newdata}{an \eqn{(m\times p)} matrix of row-stacked observations.}
 
-\item{...}{extra parameters.}
+\item{...}{extra parameters (not necessary).}
 }
 \value{
 a length-\eqn{m} vector of class labels.
 }
 \description{
-S3 method to predict class label of new data with 'msm' object
+Given an instance of \code{msm} class from \code{\link{msm}} function, predict 
+class label of a new data.
 }
 \concept{utility}

@@ -62,6 +62,6 @@ par(opar)
 
 }
 \references{
-\insertRef{ng_spectral_2002a}{T4cluster}
+\insertRef{ng_spectral_2002}{T4cluster}
 }
 \concept{algorithm}

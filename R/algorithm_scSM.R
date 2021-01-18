@@ -50,7 +50,7 @@
 #' par(opar)
 #' 
 #' @references 
-#' \insertRef{jianboshi_normalized_2000}{T4cluster}
+#' \insertRef{shi_normalized_2000}{T4cluster}
 #' 
 #' @concept algorithm
 #' @export
