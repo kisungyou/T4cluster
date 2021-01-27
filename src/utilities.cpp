@@ -79,7 +79,7 @@ arma::mat cpp_pdist2(arma::mat X, arma::mat Y, int p){
 arma::mat cpp_pdistMP(arma::mat X, int p, int nCores){
   // prepare
   int N = X.n_rows;
-  int d = X.n_cols;
+  // int d = X.n_cols;
   int useCores = 0;
   int detCores = 0;
   
@@ -175,8 +175,9 @@ arma::urowvec label_gmm(arma::mat data, int K, int maxiter){
 // [[Rcpp::export]]
 Rcpp::List sc_unnormalized(arma::mat W, int K, bool usekmeans, int maxiter){
   // build laplacian
-  arma::mat A = W; A.diag().fill(0.0);
-  int  N = A.n_rows;
+  arma::mat A = W; 
+  A.diag().fill(0.0);
+  // int  N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::mat Dmat = arma::diagmat(Dvec);
   arma::mat L = Dmat - A;
@@ -199,8 +200,9 @@ Rcpp::List sc_unnormalized(arma::mat W, int K, bool usekmeans, int maxiter){
 }
 // [[Rcpp::export]]
 Rcpp::List sc_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter){
-  // build laplacian
-  arma::mat A = W; A.diag().fill(0.0);
+  // build laplacian 
+  arma::mat A = W; 
+  A.diag().fill(0.0);
   int N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::vec Dhalfinv(N,fill::zeros);
@@ -235,7 +237,8 @@ Rcpp::List sc_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter){
 // [[Rcpp::export]]
 Rcpp::List sc_normalSM(arma::mat W, int K, bool usekmeans, int maxiter){
   // build laplacian
-  arma::mat A = W; A.diag().fill(0.0);
+  arma::mat A = W; 
+  A.diag().fill(0.0);
   int N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::vec Dinv(N,fill::zeros);
@@ -321,7 +324,7 @@ double gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, arma:
 
 // SECTION 5 : INTERNAL CRITERIA / CLUSTER VALIDITY INDEX ======================
 arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label){
-  int n = X.n_rows;
+  // int n = X.n_rows;
   int p = X.n_cols;
   int k = label.max() + 1;
   
@@ -339,7 +342,7 @@ arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label){
   return(output);
 }
 arma::field<arma::uvec> cvi_helper_classindex(arma::uvec label){
-  int N = label.n_elem;
+  // int N = label.n_elem;
   int K = label.max() + 1;
   
   arma::field<arma::uvec> output(K);

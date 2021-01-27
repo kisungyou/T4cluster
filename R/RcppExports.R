@@ -185,6 +185,14 @@ cpp_EKSS_affinity <- function(labels) {
     .Call('_T4cluster_cpp_EKSS_affinity', PACKAGE = 'T4cluster', labels)
 }
 
+cpp_LSR <- function(data, K, lambda, zerodiag) {
+    .Call('_T4cluster_cpp_LSR', PACKAGE = 'T4cluster', data, K, lambda, zerodiag)
+}
+
+cpp_SSQP <- function(data, K, lambda, maxiter, tolerance) {
+    .Call('_T4cluster_cpp_SSQP', PACKAGE = 'T4cluster', data, K, lambda, maxiter, tolerance)
+}
+
 cpp_shortestpath <- function(locs, dists) {
     .Call('_T4cluster_cpp_shortestpath', PACKAGE = 'T4cluster', locs, dists)
 }

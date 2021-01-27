@@ -4,10 +4,25 @@
     <loc>https://kyoustat.com/T4cluster/index.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/T4cluster/reference/EKSS.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/T4cluster/reference/LRR.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/T4cluster/reference/LRSC.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/LSR.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/MSM.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/T4cluster/reference/SSC.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/SSQP.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/compare.adjrand.html</loc>
@@ -23,6 +38,9 @@
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/funkmeans03A.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/gen3S.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/genLP.html</loc>
@@ -49,13 +67,10 @@
     <loc>https://kyoustat.com/T4cluster/reference/kmeanspp.html</loc>
   </url>
   <url>
-    <loc>https://kyoustat.com/T4cluster/reference/msm.html</loc>
-  </url>
-  <url>
     <loc>https://kyoustat.com/T4cluster/reference/pcm.html</loc>
   </url>
   <url>
-    <loc>https://kyoustat.com/T4cluster/reference/predict.msm.html</loc>
+    <loc>https://kyoustat.com/T4cluster/reference/predict.MSM.html</loc>
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/psm.html</loc>

@@ -6,8 +6,35 @@
 \usage{
 EKSS(data, k = 2, d = 2, q = floor(nrow(data) * 0.75), B = 500, iter = 0)
 }
+\arguments{
+\item{data}{an \eqn{(n\times p)} matrix of row-stacked observations.}
+
+\item{k}{the number of clusters (default: 2).}
+
+\item{d}{candidate dimension for each subspace (default: 2).}
+
+\item{q}{threshold; the number of smaller values to be zeroed out (default: 0.75*\eqn{n}).}
+
+\item{B}{the number of runs (default: 500).}
+
+\item{iter}{the number of iteration for each run (default: 0).}
+}
+\value{
+a named list of S3 class \code{T4cluster} containing 
+\describe{
+\item{cluster}{a length-\eqn{n} vector of class labels (from \eqn{1:k}).} 
+\item{algorithm}{name of the algorithm.}
+}
+}
 \description{
-Ensemble of K-Subspaces
+Ensemble of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
+uses consensus framework to aggregate multiple clustering results 
+to mitigate the effect of random initializations. When the results are merged, 
+it zeros out \eqn{n-q} number of values in a co-occurrence matrix. The paper 
+suggests to use large number of runs (\code{B}) where each run may not require 
+large number of iterations (\code{iter}) since the main assumption of the 
+algorithm is to utilize multiple partially-correct information. At the extreme case, 
+iteration \code{iter} may be set to 0 for which the paper denotes it as EKSS-0.
 }
 \examples{
 \donttest{
@@ -21,14 +48,14 @@ label  = tester$class
 proj = base::eigen(stats::cov(data))$vectors[,1:2]
 dat2 = data\%*\%proj
 
-## run EKSS algorithm with k=2,3,4 with EKSS-0 and 5 iteration
+## run EKSS algorithm with k=2,3,4 with EKSS-0 and 5 iterations
 out2zero = EKSS(data, k=2)
 out3zero = EKSS(data, k=3)
 out4zero = EKSS(data, k=4)
 
-out2iter = EKSS(data, k=2, iter=10)
-out3iter = EKSS(data, k=3, iter=10)
-out4iter = EKSS(data, k=4, iter=10)
+out2iter = EKSS(data, k=2, iter=5)
+out3iter = EKSS(data, k=3, iter=5)
+out4iter = EKSS(data, k=4, iter=5)
 
 ## extract label information
 lab2zero = out2zero$cluster
@@ -42,12 +69,12 @@ lab4iter = out4iter$cluster
 ## visualize
 opar <- par(no.readonly=TRUE)
 par(mfrow=c(2,3))
-plot(dat2, pch=19, cex=0.9, col=lab2zero, main="LRSC Relaxed:K=2")
-plot(dat2, pch=19, cex=0.9, col=lab3zero, main="LRSC Relaxed:K=3")
-plot(dat2, pch=19, cex=0.9, col=lab4zero, main="LRSC Relaxed:K=4")
-plot(dat2, pch=19, cex=0.9, col=lab2iter, main="LRSC Exact:K=2")
-plot(dat2, pch=19, cex=0.9, col=lab3iter, main="LRSC Exact:K=3")
-plot(dat2, pch=19, cex=0.9, col=lab4iter, main="LRSC Exact:K=4")
+plot(dat2, pch=19, cex=0.9, col=lab2zero, main="EKSS-0:K=2")
+plot(dat2, pch=19, cex=0.9, col=lab3zero, main="EKSS-0:K=3")
+plot(dat2, pch=19, cex=0.9, col=lab4zero, main="EKSS-0:K=4")
+plot(dat2, pch=19, cex=0.9, col=lab2iter, main="EKSS iter:K=2")
+plot(dat2, pch=19, cex=0.9, col=lab3iter, main="EKSS iter:K=3")
+plot(dat2, pch=19, cex=0.9, col=lab4iter, main="EKSS iter:K=4")
 par(opar)
 }
 

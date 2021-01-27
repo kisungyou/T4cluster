@@ -8,13 +8,90 @@ using namespace arma;
 using namespace std;
 
 /* SRC FUNCTIONS FOR SUBSPACE CLUSTERING
+ * subspace_normalNJW : spectral clustering without zero-ing the diagonal
+ * subspace_normalSM
+ * 
  * (01) fast_loss_prj : compute loss function for MSM
  * (02) cpp_LRR       : LRR  simplest
  * (03) cpp_LRSC      : LRSC simplest
  * (04) cpp_EKSS_0    : zero iterations
  *      cpp_EKSS_T
  *      cpp_EKSS_affinity
+ * (05) cpp_LSR
+ * (06) cpp_SSQP
  */
+
+
+Rcpp::List subspace_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter){
+  // build laplacian 
+  arma::mat A = W; 
+  int N = A.n_rows;
+  arma::vec Dvec = arma::sum(A, 1);
+  arma::vec Dhalfinv(N,fill::zeros);
+  double Dvalue = 0.0;
+  for (int n=0;n<N;n++){
+    Dvalue = Dvec(n);
+    if (Dvalue > arma::datum::eps){
+      Dhalfinv(n) = 1.0/std::sqrt(static_cast<float>(Dvalue));
+    }
+  }
+  arma::mat Dhalfmat = arma::diagmat(Dhalfinv);
+  arma::mat L = arma::eye(N,N) - Dhalfmat*A*Dhalfmat;
+  
+  arma::vec eigval;
+  arma::mat eigvec;
+  arma::eig_sym(eigval, eigvec, L);
+  
+  arma::mat dat = eigvec.head_cols(K); // (N x K) columns are smallest eigenvectors
+  for (int n=0;n<N;n++){
+    dat.row(n) = dat.row(n)/arma::norm(dat.row(n),2);
+  }
+  arma::urowvec output;
+  if (usekmeans==true){
+    output = label_kmeans(dat, K, maxiter);
+  } else {
+    output = label_gmm(dat, K, maxiter);
+  }
+  return Rcpp::List::create(Rcpp::Named("values")=eigval,
+                            Rcpp::Named("embeds")=dat,
+                            Rcpp::Named("labels")=output);
+}
+Rcpp::List subspace_normalSM(arma::mat W, int K, bool usekmeans, int maxiter){
+  // build laplacian
+  arma::mat A = W; 
+  int N = A.n_rows;
+  arma::vec Dvec = arma::sum(A, 1);
+  arma::vec Dinv(N,fill::zeros);
+  double Dvalue = 0.0;
+  for (int n=0;n<N;n++){
+    Dvalue = Dvec(n);
+    if (Dvalue > arma::datum::eps){
+      Dinv(n) = 1.0/Dvalue;
+    }
+  }
+  arma::mat Dinvmat = arma::diagmat(Dinv);
+  arma::mat L = arma::eye(N,N) - Dinvmat*A;
+  
+  arma::cx_vec cxval;
+  arma::cx_mat cxvec;
+  arma::eig_gen(cxval, cxvec, L);
+  arma::vec eigval = arma::real(cxval);
+  arma::mat eigvec = arma::real(cxvec);
+  
+  arma::mat dat = eigvec.head_cols(K); // (N x K) columns are smallest eigenvectors
+  arma::urowvec output;
+  if (usekmeans==true){
+    output = label_kmeans(dat, K, maxiter);
+  } else {
+    output = label_gmm(dat, K, maxiter);
+  }
+  
+  return Rcpp::List::create(Rcpp::Named("values")=eigval,
+                            Rcpp::Named("embeds")=dat,
+                            Rcpp::Named("labels")=output);
+}
+
+
 
 // (01) fast_loss_prj : compute loss function for MSM ==========================
 // [[Rcpp::export]]
@@ -49,12 +126,20 @@ Rcpp::List cpp_LRR(arma::mat& X, int par_k, int par_r){
   arma::mat V;
   arma::vec s;
   arma::svd(U,s,V,X.t());
+  // double Wmax = 0.0;
   
   // compute affinity
   arma::mat Vr = V.head_cols(par_r);
   arma::mat C  = Vr*Vr.t();
   arma::mat W  = arma::abs(C);
-  W.diag().fill(0.0);
+  // W.diag().fill(0.0);
+  
+  // Wmax = W.max();
+  // if (Wmax > 1.0){
+  //   W /= Wmax;
+  // }
+  
+  
   // W /= W.max(); // this is something I put arbitrarily for making it as affinity
   
   // arma::vec Cvec(N,fill::zeros);
@@ -68,7 +153,7 @@ Rcpp::List cpp_LRR(arma::mat& X, int par_k, int par_r){
   // run NJW spectral clustering & return
   bool my_kmeans = true;
   int my_maxiter = 100;
-  Rcpp::List output = sc_normalNJW(W, par_k, my_kmeans, my_maxiter);
+  Rcpp::List output = subspace_normalNJW(W, par_k, my_kmeans, my_maxiter);
   return(output);
 }
 
@@ -106,11 +191,15 @@ Rcpp::List cpp_LRSC(arma::mat& X, int K, std::string algtype, double tau){
   
   // use the same approach as LRR
   arma::mat W  = arma::abs(C);
-  W.diag().fill(0.0);
+  // W.diag().fill(0.0);
+  // double Wmax = W.max();
+  // if (Wmax > 1.0){
+  //   W /= Wmax;
+  // }
   
   bool my_kmeans = true;
   int my_maxiter = 100;
-  Rcpp::List output = sc_normalNJW(W, K, my_kmeans, my_maxiter);
+  Rcpp::List output = subspace_normalNJW(W, K, my_kmeans, my_maxiter);
   return(output);
 }
 
@@ -244,14 +333,136 @@ arma::mat cpp_EKSS_affinity(arma::umat &labels){ // these are column-stacked lab
   arma::uvec label_now(N,fill::zeros);
   for (int b=0; b<B; b++){
     label_now = labels.col(b);
-    for (int i=0; i<(N-1); i++){
-      for (int j=(i+1); j<N; j++){
+    for (int i=0; i<N; i++){
+      for (int j=0; j<N; j++){
         if (label_now(i)==label_now(j)){
           A(i,j) = A(i,j) + (1.0/BB);
-          A(j,i) = A(j,i) + (1.0/BB);
         }
       }
     }
+    // for (int i=0; i<(N-1); i++){
+    //   for (int j=(i+1); j<N; j++){
+    //     if (label_now(i)==label_now(j)){
+    //       A(i,j) = A(i,j) + (1.0/BB);
+    //       A(j,i) = A(j,i) + (1.0/BB);
+    //     }
+    //   }
+    // }
   }
   return(A);
+}
+
+// (05) cpp_LSR ================================================================
+// input is directly given in (n x p) form
+// [[Rcpp::export]]
+Rcpp::List cpp_LSR(arma::mat& data, int K, double lambda, bool zerodiag){
+  // preliminary
+  int N = data.n_rows;
+  arma::mat D = arma::inv(data*data.t() + lambda*arma::eye(N, N)); // (X'X + lbd*I)^{-1}
+  arma::mat Z(N,N,fill::zeros);
+  
+  // computing affinity matrix
+  if (zerodiag){
+    arma::vec vecDinv = 1.0/arma::diagvec(D);
+    Z = -D*arma::diagmat(vecDinv);
+    Z.diag().fill(0.0);
+  } else {
+    Z = D*(data*data.t());
+  }
+  arma::mat affinity = (arma::abs(Z)+arma::abs(Z.t()))/2.0;
+  // if (affinity.max() > 1.0){
+  //   affinity /= affinity.max();
+  // }
+  
+  // run NJW spectral clustering & return
+  bool my_kmeans = true;
+  int my_maxiter = 100;
+  Rcpp::List output = subspace_normalSM(affinity, K, my_kmeans, my_maxiter);
+  return(output);
+}
+
+// (06) cpp_SSQP ===============================================================
+// [[Rcpp::export]]
+Rcpp::List cpp_SSQP(arma::mat& data, int K, double lambda, int maxiter, double tolerance){
+  // preliminary
+  arma::mat X = data.t();
+  int N = X.n_cols;
+  
+  // initialization
+  arma::mat XtX  = X.t()*X;
+  arma::mat Zold = arma::inv(XtX + lambda*arma::eye(N,N))*(X.t()*X);
+  Zold.diag().fill(0.0);
+  Zold.elem(arma::find(Zold<0.0)).zeros();
+
+  arma::mat Ztmp(N,N,fill::zeros);
+  arma::mat Znew(N,N,fill::zeros);
+  arma::mat E(N,N,fill::ones);
+  
+  arma::mat Dtmp(N,N,fill::zeros);
+  arma::mat Dfin(N,N,fill::zeros);
+
+  arma::mat grad_old = 2.0*XtX*Zold - 2.0*XtX + 2.0*lambda*Zold*E;
+  arma::mat grad_new(N,N,fill::zeros);
+  double fval_old = std::pow(arma::norm(X-X*Zold,"fro"), 2.0) + lambda*arma::accu(arma::abs(Zold.t()*Zold));
+  double fval_new = 0.0;
+  
+  int nsteps = 50;
+  arma::vec update_step(nsteps,fill::zeros);
+  arma::vec update_fval(nsteps,fill::zeros);
+  update_step(0) = 2.5;
+  for (int i=0; i<(nsteps-1); i++){
+    update_step(i+1) = update_step(i)*0.5;
+  }
+  
+  // iteration with Spectral Project Gradient method (1999, Birgin)
+  double sigma  = 1.0;
+  double incthr = 0.0;
+  arma::vec s;
+  arma::vec y;
+  for (int it=0; it<maxiter; it++){
+    // compute D
+    Dtmp = Zold - sigma*grad_old;
+    Dtmp.diag().fill(0.0);
+    Dtmp.elem(arma::find(Dtmp<0.0)).zeros();
+    Dfin = Dtmp - Zold;
+    
+    // optimal updating
+    // if no further search object is better, stop
+    update_fval.fill(arma::datum::inf);
+    for (int i=0; i<nsteps; i++){
+      Ztmp = Zold + update_step(i)*Dfin;
+      update_fval(i) = std::pow(arma::norm(X-X*Ztmp,"fro"), 2.0) + lambda*arma::accu(arma::abs(Ztmp.t()*Ztmp));
+      if (update_fval(i) < fval_old){
+        // Rcpp::Rcout << "SSQP : iteration " << it << " - only first " << i << " used." << std::endl;
+        break;
+      }
+    }
+    
+    fval_new = update_fval.min();
+    Znew     = Zold + update_step(update_fval.index_min())*Dfin;
+    grad_new = 2.0*XtX*Znew - 2.0*XtX + 2.0*lambda*Znew*E;
+    
+    // auxiliary information
+    s = arma::vectorise(Znew-Zold);
+    y = arma::vectorise(grad_new-grad_old);
+    sigma = arma::dot(y,y)/arma::dot(s,y);
+    
+    // updating information
+    incthr = std::pow(arma::norm(Zold-Znew,"fro"),2.0);
+    Zold = Znew;
+    grad_old = grad_new;
+    fval_old = fval_new;
+    if ((incthr < tolerance)){
+      // Rcpp::Rcout << "SSQP : iteration " << it << " breaks!" << std::endl;
+      break;
+    }
+    // Rcpp::Rcout << "SSQP : iteration " << it << " complete..." << std::endl;
+  }
+  
+  // run spectral clustering
+  arma::mat affinity = (arma::abs(Zold) + arma::abs(Zold.t()))/2.0;
+  bool my_kmeans = true;
+  int my_maxiter = 100;
+  Rcpp::List output = subspace_normalNJW(affinity, K, my_kmeans, my_maxiter);
+  return(output);
 }

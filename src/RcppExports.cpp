@@ -659,6 +659,35 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cpp_LSR
+Rcpp::List cpp_LSR(arma::mat& data, int K, double lambda, bool zerodiag);
+RcppExport SEXP _T4cluster_cpp_LSR(SEXP dataSEXP, SEXP KSEXP, SEXP lambdaSEXP, SEXP zerodiagSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< bool >::type zerodiag(zerodiagSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_LSR(data, K, lambda, zerodiag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cpp_SSQP
+Rcpp::List cpp_SSQP(arma::mat& data, int K, double lambda, int maxiter, double tolerance);
+RcppExport SEXP _T4cluster_cpp_SSQP(SEXP dataSEXP, SEXP KSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP toleranceSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type tolerance(toleranceSEXP);
+    rcpp_result_gen = Rcpp::wrap(cpp_SSQP(data, K, lambda, maxiter, tolerance));
+    return rcpp_result_gen;
+END_RCPP
+}
 // cpp_shortestpath
 arma::mat cpp_shortestpath(arma::umat locs, arma::mat dists);
 RcppExport SEXP _T4cluster_cpp_shortestpath(SEXP locsSEXP, SEXP distsSEXP) {
@@ -906,6 +935,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_EKSS_0", (DL_FUNC) &_T4cluster_cpp_EKSS_0, 3},
     {"_T4cluster_cpp_EKSS_T", (DL_FUNC) &_T4cluster_cpp_EKSS_T, 4},
     {"_T4cluster_cpp_EKSS_affinity", (DL_FUNC) &_T4cluster_cpp_EKSS_affinity, 1},
+    {"_T4cluster_cpp_LSR", (DL_FUNC) &_T4cluster_cpp_LSR, 4},
+    {"_T4cluster_cpp_SSQP", (DL_FUNC) &_T4cluster_cpp_SSQP, 5},
     {"_T4cluster_cpp_shortestpath", (DL_FUNC) &_T4cluster_cpp_shortestpath, 2},
     {"_T4cluster_cpp_pdist", (DL_FUNC) &_T4cluster_cpp_pdist, 2},
     {"_T4cluster_cpp_pdist2", (DL_FUNC) &_T4cluster_cpp_pdist2, 3},

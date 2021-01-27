@@ -1,5 +1,26 @@
 #' Ensemble of K-Subspaces
 #' 
+#' Ensemble of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
+#' uses consensus framework to aggregate multiple clustering results 
+#' to mitigate the effect of random initializations. When the results are merged, 
+#' it zeros out \eqn{n-q} number of values in a co-occurrence matrix. The paper 
+#' suggests to use large number of runs (\code{B}) where each run may not require 
+#' large number of iterations (\code{iter}) since the main assumption of the 
+#' algorithm is to utilize multiple partially-correct information. At the extreme case, 
+#' iteration \code{iter} may be set to 0 for which the paper denotes it as EKSS-0.
+#' 
+#' @param data an \eqn{(n\times p)} matrix of row-stacked observations.
+#' @param k the number of clusters (default: 2).
+#' @param d candidate dimension for each subspace (default: 2).
+#' @param q threshold; the number of smaller values to be zeroed out (default: 0.75*\eqn{n}).
+#' @param B the number of runs (default: 500).
+#' @param iter the number of iteration for each run (default: 0).
+#' 
+#' @return a named list of S3 class \code{T4cluster} containing 
+#' \describe{
+#' \item{cluster}{a length-\eqn{n} vector of class labels (from \eqn{1:k}).} 
+#' \item{algorithm}{name of the algorithm.}
+#' }
 #' 
 #' @examples 
 #' \donttest{
