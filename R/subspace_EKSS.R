@@ -1,6 +1,6 @@
-#' Ensemble of K-Subspaces
+#' Ensembles of K-Subspaces
 #' 
-#' Ensemble of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
+#' Ensembles of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
 #' uses consensus framework to aggregate multiple clustering results 
 #' to mitigate the effect of random initializations. When the results are merged, 
 #' it zeros out \eqn{n-q} number of values in a co-occurrence matrix. The paper 
@@ -13,7 +13,7 @@
 #' @param k the number of clusters (default: 2).
 #' @param d candidate dimension for each subspace (default: 2).
 #' @param q threshold; the number of smaller values to be zeroed out (default: 0.75*\eqn{n}).
-#' @param B the number of runs (default: 500).
+#' @param B the number of ensembles/runs (default: 500).
 #' @param iter the number of iteration for each run (default: 0).
 #' 
 #' @return a named list of S3 class \code{T4cluster} containing 
@@ -63,6 +63,9 @@
 #' plot(dat2, pch=19, cex=0.9, col=lab4iter, main="EKSS iter:K=4")
 #' par(opar)
 #' }
+#' 
+#' @references 
+#' \insertRef{lipor_subspace_2021}{T4cluster} 
 #' 
 #' @concept subspace
 #' @export

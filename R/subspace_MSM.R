@@ -295,7 +295,7 @@ MSM <- function(data, k=2, ...){
     iterate$U = U.mat[[i]]
     iterate$theta = theta.mat[[i]]
     iterate$cluster = record.clus[[i]]
-    output[[i]] = structure(iterate, class="msm")
+    output[[i]] = structure(iterate, class="MSM")
   }
   recording = seq(from=round(burn.in+1), to=iter, by = round(thin))
   return(output[recording])

@@ -49,6 +49,9 @@
 #' par(opar)
 #' }
 #' 
+#' @references 
+#' \insertRef{liu_robust_2010}{T4cluster}
+#' 
 #' @concept subspace
 #' @export
 LRR <- function(data, k=2, rank=2){
@@ -59,7 +62,6 @@ LRR <- function(data, k=2, rank=2){
   
   ## COMPUTE EVERYTHING IN C++
   cpprun = cpp_LRR(X, myk, myr)
-  
   
   ## WRAP
   output  = list()

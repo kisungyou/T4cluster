@@ -1,5 +1,31 @@
-#' Low-Rank Sparse Clustering
+#' Low-Rank Subspace Clustering
 #' 
+#' Low-Rank Subspace Clustering (LRSC) constructs the connectivity of the data by solving 
+#' \deqn{\textrm{min}_C \|C\|_*\quad\textrm{such that}\quad A=AC,~C=C^\top} 
+#' for the uncorrupted data scenario where \eqn{A} is a column-stacked 
+#' data matrix. In the current implementation, the first equality constraint 
+#' for reconstructiveness of the data can be relaxed by solving
+#' \deqn{\textrm{min}_C \|C\|_* + \frac{\tau}{2} \|A-AC\|_F^2  \quad\textrm{such that}\quad C=C^\top} 
+#' controlled by the regularization parameter \eqn{\tau}. If you are interested in 
+#' enabling a more general class of the problem suggested by authors, 
+#' please contact maintainer of the package.
+#' 
+#' \deqn{\textrm{min}_C \|C\|_*\quad\textrm{such that}\quad D=DC}
+#' for column-stacked data matrix \eqn{D} and \eqn{\|\cdot \|_*} is the 
+#' nuclear norm which is relaxation of the rank condition. If you are interested in 
+#' full implementation of the algorithm with sparse outliers and noise, please 
+#' contact the maintainer.
+#' 
+#' @param data an \eqn{(n\times p)} matrix of row-stacked observations.
+#' @param k the number of clusters (default: 2).
+#' @param type type of the problem to be solved.
+#' @param tau regularization parameter for relaxed-constraint problem.
+#' 
+#' @return a named list of S3 class \code{T4cluster} containing 
+#' \describe{
+#' \item{cluster}{a length-\eqn{n} vector of class labels (from \eqn{1:k}).} 
+#' \item{algorithm}{name of the algorithm.}
+#' }
 #' 
 #' @examples 
 #' \donttest{
@@ -43,6 +69,8 @@
 #' par(opar)
 #' }
 #' 
+#' @references 
+#' \insertRef{vidal_low_2014}{T4cluster}
 #' 
 #' @concept subspace
 #' @export

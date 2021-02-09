@@ -2,7 +2,7 @@
 % Please edit documentation in R/subspace_EKSS.R
 \name{EKSS}
 \alias{EKSS}
-\title{Ensemble of K-Subspaces}
+\title{Ensembles of K-Subspaces}
 \usage{
 EKSS(data, k = 2, d = 2, q = floor(nrow(data) * 0.75), B = 500, iter = 0)
 }
@@ -15,7 +15,7 @@ EKSS(data, k = 2, d = 2, q = floor(nrow(data) * 0.75), B = 500, iter = 0)
 
 \item{q}{threshold; the number of smaller values to be zeroed out (default: 0.75*\eqn{n}).}
 
-\item{B}{the number of runs (default: 500).}
+\item{B}{the number of ensembles/runs (default: 500).}
 
 \item{iter}{the number of iteration for each run (default: 0).}
 }
@@ -27,7 +27,7 @@ a named list of S3 class \code{T4cluster} containing
 }
 }
 \description{
-Ensemble of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
+Ensembles of K-Subspaces method exploits multiple runs of K-Subspace Clustering and 
 uses consensus framework to aggregate multiple clustering results 
 to mitigate the effect of random initializations. When the results are merged, 
 it zeros out \eqn{n-q} number of values in a co-occurrence matrix. The paper 
@@ -78,5 +78,8 @@ plot(dat2, pch=19, cex=0.9, col=lab4iter, main="EKSS iter:K=4")
 par(opar)
 }
 
+}
+\references{
+\insertRef{lipor_subspace_2021}{T4cluster}
 }
 \concept{subspace}

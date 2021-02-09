@@ -2,7 +2,7 @@ pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-01-26T03:40Z
+last_built: 2021-02-09T03:45Z
 urls:
   reference: https://kyoustat.com/T4cluster/reference
   article: https://kyoustat.com/T4cluster/articles
