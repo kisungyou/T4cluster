@@ -5,7 +5,7 @@
 #  (03) gmm_check_alldiag : check whether all covariances are diagonal or not
 #  (04) gmm_name_segment  : extract the first 3 letters of algorithm name
 #  (05) gmm_check_list    : check list of gmm objects
-#  (06) gmm_barycenter    : given multiple models + support, compute opt.weight
+#  (06) gmm_barycenter    : given multiple models + support, compute opt.weight - obsolete
 #  (07) prec_twolabel     : check the labels for 'mclustcomp' import
 
 # (01) prec_input_matrix & prec_input_dist --------------------------------
@@ -118,42 +118,42 @@ gmm_check_list <- function(gmmlist){
 }
 
 # (06) gmm_barycenter -----------------------------------------------------
-#' @keywords internal
-#' @noRd
-gmm_barycenter <- function(gmmquery, gmmlist, lambda, maxiter, abstol){
-  # preparation
-  mean     = gmmquery$mean
-  variance = gmmquery$variance
-  
-  N = length(gmmlist)
-  K = base::nrow(mean)
-  par_listdxy  <- list() # W_2 distances for sets of atoms
-  par_marginal <- list() # marginal density for each gmm object
-  par_weights  <- rep(1/N, N) # uniform weights across models
-  par_iter  <- round(maxiter)    # Barycenter : iteration
-  par_tol   <- as.double(abstol) # Barycenter : absolute tolerance
-  par_lbd   <- as.double(lambda) # Barycenter : regularization parameters
-  par_p     <- 2                 # Barycenter : we are working with W2
-  # par_init  <- rep(1/K, K)       # Barycenter : initial weight
-  par_init  <- as.vector(gmmquery$weight)
-  printer   <- FALSE
-  
-  par_iter <- max(200, par_iter)
-  par_tol  <- max(1e-10, par_tol)
-  par_lbd  <- max(1e-10, par_lbd)
-  
-  # assignment
-  for (n in 1:N){
-    ngmm = gmmlist[[n]]
-    par_marginal[[n]] = as.vector(ngmm$weight)
-    par_listdxy[[n]]  = cpp_gmmdist_base(mean, variance, ngmm$mean, ngmm$variance, "wass2")
-  }
-  
-  # main computation
-  output = cpp_barybregman15(par_listdxy, par_marginal, par_weights,
-                             par_p, par_lbd, par_iter, par_tol, printer, par_init)
-  return(as.vector(output))
-}
+#' #' @keywords internal
+#' #' @noRd
+#' gmm_barycenter <- function(gmmquery, gmmlist, lambda, maxiter, abstol){
+#'   # preparation
+#'   mean     = gmmquery$mean
+#'   variance = gmmquery$variance
+#'   
+#'   N = length(gmmlist)
+#'   K = base::nrow(mean)
+#'   par_listdxy  <- list() # W_2 distances for sets of atoms
+#'   par_marginal <- list() # marginal density for each gmm object
+#'   par_weights  <- rep(1/N, N) # uniform weights across models
+#'   par_iter  <- round(maxiter)    # Barycenter : iteration
+#'   par_tol   <- as.double(abstol) # Barycenter : absolute tolerance
+#'   par_lbd   <- as.double(lambda) # Barycenter : regularization parameters
+#'   par_p     <- 2                 # Barycenter : we are working with W2
+#'   # par_init  <- rep(1/K, K)       # Barycenter : initial weight
+#'   par_init  <- as.vector(gmmquery$weight)
+#'   printer   <- FALSE
+#'   
+#'   par_iter <- max(200, par_iter)
+#'   par_tol  <- max(1e-10, par_tol)
+#'   par_lbd  <- max(1e-10, par_lbd)
+#'   
+#'   # assignment
+#'   for (n in 1:N){
+#'     ngmm = gmmlist[[n]]
+#'     par_marginal[[n]] = as.vector(ngmm$weight)
+#'     par_listdxy[[n]]  = cpp_gmmdist_base(mean, variance, ngmm$mean, ngmm$variance, "wass2")
+#'   }
+#'   
+#'   # main computation
+#'   output = cpp_barybregman15(par_listdxy, par_marginal, par_weights,
+#'                              par_p, par_lbd, par_iter, par_tol, printer, par_init)
+#'   return(as.vector(output))
+#' }
 
 # (07) prec_twolabel     : check the labels for 'mclustcomp' import -------
 #' @keywords internal
