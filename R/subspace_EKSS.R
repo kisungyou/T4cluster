@@ -65,7 +65,7 @@
 #' }
 #' 
 #' @references 
-#' \insertRef{lipor_subspace_2021}{T4cluster} 
+#' Lipor J, Hong D, Tan YS, Balzano L (2021). “Subspace Clustering Using Ensembles of \eqn{K}-Subspaces.” arXiv:1709.04744.
 #' 
 #' @concept subspace
 #' @export
