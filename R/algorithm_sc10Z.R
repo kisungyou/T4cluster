@@ -2,7 +2,7 @@
 #' 
 #' The algorithm defines a set of data-driven 
 #' bandwidth parameters \eqn{p_{ij}} by constructing a similarity matrix. 
-#' Then the affinity matrix is defined as \deqn{A_{ij} = \exp(-d(x_i, d_j)^2 / 2 p_{ij}} 
+#' Then the affinity matrix is defined as \deqn{A_{ij} = \exp(-d(x_i, d_j)^2 / 2 p_{ij})} 
 #' and the standard spectral clustering of Ng, Jordan, and Weiss (\code{\link{scNJW}}) is applied.
 #' 
 #' @param data an \eqn{(n\times p)} matrix of row-stacked observations or S3 \code{dist} object of \eqn{n} observations.
