@@ -101,6 +101,14 @@ cpp_sc12L <- function(D, K, usekmeans, maxiter, sigma) {
     .Call('_T4cluster_cpp_sc12L', PACKAGE = 'T4cluster', D, K, usekmeans, maxiter, sigma)
 }
 
+sp_spkmeans <- function(X, K, initializer, maxiter, abstol, printer) {
+    .Call('_T4cluster_sp_spkmeans', PACKAGE = 'T4cluster', X, K, initializer, maxiter, abstol, printer)
+}
+
+sp_gskmeans <- function(X, K, initializer, maxiter, abstol, printer) {
+    .Call('_T4cluster_sp_gskmeans', PACKAGE = 'T4cluster', X, K, initializer, maxiter, abstol, printer)
+}
+
 fast_loss_prj <- function(nS, dS, mS, PS, xS, muS) {
     .Call('_T4cluster_fast_loss_prj', PACKAGE = 'T4cluster', nS, dS, mS, PS, xS, muS)
 }

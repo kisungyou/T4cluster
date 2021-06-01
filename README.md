@@ -16,6 +16,7 @@ cluster analysis. It contains several classes of algorithms for
 
 -   Clustering with Vector-Valued Data
 -   Clustering with Functional Data
+-   Clustering on the Unit Hypersphere
 -   Subspace Clustering
 -   Measures : Compare Two Clusterings
 -   Learning with Multiple Clusterings

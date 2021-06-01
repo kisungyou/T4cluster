@@ -19,7 +19,7 @@
 #' @references 
 #' \insertRef{wang_efficient_2011}{T4cluster}
 #' 
-#' @concept utility
+#' @concept data
 #' @export
 gen3S <- function(n=50, var=0.3){
   ## PRELIMINARY

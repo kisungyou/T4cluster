@@ -28,7 +28,7 @@ using namespace arma;
  */
 arma::vec eval_gaussian(arma::mat X, arma::rowvec mu, arma::mat Sig, bool logreturn=false){
   // parameters
-  int n = X.n_rows; double nn = static_cast<double>(n);
+  int n = X.n_rows; //double nn = static_cast<double>(n);
   int d = X.n_cols; double dd = static_cast<double>(d);
   
   // preparation
@@ -375,7 +375,7 @@ arma::cube gmm11R_precision(arma::mat X, arma::mat Gamma, arma::mat Mu, double l
 // [[Rcpp::export]]
 Rcpp::List gmm_11R(arma::mat& X, int K, double lambda, int maxiter, bool usediag){
   // parameters
-  int N = X.n_rows; double NN = static_cast<double>(N);
+  int N = X.n_rows; // double NN = static_cast<double>(N);
   int P = X.n_cols;
   int mit = maxiter; // max iter
   

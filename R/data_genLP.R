@@ -41,7 +41,7 @@
 #' scatterplot3d::scatterplot3d(x=data, pch=19, cex.symbols=0.5, color=label)
 #' }
 #' 
-#' @concept utility
+#' @concept data
 #' @export
 genLP <- function(n=100, nl=1, np=1, iso.var=0.1){
   # parameters

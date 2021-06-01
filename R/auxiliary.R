@@ -1,6 +1,7 @@
 ## AUXILIARY FUNCTIONS
 #  (01) prec_input_matrix : return output as row-stacked matrix
 #       prec_input_dist   : return matrix of dist object
+#       prec_input_sphere : return output as row-normalized matrix
 #  (02) soc_preproc       : SOC-type algorithm preprocessing
 #  (03) gmm_check_alldiag : check whether all covariances are diagonal or not
 #  (04) gmm_name_segment  : extract the first 3 letters of algorithm name
@@ -25,6 +26,14 @@ prec_input_matrix <- function(x){
 }
 #' @keywords internal
 #' @noRd
+prec_input_sphere <- function(x){
+  if (!inherits(x, "matrix")){
+    stop("* input should be a matrix.")
+  }
+  return(x/sqrt(rowSums(x^2)))
+}
+#' @keywords internal
+#' @noRd
 prec_input_dist <- function(x){
   if (inherits(x, "dist")){
     return(as.matrix(x))
@@ -39,6 +48,7 @@ prec_input_dist <- function(x){
     stop("* T4cluster : input should be either 'vector','matrix', or 'dist' object.")
   }
 }
+
 
 
 # (02) soc_preproc : SOC-type algorithm preprocessing ---------------------

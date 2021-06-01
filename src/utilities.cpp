@@ -363,6 +363,10 @@ int cvi_helper_nw(arma::uvec label){
   }
   return(output);
 }
+int cvi_helper_nunique(arma::uvec label){
+  arma::uvec ulabel = arma::unique(label);
+  return(ulabel.n_elem);
+}
 
 // SECTION 6 : DISTANCE BETWEEN GAUSSIAN DISTRIBUTIONS + EVALUATION
 double single_gaussian(arma::rowvec x, arma::rowvec mu, arma::mat sig, bool logreturn){

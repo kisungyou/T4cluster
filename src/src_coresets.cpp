@@ -17,8 +17,7 @@ using namespace arma;
 Rcpp::List coreset_18B(arma::mat& X, int K, int M, int maxiter){
   // PARAMETER
   int N = X.n_rows; double NN = static_cast<double>(N);
-  int P = X.n_cols;
-  
+
   // STEP 1 : COMPUTE MEAN AND DISTANCES
   arma::rowvec Xmean = arma::mean(X, 0);
   arma::vec    distsq(N,fill::zeros);
@@ -47,6 +46,9 @@ Rcpp::List coreset_18B(arma::mat& X, int K, int M, int maxiter){
   arma::mat  sub_data = X.rows(sub_sample);
   arma::mat  kmeans;
   bool status = arma::kmeans(kmeans, arma::trans(sub_data), K, random_subset, maxiter, false);
+  if(status == false){
+    Rcpp::stop("* coreset18B routine failed.");
+  }
   arma::mat  kcenters = arma::trans(kmeans);
   
   arma::mat  distmat(N,K,fill::zeros);

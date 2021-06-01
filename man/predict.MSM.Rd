@@ -20,4 +20,4 @@ a length-\eqn{m} vector of class labels.
 Given an instance of \code{MSM} class from \code{\link{MSM}} function, predict 
 class label of a new data.
 }
-\concept{utility}
+\concept{subspace}

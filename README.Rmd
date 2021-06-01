@@ -25,6 +25,7 @@ in relevant topics around the study of cluster analysis. It contains several cla
 
 * Clustering with Vector-Valued Data 
 * Clustering with Functional Data
+* Clustering on the Unit Hypersphere
 * Subspace Clustering
 * Measures : Compare Two Clusterings
 * Learning with Multiple Clusterings

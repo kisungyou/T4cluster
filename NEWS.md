@@ -1,3 +1,7 @@
+# T4cluster 0.1.2
+
+* Two functions, `gskmeans()` and `spkmeans()`, for clustering on the unit hypersphere are added.
+
 # T4cluster 0.1.1
 
 * Added some functionalities.

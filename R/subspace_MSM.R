@@ -640,7 +640,7 @@ mygibbs.step.b <- function(eik, kappa=1){
 #' 
 #' @return a length-\eqn{m} vector of class labels.
 #' 
-#' @concept utility
+#' @concept subspace
 #' @export
 predict.MSM <- function(object, newdata, ...){
   ## PREPARE : EXPLICIT INPUTS

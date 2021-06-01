@@ -36,15 +36,18 @@ reference:
   - title: "[2] Clustering with Functional Data"
     contents:
       - has_concept("functional")
-  - title: "[3] Subspace Clustering"
+  - title: "[3] Clustering with Spherical Data"
+    contents:
+      - has_concept("sphere")
+  - title: "[4] Subspace Clustering"
     contents:
       - has_concept("subspace")
-  - title: "[4] Measures : Comparing Two Clusterings"
+  - title: "[5] Measures : Comparing Two Clusterings"
     contents:
       - has_concept("comparison")
   - title: "[6] Learning with Multiple Clusterings"
     contents:
       - has_concept("soc")
-  - title: "[7] Utilities"
+  - title: "[7] Data : Loaded and Generators"
     contents:
-      - has_concept("utility")
+      - has_concept("data")

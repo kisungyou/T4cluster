@@ -36,6 +36,7 @@ double     gmm_loglkd(arma::mat X, arma::colvec oldweight, arma::mat oldmeans, a
 arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label);   // compute class-wise mean
 arma::field<arma::uvec> cvi_helper_classindex(arma::uvec label); // index for each label
 int cvi_helper_nw(arma::uvec label);                             // number of pairs in the same cluster
+int cvi_helper_nunique(arma::uvec label);               // number of unique elements in a label
 
 // SECTION 6 : DISTANCE BETWEEN GAUSSIAN DISTRIBUTIONS
 double single_gaussian(arma::rowvec x, arma::rowvec mu, arma::mat sig, bool logreturn=false);

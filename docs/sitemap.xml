@@ -58,6 +58,12 @@
     <loc>https://kyoustat.com/T4cluster/reference/gmm16G.html</loc>
   </url>
   <url>
+    <loc>https://kyoustat.com/T4cluster/reference/gskmeans.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/household.html</loc>
+  </url>
+  <url>
     <loc>https://kyoustat.com/T4cluster/reference/kmeans.html</loc>
   </url>
   <url>
@@ -98,5 +104,8 @@
   </url>
   <url>
     <loc>https://kyoustat.com/T4cluster/reference/scUL.html</loc>
+  </url>
+  <url>
+    <loc>https://kyoustat.com/T4cluster/reference/spkmeans.html</loc>
   </url>
 </urlset>
