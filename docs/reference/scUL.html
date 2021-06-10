@@ -52,7 +52,7 @@ $$A_{ij} = \exp(-d(x_i, d_j)^2 / \sigma^2)$$
 where \(\sigma\) is a common bandwidth parameter and performs k-means (or possibly, GMM) clustering on 
 the row-space of eigenvectors for the unnormalized graph laplacian matrix
 $$L=D-A$$." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -109,19 +109,19 @@ $$L=D-A$$." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -140,7 +140,7 @@ $$L=D-A$$." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Spectral Clustering with Unnormalized Laplacian</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_scUL.R'><code>R/algorithm_scUL.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_scUL.R'><code>R/algorithm_scUL.R</code></a></small>
     <div class="hidden name"><code>scUL.Rd</code></div>
     </div>
 
@@ -195,7 +195,7 @@ $$L=D-A$$.</p>
 &#8220;A Tutorial on Spectral Clustering.&#8221;
 <em>Statistics and Computing</em>, <b>17</b>(4), 395--416.
 ISSN 0960-3174, 1573-1375, doi: <a href='https://doi.org/10.1007/s11222-007-9033-z'>10.1007/s11222-007-9033-z</a>
-, <a href='https://doi.org/10.1007/s11222-007-9033-z'>https://doi.org/10.1007/s11222-007-9033-z</a>.</p>
+.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
@@ -207,7 +207,7 @@ ISSN 0960-3174, 1573-1375, doi: <a href='https://doi.org/10.1007/s11222-007-9033
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
 
 <span class='co'>## CLUSTERING WITH DIFFERENT K VALUES</span>
 <span class='va'>cl2</span> <span class='op'>=</span> <span class='fu'>scUL</span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

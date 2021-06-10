@@ -51,7 +51,7 @@
 $$A_{ij} = \exp(-d(x_i, d_j)^2 / 2 \sigma^2)$$ and adjust the matrix 
 by neighbor propagation. Then, standard spectral clustering from 
 the symmetric, normalized graph laplacian is applied." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -108,19 +108,19 @@ the symmetric, normalized graph laplacian is applied." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -139,7 +139,7 @@ the symmetric, normalized graph laplacian is applied." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Spectral Clustering by Li and Guo (2012)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_sc12L.R'><code>R/algorithm_sc12L.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_sc12L.R'><code>R/algorithm_sc12L.R</code></a></small>
     <div class="hidden name"><code>sc12L.Rd</code></div>
     </div>
 
@@ -193,7 +193,7 @@ the symmetric, normalized graph laplacian is applied.</p>
 &#8220;Constructing Affinity Matrix in Spectral Clustering Based on Neighbor Propagation.&#8221;
 <em>Neurocomputing</em>, <b>97</b>, 125--130.
 ISSN 09252312, doi: <a href='https://doi.org/10.1016/j.neucom.2012.06.023'>10.1016/j.neucom.2012.06.023</a>
-, <a href='https://doi.org/10.1016/j.neucom.2012.06.023'>https://doi.org/10.1016/j.neucom.2012.06.023</a>.</p>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='scNJW.html'>scNJW</a></code></p></div>
@@ -208,7 +208,7 @@ ISSN 09252312, doi: <a href='https://doi.org/10.1016/j.neucom.2012.06.023'>10.10
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
 
 <span class='co'>## CLUSTERING WITH DIFFERENT K VALUES</span>
 <span class='va'>cl2</span> <span class='op'>=</span> <span class='fu'>sc12L</span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

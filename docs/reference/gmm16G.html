@@ -54,7 +54,7 @@ $$\mathcal{N}\left(x\vert \mu, \Sigma\right)^w \propto \mathcal{N}\left(x\vert \
 by considering the positive weight as a role of precision. Currently, 
 we provide a method with fixed weight case only while the paper also considers 
 a Bayesian formalism on the weight using Gamma distribution." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -111,19 +111,19 @@ a Bayesian formalism on the weight using Gamma distribution." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -142,7 +142,7 @@ a Bayesian formalism on the weight using Gamma distribution." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Weighted GMM by Gebru et al. (2016)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_gmm16G.R'><code>R/algorithm_gmm16G.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_gmm16G.R'><code>R/algorithm_gmm16G.R</code></a></small>
     <div class="hidden name"><code>gmm16G.Rd</code></div>
     </div>
 
@@ -201,7 +201,7 @@ a Bayesian formalism on the weight using Gamma distribution.</p>
 &#8220;EM Algorithms for Weighted-Data Clustering with Application to Audio-Visual Scene Analysis.&#8221;
 <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, <b>38</b>(12), 2402--2415.
 ISSN 0162-8828, 2160-9292, doi: <a href='https://doi.org/10.1109/TPAMI.2016.2522425'>10.1109/TPAMI.2016.2522425</a>
-, <a href='https://doi.org/10.1109/TPAMI.2016.2522425'>https://doi.org/10.1109/TPAMI.2016.2522425</a>.</p>
+.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
@@ -213,7 +213,7 @@ ISSN 0162-8828, 2160-9292, doi: <a href='https://doi.org/10.1109/TPAMI.2016.2522
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
 
 <span class='co'>## CLUSTERING WITH DIFFERENT K VALUES</span>
 <span class='va'>cl2</span> <span class='op'>=</span> <span class='fu'>gmm16G</span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

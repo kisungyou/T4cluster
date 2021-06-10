@@ -2,7 +2,7 @@
 # icons:   https://fontawesome.com/
 # pkgdown: https://pkgdown.r-lib.org/reference/index.html
 
-url: https://kyoustat.com/T4cluster
+url: https://kisungyou.com/T4cluster
 
 destination: docs
 
@@ -23,11 +23,11 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-twitter
-      href: https://twitter.com/kyoustat
+      href: https://twitter.com/kisung_you
     - icon: fa-github
-      href: https://github.com/kyoustat/T4cluster
+      href: https://github.com/kisungyou/T4cluster
     - icon: fa-envelope
-      href: mailto:kyoustat@gmail.com
+      href: mailto:kisungyou@outlook.com
 
 reference:
   - title: "[1] Clustering with Euclidean Data"

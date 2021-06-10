@@ -53,7 +53,7 @@ GMM might incur singular covariance components. Authors proposed to use
 \(\lambda\) as a regularization parameter as normally used in 
 sparse covariance/precision estimation problems and suggested to use the 
 model with the smallest BIC values." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -110,19 +110,19 @@ model with the smallest BIC values." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -141,7 +141,7 @@ model with the smallest BIC values." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Regularized GMM by Ruan et al. (2011)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_gmm11R.R'><code>R/algorithm_gmm11R.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_gmm11R.R'><code>R/algorithm_gmm11R.R</code></a></small>
     <div class="hidden name"><code>gmm11R.Rd</code></div>
     </div>
 
@@ -200,7 +200,7 @@ model with the smallest BIC values.</p>
 &#8220;Regularized Parameter Estimation in High-Dimensional Gaussian Mixture Models.&#8221;
 <em>Neural Computation</em>, <b>23</b>(6), 1605--1622.
 ISSN 0899-7667, 1530-888X, doi: <a href='https://doi.org/10.1162/NECO_a_00128'>10.1162/NECO_a_00128</a>
-, <a href='https://doi.org/10.1162/NECO_a_00128'>https://doi.org/10.1162/NECO_a_00128</a>.</p>
+.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
@@ -212,7 +212,7 @@ ISSN 0899-7667, 1530-888X, doi: <a href='https://doi.org/10.1162/NECO_a_00128'>1
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
 
 <span class='co'>## COMPARE WITH STANDARD GMM</span>
 <span class='va'>cl.gmm</span> <span class='op'>=</span> <span class='fu'><a href='gmm.html'>gmm</a></span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

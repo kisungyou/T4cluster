@@ -51,7 +51,7 @@
 $$f(x; \left\lbrace \mu_k, \Sigma_k \right\rbrace_{k=1}^K) = \sum_{k=1}^K w_k N(x; \mu_k, \Sigma_k)$$
 with parameters \(w_k\)'s for cluster weights, \(\mu_k\)'s for class means, and \(\Sigma_k\)'s for class covariances. 
 This function is a wrapper for Armadillo's GMM function, which supports two types of covariance models." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -108,19 +108,19 @@ This function is a wrapper for Armadillo's GMM function, which supports two type
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -139,7 +139,7 @@ This function is a wrapper for Armadillo's GMM function, which supports two type
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Finite Gaussian Mixture Model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_gmm.R'><code>R/algorithm_gmm.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_gmm.R'><code>R/algorithm_gmm.R</code></a></small>
     <div class="hidden name"><code>gmm.Rd</code></div>
     </div>
 
@@ -196,7 +196,7 @@ This function is a wrapper for <span class="pkg">Armadillo</span>'s GMM function
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>  
 
 <span class='co'>## CLUSTERING WITH DIFFERENT K VALUES</span>
 <span class='va'>cl2</span> <span class='op'>=</span> <span class='fu'>gmm</span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

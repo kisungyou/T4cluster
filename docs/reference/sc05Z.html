@@ -52,7 +52,7 @@ bandwidth parameters where \(\sigma_i\) is the distance from a point \(x_i\) to 
 nearest neighbor. Then the affinity matrix is defined as
 $$A_{ij} = \exp(-d(x_i, d_j)^2 / \sigma_i \sigma_j)$$ and the standard 
 spectral clustering of Ng, Jordan, and Weiss (scNJW) is applied." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -109,19 +109,19 @@ spectral clustering of Ng, Jordan, and Weiss (scNJW) is applied." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -140,7 +140,7 @@ spectral clustering of Ng, Jordan, and Weiss (scNJW) is applied." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Spectral Clustering by Zelnik-Manor and Perona (2005)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_sc05Z.R'><code>R/algorithm_sc05Z.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_sc05Z.R'><code>R/algorithm_sc05Z.R</code></a></small>
     <div class="hidden name"><code>sc05Z.Rd</code></div>
     </div>
 
@@ -206,7 +206,7 @@ MIT Press.</p>
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
 
 <span class='co'>## CLUSTERING WITH DIFFERENT K VALUES</span>
 <span class='va'>cl2</span> <span class='op'>=</span> <span class='fu'>sc05Z</span><span class='op'>(</span><span class='va'>X</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>

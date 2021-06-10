@@ -2,7 +2,7 @@ Package: T4cluster
 Type: Package
 Title: Tools for Cluster Analysis
 Version: 0.1.2
-Authors@R: c(person("Kisung", "You", role = c("aut", "cre"), email = "kyoustat@gmail.com",comment=c(ORCID="0000-0002-8584-459X")))
+Authors@R: c(person("Kisung", "You", role = c("aut", "cre"), email = "kisungyou@outlook.com",comment=c(ORCID="0000-0002-8584-459X")))
 Encoding: UTF-8
 Description: Cluster analysis is one of the most fundamental problems in data science. We provide a variety of algorithms from clustering to the learning on the space of partitions. See Hennig, Meila, and Rocci (2016, ISBN:9781466551886) for general exposition to cluster analysis.
 License: MIT + file LICENSE
@@ -21,8 +21,8 @@ Imports:
     scatterplot3d,
     stats,
     utils
-URL: http://kyoustat.com/T4cluster/
-BugReports: https://github.com/kyoustat/T4cluster/issues
+URL: http://kisungyou.com/T4cluster/
+BugReports: https://github.com/kisungyou/T4cluster/issues
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
 RoxygenNote: 7.1.1

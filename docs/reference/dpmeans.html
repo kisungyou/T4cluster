@@ -53,7 +53,7 @@ the \(\lambda\) value is, the smaller the number of clusters is attained.
 In addition to the original paper, we added an option to randomly permute 
 an order of updating for each observation's membership as a common 
 heuristic in the literature of cluster analysis." />
-<meta property="og:image" content="https://kyoustat.com/T4cluster/logo.png" />
+<meta property="og:image" content="https://kisungyou.com/T4cluster/logo.png" />
 
 
 
@@ -110,19 +110,19 @@ heuristic in the literature of cluster analysis." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://twitter.com/kyoustat">
+  <a href="https://twitter.com/kisung_you">
     <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/kyoustat/T4cluster">
+  <a href="https://github.com/kisungyou/T4cluster">
     <span class="fas fa-github"></span>
      
   </a>
 </li>
 <li>
-  <a href="../mailto:kyoustat@gmail.com">
+  <a href="../mailto:kisungyou@outlook.com">
     <span class="fas fa-envelope"></span>
      
   </a>
@@ -141,7 +141,7 @@ heuristic in the literature of cluster analysis." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DP-Means Clustering</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kyoustat/T4cluster/blob/master/R/algorithm_dpmeans.R'><code>R/algorithm_dpmeans.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kisungyou/T4cluster/blob/master/R/algorithm_dpmeans.R'><code>R/algorithm_dpmeans.R</code></a></small>
     <div class="hidden name"><code>dpmeans.Rd</code></div>
     </div>
 
@@ -203,7 +203,7 @@ ISBN 978-1-4503-1285-1.</p>
 <span class='va'>lab</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>## EMBEDDING WITH PCA</span>
-<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kyoustat.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
 
 <span class='co'>## CLUSTERING WITH DIFFERENT LAMBDA VALUES</span>
 <span class='va'>dpm1</span> <span class='op'>=</span> <span class='fu'>dpmeans</span><span class='op'>(</span><span class='va'>X</span>, lambda<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>
