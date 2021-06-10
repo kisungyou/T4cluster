@@ -10,28 +10,28 @@
 #' 
 #' @return a named list containing with \eqn{m = nk}:\describe{
 #' \item{data}{an \eqn{(m\times 2)} data matrix.}
-#' \item{class}{length-\eqn{m} vector for class label.}
+#' \item{label}{a length-\eqn{m} vector(factor) for class labels.}
 #' }
 #' 
 #' @examples 
 #' \donttest{
 #' ## generate data
-#' donut2 = genDonuts(k=2)
-#' donut3 = genDonuts(k=3)
-#' donut4 = genDonuts(k=4)
+#' donut2 = genDONUTS(k=2)
+#' donut3 = genDONUTS(k=3)
+#' donut4 = genDONUTS(k=4)
 #' 
 #' ## visualize
 #' opar <- par(no.readonly=TRUE)
 #' par(mfrow=c(1,3), pty="s")
-#' plot(donut2$data, col=donut2$class, pch=19, main="k=2")
-#' plot(donut3$data, col=donut3$class, pch=19, main="k=3")
-#' plot(donut4$data, col=donut4$class, pch=19, main="k=4")
+#' plot(donut2$data, col=donut2$label, pch=19, main="k=2")
+#' plot(donut3$data, col=donut3$label, pch=19, main="k=3")
+#' plot(donut4$data, col=donut4$label, pch=19, main="k=4")
 #' par(opar)
 #' }
 #' 
 #' @concept data
 #' @export
-genDonuts <- function(n=50, k=2, sd=0.1){
+genDONUTS <- function(n=50, k=2, sd=0.1){
   # parameters
   myn  = max(1, round(n))
   myk  = max(2, round(k))
@@ -50,6 +50,6 @@ genDonuts <- function(n=50, k=2, sd=0.1){
   # return
   output = list()
   output$data  = dat
-  output$class = lab
+  output$label = factor(lab)
   return(output)
 }

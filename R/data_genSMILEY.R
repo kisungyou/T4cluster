@@ -14,9 +14,9 @@
 #' @examples 
 #' \donttest{
 #' ## Generate SMILEY Data with Difference Noise Levels
-#' s10 = gensmiley(200, sd=0.1)
-#' s25 = gensmiley(200, sd=0.25)
-#' s50 = gensmiley(200, sd=0.5)
+#' s10 = genSMILEY(200, sd=0.1)
+#' s25 = genSMILEY(200, sd=0.25)
+#' s50 = genSMILEY(200, sd=0.5)
 #' 
 #' ## Visualize
 #' opar <- par(no.readonly=TRUE)
@@ -30,7 +30,7 @@
 #' @seealso \code{\link[mlbench]{mlbench.smiley}}
 #' @concept data
 #' @export
-gensmiley <- function(n=496, sd=0.1){
+genSMILEY <- function(n=496, sd=0.1){
   # parameters
   myn  <- max(50, round(n))
   mysd <- as.double(sd)

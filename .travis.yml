@@ -32,13 +32,18 @@ r:
   - release
 
 r-packages:
-  - Rcpp
-  - Rdpack
-  - Rdimtools
-  - maotai
   - stats
-  - fda
   - utils
+  - Rcpp
+  - RcppArmadillo
+  - Rdimtools
+  - Rdpack
+  - RSpectra
+  - maotai
+  - knitr
+  - rmarkdown
+  - Rdpack
+  - fda
 
 env:
   global:
