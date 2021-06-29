@@ -57,6 +57,10 @@ gmm_w2barycenter <- function(weight, mean, vars) {
     .Call('_T4cluster_gmm_w2barycenter', PACKAGE = 'T4cluster', weight, mean, vars)
 }
 
+gmm_03F <- function(X, k, maxiter, usediag, lowdim, nruns) {
+    .Call('_T4cluster_gmm_03F', PACKAGE = 'T4cluster', X, k, maxiter, usediag, lowdim, nruns)
+}
+
 arma_kmeans_random <- function(X, k, maxiter) {
     .Call('_T4cluster_arma_kmeans_random', PACKAGE = 'T4cluster', X, k, maxiter)
 }

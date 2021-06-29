@@ -191,6 +191,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// gmm_03F
+arma::mat gmm_03F(arma::mat& X, int k, int maxiter, bool usediag, int lowdim, int nruns);
+RcppExport SEXP _T4cluster_gmm_03F(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP, SEXP usediagSEXP, SEXP lowdimSEXP, SEXP nrunsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< bool >::type usediag(usediagSEXP);
+    Rcpp::traits::input_parameter< int >::type lowdim(lowdimSEXP);
+    Rcpp::traits::input_parameter< int >::type nruns(nrunsSEXP);
+    rcpp_result_gen = Rcpp::wrap(gmm_03F(X, k, maxiter, usediag, lowdim, nruns));
+    return rcpp_result_gen;
+END_RCPP
+}
 // arma_kmeans_random
 Rcpp::List arma_kmeans_random(arma::mat& X, int k, int maxiter);
 RcppExport SEXP _T4cluster_arma_kmeans_random(SEXP XSEXP, SEXP kSEXP, SEXP maxiterSEXP) {
@@ -707,6 +723,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_gmm_density", (DL_FUNC) &_T4cluster_gmm_density, 4},
     {"_T4cluster_gmm_pdist_wass2", (DL_FUNC) &_T4cluster_gmm_pdist_wass2, 2},
     {"_T4cluster_gmm_w2barycenter", (DL_FUNC) &_T4cluster_gmm_w2barycenter, 3},
+    {"_T4cluster_gmm_03F", (DL_FUNC) &_T4cluster_gmm_03F, 6},
     {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
     {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
     {"_T4cluster_sc_2015LB_commute", (DL_FUNC) &_T4cluster_sc_2015LB_commute, 2},

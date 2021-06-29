@@ -60,6 +60,8 @@ iteration iter may be set to 0 for which the paper denotes it as EKSS-0." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -81,9 +83,15 @@ iteration iter may be set to 0 for which the paper denotes it as EKSS-0." />
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -113,19 +121,19 @@ iteration iter may be set to 0 for which the paper denotes it as EKSS-0." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/kisung_you">
-    <span class="fas fa-twitter"></span>
+    <span class="fa fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/kisungyou/T4cluster">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
 <li>
   <a href="../mailto:kisungyou@outlook.com">
-    <span class="fas fa-envelope"></span>
+    <span class="fa fa-envelope"></span>
      
   </a>
 </li>
@@ -158,7 +166,7 @@ algorithm is to utilize multiple partially-correct information. At the extreme c
 iteration <code>iter</code> may be set to 0 for which the paper denotes it as EKSS-0.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k <span class='op'>=</span> <span class='fl'>2</span>, d <span class='op'>=</span> <span class='fl'>2</span>, q <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>0.75</span><span class='op'>)</span>, B <span class='op'>=</span> <span class='fl'>500</span>, iter <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k <span class='op'>=</span> <span class='fl'>2</span>, d <span class='op'>=</span> <span class='fl'>2</span>, q <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>0.75</span><span class='op'>)</span>, B <span class='op'>=</span> <span class='fl'>500</span>, iter <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,48 +210,49 @@ iteration <code>iter</code> may be set to 0 for which the paper denotes it as EK
     <p>Lipor J, Hong D, Tan YS, Balzano L (2021). “Subspace Clustering Using Ensembles of \(K\)-Subspaces.” arXiv:1709.04744.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'>## generate a toy example</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>tester</span> <span class='op'>=</span> <span class='fu'><a href='genLP.html'>genLP</a></span><span class='op'>(</span>n<span class='op'>=</span><span class='fl'>100</span>, nl<span class='op'>=</span><span class='fl'>2</span>, np<span class='op'>=</span><span class='fl'>1</span>, iso.var<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span>
-<span class='va'>data</span>   <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>data</span>
-<span class='va'>label</span>  <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>class</span>
-
-<span class='co'>## do PCA for data reduction</span>
-<span class='va'>proj</span> <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>vectors</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>
-<span class='va'>dat2</span> <span class='op'>=</span> <span class='va'>data</span><span class='op'>%*%</span><span class='va'>proj</span>
-
-<span class='co'>## run EKSS algorithm with k=2,3,4 with EKSS-0 and 5 iterations</span>
-<span class='va'>out2zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>out3zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>out4zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span>
-
-<span class='va'>out2iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>2</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>out3iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
-<span class='va'>out4iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>4</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
-
-<span class='co'>## extract label information</span>
-<span class='va'>lab2zero</span> <span class='op'>=</span> <span class='va'>out2zero</span><span class='op'>$</span><span class='va'>cluster</span>
-<span class='va'>lab3zero</span> <span class='op'>=</span> <span class='va'>out3zero</span><span class='op'>$</span><span class='va'>cluster</span>
-<span class='va'>lab4zero</span> <span class='op'>=</span> <span class='va'>out4zero</span><span class='op'>$</span><span class='va'>cluster</span>
-
-<span class='va'>lab2iter</span> <span class='op'>=</span> <span class='va'>out2iter</span><span class='op'>$</span><span class='va'>cluster</span>
-<span class='va'>lab3iter</span> <span class='op'>=</span> <span class='va'>out3iter</span><span class='op'>$</span><span class='va'>cluster</span>
-<span class='va'>lab4iter</span> <span class='op'>=</span> <span class='va'>out4iter</span><span class='op'>$</span><span class='va'>cluster</span>
-
-<span class='co'>## visualize</span>
-<span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=2"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=3"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab4zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=4"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=2"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=3"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab4iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=4"</span><span class='op'>)</span>
-</div><div class='img'><img src='EKSS-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
-<span class='co'># }</span>
-
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='co'>## generate a toy example</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tester</span> <span class='op'>=</span> <span class='fu'><a href='genLP.html'>genLP</a></span><span class='op'>(</span>n<span class='op'>=</span><span class='fl'>100</span>, nl<span class='op'>=</span><span class='fl'>2</span>, np<span class='op'>=</span><span class='fl'>1</span>, iso.var<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>data</span>   <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>data</span></span>
+<span class='r-in'><span class='va'>label</span>  <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>class</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## do PCA for data reduction</span></span>
+<span class='r-in'><span class='va'>proj</span> <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>vectors</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span></span>
+<span class='r-in'><span class='va'>dat2</span> <span class='op'>=</span> <span class='va'>data</span><span class='op'><a href='https://rdrr.io/r/base/matmult.html'>%*%</a></span><span class='va'>proj</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## run EKSS algorithm with k=2,3,4 with EKSS-0 and 5 iterations</span></span>
+<span class='r-in'><span class='va'>out2zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>out3zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>out4zero</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>out2iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>2</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>out3iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>out4iter</span> <span class='op'>=</span> <span class='fu'>EKSS</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>4</span>, iter<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## extract label information</span></span>
+<span class='r-in'><span class='va'>lab2zero</span> <span class='op'>=</span> <span class='va'>out2zero</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'><span class='va'>lab3zero</span> <span class='op'>=</span> <span class='va'>out3zero</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'><span class='va'>lab4zero</span> <span class='op'>=</span> <span class='va'>out4zero</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>lab2iter</span> <span class='op'>=</span> <span class='va'>out2iter</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'><span class='va'>lab3iter</span> <span class='op'>=</span> <span class='va'>out3iter</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'><span class='va'>lab4iter</span> <span class='op'>=</span> <span class='va'>out4iter</span><span class='op'>$</span><span class='va'>cluster</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## visualize</span></span>
+<span class='r-in'><span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=2"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=3"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab4zero</span>, main<span class='op'>=</span><span class='st'>"EKSS-0:K=4"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=2"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=3"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab4iter</span>, main<span class='op'>=</span><span class='st'>"EKSS iter:K=4"</span><span class='op'>)</span></span>
+<span class='r-plt'><img src='EKSS-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -255,11 +264,11 @@ iteration <code>iter</code> may be set to 0 for which the paper denotes it as EK
 
       <footer>
       <div class="copyright">
-  <p>Developed by Kisung You.</p>
+  <p><p>Developed by Kisung You.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -267,6 +276,8 @@ iteration <code>iter</code> may be set to 0 for which the paper denotes it as EK
 
   
 
+
+  
 
   </body>
 </html>

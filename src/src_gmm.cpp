@@ -25,6 +25,7 @@ using namespace arma;
  * (01) gmm_armadillo : use Armadillo's native routine for Gaussian Mixture
  * (02) gmm_11R       : Regularized Covariance
  * (03) gmm_16Gfix    : use fixed weights
+ * (04) gmm_03F       : single run of probability
  */
 arma::vec eval_gaussian(arma::mat X, arma::rowvec mu, arma::mat Sig, bool logreturn=false){
   // parameters
@@ -788,4 +789,83 @@ Rcpp::List gmm_w2barycenter(arma::vec &weight, arma::mat &mean, arma::cube &vars
   output["mean"]     = out_mean;
   output["variance"] = oldvar;
   return(output);
+}
+
+
+// (04) gmm_03F : single run of probability ====================================
+arma::mat gmm_03F_single(arma::mat Xproj, int kk, int maxiter, bool usediag){
+  // parameters
+  int nobs = Xproj.n_rows;
+  arma::mat Xlowt = arma::trans(Xproj);
+  
+  // Run a model with case branching
+  arma::mat probmat(nobs, kk, fill::zeros);
+  if (usediag==true){ // use diagonal
+    arma::gmm_diag model;
+    bool status = model.learn(Xlowt, kk, maha_dist, random_subset, 5, maxiter, 1e-11, false);
+    if (status==false){
+      Rcpp::stop("* gmm03F : Fitting GMM with diagonal covariance failed.");
+    } else {
+      // successful, let's take out the elements and return
+      
+      arma::mat diagcovs = model.dcovs;
+      int p = diagcovs.n_rows;
+      int k = diagcovs.n_cols;
+      arma::cube myfcovs(p,p,k,fill::zeros);
+      for (int i=0; i<k; i++){
+        myfcovs.slice(i) = arma::diagmat(diagcovs.col(i));
+      }
+      probmat = gmm_standard_gamma(Xproj, arma::trans(model.means), myfcovs, arma::trans(model.hefts));
+    }
+  } else {
+    arma::gmm_full model;
+    bool status = model.learn(Xlowt, kk, maha_dist, random_subset, 5, maxiter, 1e-11, false);
+    if (status==false){
+      Rcpp::stop("* gmm03F : Fitting GMM with full covariance failed.");
+    } else {
+      probmat = gmm_standard_gamma(Xproj, arma::trans(model.means), model.fcovs, arma::trans(model.hefts));
+    }
+  }
+  
+  // pairwise similarity
+  arma::rowvec tgti(kk,fill::zeros);
+  arma::rowvec tgtj(kk,fill::zeros);
+  arma::mat simmat(nobs,nobs,fill::zeros);
+  for (int i=0; i<(nobs-1); i++){
+    tgti = probmat.row(i);
+    for (int j=(i+1); j<nobs; j++){
+      tgtj = probmat.row(j);
+      simmat(i,j) = arma::dot(tgti,tgtj);
+      simmat(j,i) = simmat(i,j);
+    }
+  }
+  
+  return(simmat);
+}
+
+// [[Rcpp::export]]
+arma::mat gmm_03F(arma::mat& X, int k, int maxiter, bool usediag, int lowdim, int nruns){
+  // parameters
+  int n = X.n_rows; 
+  int p = X.n_cols;
+  arma::mat proj(p,lowdim,arma::fill::zeros);
+  arma::mat Xproj(n,lowdim,arma::fill::zeros);
+  
+  arma::cube simcube(n,n,nruns,fill::zeros);
+  arma::mat  simmat(n,n,fill::zeros);
+  
+  
+  // iterations
+  for (int it=0; it<nruns; it++){
+    // random projection
+    proj.randn();
+    Xproj = X*proj; 
+    
+    // compute similarity matrix
+    simcube.slice(it) = gmm_03F_single(Xproj, k, maxiter, usediag);
+  }
+  
+  // return
+  simmat = arma::mean(simcube, 2);
+  return(simmat);
 }

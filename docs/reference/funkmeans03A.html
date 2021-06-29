@@ -56,6 +56,8 @@ due to nice properties. However, we allow other types of basis as well for conve
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -77,9 +79,15 @@ due to nice properties. However, we allow other types of basis as well for conve
 </script>
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -109,19 +117,19 @@ due to nice properties. However, we allow other types of basis as well for conve
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/kisung_you">
-    <span class="fas fa-twitter"></span>
+    <span class="fa fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/kisungyou/T4cluster">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
 <li>
   <a href="../mailto:kisungyou@outlook.com">
-    <span class="fas fa-envelope"></span>
+    <span class="fa fa-envelope"></span>
      
   </a>
 </li>
@@ -150,7 +158,7 @@ B-spline basis. Note that in the original paper, authors used B-splines as the c
 due to nice properties. However, we allow other types of basis as well for convenience.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>fdobj</span>, k <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>fdobj</span>, k <span class='op'>=</span> <span class='fl'>2</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,43 +199,44 @@ ISSN 0303-6898, 1467-9469, doi: <a href='https://doi.org/10.1111/1467-9469.00350
 .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
-<span class='co'>#                     two types of curves</span>
-<span class='co'>#</span>
-<span class='co'># type 1 : sin(x) + perturbation; 20 OF THESE ON [0, 2*PI]</span>
-<span class='co'># type 2 : cos(x) + perturbation; 20 OF THESE ON [0, 2*PI]</span>
-<span class='co'># type 3 : sin(x) + cos(0.5x)   ; 20 OF THESE ON [0, 2*PI]</span>
-<span class='co'># -------------------------------------------------------------</span>
-<span class='co'>## PREPARE : USE 'fda' PACKAGE</span>
-<span class='co'>#  Generate Raw Data</span>
-<span class='va'>datx</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span>from<span class='op'>=</span><span class='fl'>0</span>, to<span class='op'>=</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span>, length.out<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
-<span class='va'>daty</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>60</span><span class='op'>)</span><span class='op'>)</span>
-<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>{</span>
-  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span>    <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
-  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>+</span><span class='fl'>20</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
-  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>+</span><span class='fl'>40</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>*</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
-<span class='op'>}</span>
-<span class='co'>#  Wrap as 'fd' object</span>
-<span class='va'>mybasis</span> <span class='op'>&lt;-</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/create.bspline.basis.html'>create.bspline.basis</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>)</span>, nbasis<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>myfdobj</span> <span class='op'>&lt;-</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/smooth.basis.html'>smooth.basis</a></span><span class='op'>(</span><span class='va'>datx</span>, <span class='va'>daty</span>, <span class='va'>mybasis</span><span class='op'>)</span><span class='op'>$</span><span class='va'>fd</span>
-
-<span class='co'>## RUN THE ALGORITHM WITH K=2,3,4</span>
-<span class='va'>fk2</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>fk3</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>fk4</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span>
-
-<span class='co'>## FUNCTIONAL PCA FOR VISUALIZATION</span>
-<span class='va'>embed</span> <span class='op'>=</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/pca.fd.html'>pca.fd</a></span><span class='op'>(</span><span class='va'>myfdobj</span>, nharm<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>score</span>
-
-<span class='co'>## VISUALIZE</span>
-<span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk2</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=2"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk3</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=3"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk4</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=4"</span><span class='op'>)</span>
-</div><div class='img'><img src='funkmeans03A-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
-
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># -------------------------------------------------------------</span></span>
+<span class='r-in'><span class='co'>#                     two types of curves</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># type 1 : sin(x) + perturbation; 20 OF THESE ON [0, 2*PI]</span></span>
+<span class='r-in'><span class='co'># type 2 : cos(x) + perturbation; 20 OF THESE ON [0, 2*PI]</span></span>
+<span class='r-in'><span class='co'># type 3 : sin(x) + cos(0.5x)   ; 20 OF THESE ON [0, 2*PI]</span></span>
+<span class='r-in'><span class='co'># -------------------------------------------------------------</span></span>
+<span class='r-in'><span class='co'>## PREPARE : USE 'fda' PACKAGE</span></span>
+<span class='r-in'><span class='co'>#  Generate Raw Data</span></span>
+<span class='r-in'><span class='va'>datx</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span>from<span class='op'>=</span><span class='fl'>0</span>, to<span class='op'>=</span><span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span>, length.out<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>daty</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>60</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span>    <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>+</span><span class='fl'>20</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>daty</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>+</span><span class='fl'>40</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span><span class='op'>(</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>cos</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>*</span><span class='va'>datx</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>100</span>, sd<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='co'>#  Wrap as 'fd' object</span></span>
+<span class='r-in'><span class='va'>mybasis</span> <span class='op'>&lt;-</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/create.bspline.basis.html'>create.bspline.basis</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>2</span><span class='op'>*</span><span class='va'>pi</span><span class='op'>)</span>, nbasis<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>myfdobj</span> <span class='op'>&lt;-</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/smooth.basis.html'>smooth.basis</a></span><span class='op'>(</span><span class='va'>datx</span>, <span class='va'>daty</span>, <span class='va'>mybasis</span><span class='op'>)</span><span class='op'>$</span><span class='va'>fd</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## RUN THE ALGORITHM WITH K=2,3,4</span></span>
+<span class='r-in'><span class='va'>fk2</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fk3</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>fk4</span> <span class='op'>=</span> <span class='fu'>funkmeans03A</span><span class='op'>(</span><span class='va'>myfdobj</span>, k<span class='op'>=</span><span class='fl'>4</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## FUNCTIONAL PCA FOR VISUALIZATION</span></span>
+<span class='r-in'><span class='va'>embed</span> <span class='op'>=</span> <span class='fu'>fda</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/fda/man/pca.fd.html'>pca.fd</a></span><span class='op'>(</span><span class='va'>myfdobj</span>, nharm<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>score</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## VISUALIZE</span></span>
+<span class='r-in'><span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk2</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=2"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk3</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=3"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>embed</span>, col<span class='op'>=</span><span class='va'>fk4</span><span class='op'>$</span><span class='va'>cluster</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"K=4"</span><span class='op'>)</span></span>
+<span class='r-plt'><img src='funkmeans03A-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -239,11 +248,11 @@ ISSN 0303-6898, 1467-9469, doi: <a href='https://doi.org/10.1111/1467-9469.00350
 
       <footer>
       <div class="copyright">
-  <p>Developed by Kisung You.</p>
+  <p><p>Developed by Kisung You.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -251,6 +260,8 @@ ISSN 0303-6898, 1467-9469, doi: <a href='https://doi.org/10.1111/1467-9469.00350
 
   
 
+
+  
 
   </body>
 </html>
