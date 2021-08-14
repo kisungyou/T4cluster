@@ -27,7 +27,6 @@
 #' par(opar)
 #' }
 #' 
-#' @seealso \code{\link[mlbench]{mlbench.smiley}}
 #' @concept data
 #' @export
 genSMILEY <- function(n=496, sd=0.1){

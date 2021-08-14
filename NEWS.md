@@ -4,7 +4,7 @@
 
 # T4cluster 0.1.1
 
-* Added some functionalities.
+* Added several functionalities.
 
 # T4cluster 0.1.0
 

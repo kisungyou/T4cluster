@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/T4cluster)](https://CRAN.R-project.org/package=T4cluster)
 [![Travis build
 status](https://travis-ci.com/kisungyou/T4cluster.svg?branch=master)](https://travis-ci.com/kisungyou/T4cluster)
 [![](https://cranlogs.r-pkg.org/badges/T4cluster)](https://cran.r-project.org/package=T4cluster)
@@ -51,7 +53,7 @@ dataset, which can be generated as follows;
 library(T4cluster)
 
 # generate the data
-smiley = T4cluster::gensmiley(n=200)
+smiley = T4cluster::genSMILEY(n=200)
 data   = smiley$data
 label  = smiley$label
 

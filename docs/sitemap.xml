@@ -55,28 +55,16 @@
     <loc>https://kisungyou.com/T4cluster/reference/funkmeans03A.html</loc>
   </url>
   <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gccenter.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gcsum.html</loc>
-  </url>
-  <url>
     <loc>https://kisungyou.com/T4cluster/reference/gen3S.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/genDONUTS.html</loc>
   </url>
   <url>
-    <loc>https://kisungyou.com/T4cluster/reference/genDonuts.html</loc>
-  </url>
-  <url>
     <loc>https://kisungyou.com/T4cluster/reference/genLP.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/genSMILEY.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gensmiley.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/gmm.html</loc>
@@ -89,60 +77,6 @@
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/gmm16G.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmbary.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdensity.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdist.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistAW.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistCS.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistJR.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistKL.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistL2.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistMCOT.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmdistTSL.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmpred.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmsample.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmmscore.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmr1990S.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmr2003W.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmr2007R.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmrhbam.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/gmrpbam.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/gskmeans.html</loc>
@@ -163,16 +97,10 @@
     <loc>https://kisungyou.com/T4cluster/reference/kmeanspp.html</loc>
   </url>
   <url>
-    <loc>https://kisungyou.com/T4cluster/reference/msm.html</loc>
-  </url>
-  <url>
     <loc>https://kisungyou.com/T4cluster/reference/pcm.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/predict.MSM.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/predict.msm.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/psm.html</loc>
@@ -203,8 +131,5 @@
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/spkmeans.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/reference/ssc.html</loc>
   </url>
 </urlset>

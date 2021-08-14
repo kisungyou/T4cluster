@@ -38,7 +38,4 @@ par(opar)
 }
 
 }
-\seealso{
-\code{\link[mlbench]{mlbench.smiley}}
-}
 \concept{data}

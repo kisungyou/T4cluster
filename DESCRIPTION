@@ -21,7 +21,7 @@ Imports:
     scatterplot3d,
     stats,
     utils
-URL: http://kisungyou.com/T4cluster/
+URL: https://kisungyou.com/T4cluster/
 BugReports: https://github.com/kisungyou/T4cluster/issues
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
