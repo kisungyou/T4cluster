@@ -42,12 +42,15 @@ reference:
   - title: "[4] Subspace Clustering"
     contents:
       - has_concept("subspace")
-  - title: "[5] Measures : Comparing Two Clusterings"
+  - title: "[5] Measures : Clustering Validity/Quality Index"
+    contents:
+      - has_concept("quality")
+  - title: "[6] Measures : Comparing Two Clusterings"
     contents:
       - has_concept("comparison")
-  - title: "[6] Learning with Multiple Clusterings"
+  - title: "[7] Learning with Multiple Clusterings"
     contents:
       - has_concept("soc")
-  - title: "[7] Data : Loaded and Generators"
+  - title: "[8] Data : Loaded and Generators"
     contents:
       - has_concept("data")

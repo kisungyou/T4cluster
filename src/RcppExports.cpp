@@ -239,6 +239,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// index_CH
+double index_CH(arma::mat& X, arma::uvec label);
+RcppExport SEXP _T4cluster_index_CH(SEXP XSEXP, SEXP labelSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< arma::uvec >::type label(labelSEXP);
+    rcpp_result_gen = Rcpp::wrap(index_CH(X, label));
+    return rcpp_result_gen;
+END_RCPP
+}
 // sc_2015LB_commute
 arma::mat sc_2015LB_commute(arma::mat& D, int K);
 RcppExport SEXP _T4cluster_sc_2015LB_commute(SEXP DSEXP, SEXP KSEXP) {
@@ -731,6 +743,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_gmm_03F", (DL_FUNC) &_T4cluster_gmm_03F, 6},
     {"_T4cluster_arma_kmeans_random", (DL_FUNC) &_T4cluster_arma_kmeans_random, 3},
     {"_T4cluster_arma_kmeans_kmeanspp", (DL_FUNC) &_T4cluster_arma_kmeans_kmeanspp, 4},
+    {"_T4cluster_index_CH", (DL_FUNC) &_T4cluster_index_CH, 2},
     {"_T4cluster_sc_2015LB_commute", (DL_FUNC) &_T4cluster_sc_2015LB_commute, 2},
     {"_T4cluster_cpp_scNJW", (DL_FUNC) &_T4cluster_cpp_scNJW, 5},
     {"_T4cluster_cpp_scSM", (DL_FUNC) &_T4cluster_cpp_scSM, 5},

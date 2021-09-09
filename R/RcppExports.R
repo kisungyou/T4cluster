@@ -69,6 +69,10 @@ arma_kmeans_kmeanspp <- function(X, init, k, maxiter) {
     .Call('_T4cluster_arma_kmeans_kmeanspp', PACKAGE = 'T4cluster', X, init, k, maxiter)
 }
 
+index_CH <- function(X, label) {
+    .Call('_T4cluster_index_CH', PACKAGE = 'T4cluster', X, label)
+}
+
 sc_2015LB_commute <- function(D, K) {
     .Call('_T4cluster_sc_2015LB_commute', PACKAGE = 'T4cluster', D, K)
 }

@@ -343,11 +343,13 @@ arma::mat cvi_helper_classmean(arma::mat X, arma::uvec label){
 }
 arma::field<arma::uvec> cvi_helper_classindex(arma::uvec label){
   // int N = label.n_elem;
-  int K = label.max() + 1;
+  
+  arma::uvec unique_label = arma::unique(label);
+  int K = unique_label.n_elem;
   
   arma::field<arma::uvec> output(K);
   for (int k=0; k<K; k++){
-    output(k) = arma::find(label==k);
+    output(k) = arma::find(label==unique_label(k));
   }
   return(output);
 }
