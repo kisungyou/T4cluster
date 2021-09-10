@@ -11,7 +11,7 @@
 #' @importFrom ADMM admm.bp
 #' @importFrom lpSolve lp
 #' @importFrom Rdimtools do.pca
-#' @importFrom stats as.dist dist rnorm runif hclust cutree kmeans density rmultinom
+#' @importFrom stats as.dist dist rnorm runif hclust cutree kmeans density rmultinom median
 #' @importFrom utils packageVersion getFromNamespace 
 #' @importFrom Rcpp evalCpp
 #' @importFrom rstiefel rustiefel
