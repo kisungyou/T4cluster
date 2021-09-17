@@ -35,6 +35,7 @@
 #' par(opar)
 #' }
 #' 
+#' @concept quality
 #' @export
 quality.sil <- function(data, cluster){
   ## MAIN COMPUTATION

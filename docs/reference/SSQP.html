@@ -56,8 +56,6 @@ used as an affinity matrix for spectral clustering." />
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -79,15 +77,9 @@ used as an affinity matrix for spectral clustering." />
 </script>
 
 
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -158,7 +150,7 @@ where \(X\in\mathbf{R}^{p\times n}\) is a column-stacked data matrix. The comput
 used as an affinity matrix for spectral clustering.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k <span class='op'>=</span> <span class='fl'>2</span>, lambda <span class='op'>=</span> <span class='fl'>1e-05</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
+    <pre class="usage"><span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k <span class='op'>=</span> <span class='fl'>2</span>, lambda <span class='op'>=</span> <span class='fl'>1e-05</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -200,38 +192,37 @@ used as an affinity matrix for spectral clustering.</p>
 In <em>Proceedings of the Twenty-Fifth AAAI Conference on Artificial Intelligence</em>,  AAAI'11, 519--524.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># \donttest{</span></span>
-<span class='r-in'><span class='co'>## generate a toy example</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>tester</span> <span class='op'>=</span> <span class='fu'><a href='genLP.html'>genLP</a></span><span class='op'>(</span>n<span class='op'>=</span><span class='fl'>100</span>, nl<span class='op'>=</span><span class='fl'>2</span>, np<span class='op'>=</span><span class='fl'>1</span>, iso.var<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>data</span>   <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>data</span></span>
-<span class='r-in'><span class='va'>label</span>  <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>class</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## do PCA for data reduction</span></span>
-<span class='r-in'><span class='va'>proj</span> <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>vectors</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span></span>
-<span class='r-in'><span class='va'>dat2</span> <span class='op'>=</span> <span class='va'>data</span><span class='op'><a href='https://rdrr.io/r/base/matmult.html'>%*%</a></span><span class='va'>proj</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## run SSQP for k=3 with different lambda values</span></span>
-<span class='r-in'><span class='va'>out1</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1e-2</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>out2</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>out3</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1e+2</span><span class='op'>)</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## extract label information</span></span>
-<span class='r-in'><span class='va'>lab1</span> <span class='op'>=</span> <span class='va'>out1</span><span class='op'>$</span><span class='va'>cluster</span></span>
-<span class='r-in'><span class='va'>lab2</span> <span class='op'>=</span> <span class='va'>out2</span><span class='op'>$</span><span class='va'>cluster</span></span>
-<span class='r-in'><span class='va'>lab3</span> <span class='op'>=</span> <span class='va'>out3</span><span class='op'>$</span><span class='va'>cluster</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## visualize</span></span>
-<span class='r-in'><span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab1</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1e-2"</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1"</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1e+2"</span><span class='op'>)</span></span>
-<span class='r-plt'><img src='SSQP-1.png' alt='' width='700' height='433' /></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span></span>
-<span class='r-in'><span class='co'># }</span></span>
-<span class='r-in'></span>
-</code></pre></div>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='co'>## generate a toy example</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>tester</span> <span class='op'>=</span> <span class='fu'><a href='genLP.html'>genLP</a></span><span class='op'>(</span>n<span class='op'>=</span><span class='fl'>100</span>, nl<span class='op'>=</span><span class='fl'>2</span>, np<span class='op'>=</span><span class='fl'>1</span>, iso.var<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span>
+<span class='va'>data</span>   <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>data</span>
+<span class='va'>label</span>  <span class='op'>=</span> <span class='va'>tester</span><span class='op'>$</span><span class='va'>class</span>
+
+<span class='co'>## do PCA for data reduction</span>
+<span class='va'>proj</span> <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/eigen.html'>eigen</a></span><span class='op'>(</span><span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span><span class='op'>$</span><span class='va'>vectors</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>
+<span class='va'>dat2</span> <span class='op'>=</span> <span class='va'>data</span><span class='op'>%*%</span><span class='va'>proj</span>
+
+<span class='co'>## run SSQP for k=3 with different lambda values</span>
+<span class='va'>out1</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1e-2</span><span class='op'>)</span>
+<span class='va'>out2</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>out3</span> <span class='op'>=</span> <span class='fu'>SSQP</span><span class='op'>(</span><span class='va'>data</span>, k<span class='op'>=</span><span class='fl'>3</span>, lambda<span class='op'>=</span><span class='fl'>1e+2</span><span class='op'>)</span>
+
+<span class='co'>## extract label information</span>
+<span class='va'>lab1</span> <span class='op'>=</span> <span class='va'>out1</span><span class='op'>$</span><span class='va'>cluster</span>
+<span class='va'>lab2</span> <span class='op'>=</span> <span class='va'>out2</span><span class='op'>$</span><span class='va'>cluster</span>
+<span class='va'>lab3</span> <span class='op'>=</span> <span class='va'>out3</span><span class='op'>$</span><span class='va'>cluster</span>
+
+<span class='co'>## visualize</span>
+<span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab1</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1e-2"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab2</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>dat2</span>, pch<span class='op'>=</span><span class='fl'>19</span>, cex<span class='op'>=</span><span class='fl'>0.9</span>, col<span class='op'>=</span><span class='va'>lab3</span>, main<span class='op'>=</span><span class='st'>"SSQP:lambda=1e+2"</span><span class='op'>)</span>
+</div><div class='img'><img src='SSQP-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -243,11 +234,11 @@ In <em>Proceedings of the Twenty-Fifth AAAI Conference on Artificial Intelligenc
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Kisung You.</p></p>
+  <p>Developed by Kisung You.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -255,8 +246,6 @@ In <em>Proceedings of the Twenty-Fifth AAAI Conference on Artificial Intelligenc
 
   
 
-
-  
 
   </body>
 </html>

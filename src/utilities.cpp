@@ -466,3 +466,23 @@ arma::mat  gauss_rmvnorm(int N, arma::vec mu, arma::mat var){
   }
   return(output);
 }
+
+// SECTION 8 : NUMERICAL TOOLS =================================================
+// [[Rcpp::export]]
+double integrate_1d(arma::vec &tseq, arma::vec &fval){
+  // parameters
+  int N = tseq.n_elem;
+  double output = 0.0;
+  double dt = 0.0;
+  double add_obj = 0.0;
+  
+  // iteration
+  for (int i=0;i<(N-1);i++){
+    dt = tseq(i+1)-tseq(i);
+    add_obj = (fval(i) + fval(i+1))*dt/2.0;
+    if (add_obj > arma::datum::eps){
+      output += add_obj;
+    }
+  }
+  return(output);
+}

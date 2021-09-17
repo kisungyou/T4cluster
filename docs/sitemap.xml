@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kisungyou.com/T4cluster/404.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/authors.html</loc>
-  </url>
-  <url>
     <loc>https://kisungyou.com/T4cluster/index.html</loc>
-  </url>
-  <url>
-    <loc>https://kisungyou.com/T4cluster/news/index.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/EKSS.html</loc>
@@ -47,6 +32,9 @@
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/dpmeans.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/T4cluster/reference/ephclust.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/funhclust.html</loc>
@@ -85,9 +73,6 @@
     <loc>https://kisungyou.com/T4cluster/reference/household.html</loc>
   </url>
   <url>
-    <loc>https://kisungyou.com/T4cluster/reference/index.html</loc>
-  </url>
-  <url>
     <loc>https://kisungyou.com/T4cluster/reference/kmeans.html</loc>
   </url>
   <url>
@@ -104,6 +89,12 @@
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/psm.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/T4cluster/reference/quality.CH.html</loc>
+  </url>
+  <url>
+    <loc>https://kisungyou.com/T4cluster/reference/quality.sil.html</loc>
   </url>
   <url>
     <loc>https://kisungyou.com/T4cluster/reference/sc05Z.html</loc>

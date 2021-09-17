@@ -724,6 +724,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// integrate_1d
+double integrate_1d(arma::vec& tseq, arma::vec& fval);
+RcppExport SEXP _T4cluster_integrate_1d(SEXP tseqSEXP, SEXP fvalSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec& >::type tseq(tseqSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type fval(fvalSEXP);
+    rcpp_result_gen = Rcpp::wrap(integrate_1d(tseq, fval));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_src_pcm", (DL_FUNC) &_T4cluster_src_pcm, 1},
@@ -778,6 +790,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_gmm_sample", (DL_FUNC) &_T4cluster_gmm_sample, 4},
     {"_T4cluster_gmm_loglkd", (DL_FUNC) &_T4cluster_gmm_loglkd, 4},
     {"_T4cluster_gauss_rmvnorm", (DL_FUNC) &_T4cluster_gauss_rmvnorm, 3},
+    {"_T4cluster_integrate_1d", (DL_FUNC) &_T4cluster_integrate_1d, 2},
     {NULL, NULL, 0}
 };
 

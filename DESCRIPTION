@@ -25,6 +25,6 @@ URL: https://kisungyou.com/T4cluster/
 BugReports: https://github.com/kisungyou/T4cluster/issues
 LinkingTo: Rcpp, RcppArmadillo
 RdMacros: Rdpack
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)

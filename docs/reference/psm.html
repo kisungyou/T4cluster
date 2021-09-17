@@ -59,8 +59,6 @@ psm is a measure of uncertainty embedded in any algorithms with non-deterministi
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -82,15 +80,9 @@ psm is a measure of uncertainty embedded in any algorithms with non-deterministi
 </script>
 
 
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -164,7 +156,7 @@ the Bayesian framework. However, it can also be used for non-Bayesian settings a
 <code>psm</code> is a measure of uncertainty embedded in any algorithms with non-deterministic components.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>psm</span><span class='op'>(</span><span class='va'>partitions</span><span class='op'>)</span></code></pre></div>
+    <pre class="usage"><span class='fu'>psm</span><span class='op'>(</span><span class='va'>partitions</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,35 +178,34 @@ for an observation \(i\) and \(j\) belong to the same cluster.</p>
     <div class='dont-index'><p><code><a href='pcm.html'>pcm</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='co'># -------------------------------------------------------------</span></span>
-<span class='r-in'><span class='co'>#               PSM with 'iris' dataset + k-means++</span></span>
-<span class='r-in'><span class='co'># -------------------------------------------------------------</span></span>
-<span class='r-in'><span class='co'>## PREPARE WITH SUBSET OF DATA</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>X</span>     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>lab</span>   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## EMBEDDING WITH PCA</span></span>
-<span class='r-in'><span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## RUN K-MEANS++ 100 TIMES</span></span>
-<span class='r-in'><span class='va'>partitions</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-in'><span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>{</span></span>
-<span class='r-in'>  <span class='va'>partitions</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='kmeanspp.html'>kmeanspp</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span></span>
-<span class='r-in'><span class='op'>}</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## COMPUTE PSM</span></span>
-<span class='r-in'><span class='va'>iris.psm</span> <span class='op'>=</span> <span class='fu'>psm</span><span class='op'>(</span><span class='va'>partitions</span><span class='op'>)</span></span>
-<span class='r-in'></span>
-<span class='r-in'><span class='co'>## VISUALIZATION</span></span>
-<span class='r-in'><span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, pty<span class='op'>=</span><span class='st'>"s"</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X2d</span>, col<span class='op'>=</span><span class='va'>lab</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"true label"</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/image.html'>image</a></span><span class='op'>(</span><span class='va'>iris.psm</span><span class='op'>[</span>,<span class='fl'>150</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>]</span>, axes<span class='op'>=</span><span class='cn'>FALSE</span>, main<span class='op'>=</span><span class='st'>"PSM"</span><span class='op'>)</span></span>
-<span class='r-plt'><img src='psm-1.png' alt='' width='700' height='433' /></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span></span>
-<span class='r-in'></span>
-</code></pre></div>
+    <pre class="examples"><div class='input'><span class='co'># -------------------------------------------------------------</span>
+<span class='co'>#               PSM with 'iris' dataset + k-means++</span>
+<span class='co'># -------------------------------------------------------------</span>
+<span class='co'>## PREPARE WITH SUBSET OF DATA</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
+<span class='va'>X</span>     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>
+<span class='va'>lab</span>   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'>## EMBEDDING WITH PCA</span>
+<span class='va'>X2d</span> <span class='op'>=</span> <span class='fu'>Rdimtools</span><span class='fu'>::</span><span class='fu'><a href='https://kisungyou.com/Rdimtools/reference/linear_PCA.html'>do.pca</a></span><span class='op'>(</span><span class='va'>X</span>, ndim<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>Y</span>
+
+<span class='co'>## RUN K-MEANS++ 100 TIMES</span>
+<span class='va'>partitions</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>i</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='va'>partitions</span><span class='op'>[[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>=</span> <span class='fu'><a href='kmeanspp.html'>kmeanspp</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span><span class='op'>$</span><span class='va'>cluster</span>
+<span class='op'>}</span>
+
+<span class='co'>## COMPUTE PSM</span>
+<span class='va'>iris.psm</span> <span class='op'>=</span> <span class='fu'>psm</span><span class='op'>(</span><span class='va'>partitions</span><span class='op'>)</span>
+
+<span class='co'>## VISUALIZATION</span>
+<span class='va'>opar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>no.readonly<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>mfrow<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, pty<span class='op'>=</span><span class='st'>"s"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>X2d</span>, col<span class='op'>=</span><span class='va'>lab</span>, pch<span class='op'>=</span><span class='fl'>19</span>, main<span class='op'>=</span><span class='st'>"true label"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/image.html'>image</a></span><span class='op'>(</span><span class='va'>iris.psm</span><span class='op'>[</span>,<span class='fl'>150</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>]</span>, axes<span class='op'>=</span><span class='cn'>FALSE</span>, main<span class='op'>=</span><span class='st'>"PSM"</span><span class='op'>)</span>
+</div><div class='img'><img src='psm-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='va'>opar</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -226,11 +217,11 @@ for an observation \(i\) and \(j\) belong to the same cluster.</p>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Kisung You.</p></p>
+  <p>Developed by Kisung You.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -238,8 +229,6 @@ for an observation \(i\) and \(j\) belong to the same cluster.</p>
 
   
 
-
-  
 
   </body>
 </html>

@@ -46,3 +46,4 @@ par(opar)
 }
 
 }
+\concept{quality}

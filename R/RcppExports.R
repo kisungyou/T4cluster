@@ -209,3 +209,7 @@ gauss_rmvnorm <- function(N, mu, var) {
     .Call('_T4cluster_gauss_rmvnorm', PACKAGE = 'T4cluster', N, mu, var)
 }
 
+integrate_1d <- function(tseq, fval) {
+    .Call('_T4cluster_integrate_1d', PACKAGE = 'T4cluster', tseq, fval)
+}
+

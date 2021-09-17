@@ -52,4 +52,7 @@ double gauss2dist_sl(arma::rowvec m1, arma::mat s1, arma::rowvec m2, arma::mat s
 // SECTION 7 : GAUSSIAN DISTRIBUTION
 arma::mat gauss_rmvnorm(int N, arma::vec mu, arma::mat var); // sample from a single gaussian
 
+// SECTION 8 : NUMERICAL TOOLS
+double integrate_1d(arma::vec &tseq, arma::vec &fval); // integrate 1-d discretized signal
+
 #endif

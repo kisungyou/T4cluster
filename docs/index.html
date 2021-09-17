@@ -32,8 +32,6 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -92,7 +90,7 @@
   <div class="contents col-md-9">
 <div id="tools-for-cluster-analysis-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#tools-for-cluster-analysis-" class="anchor" aria-hidden="true"></a>Tools for Cluster Analysis <a href="https://kisungyou.com/T4cluster/"><img src="reference/figures/logo.png" align="right" height="150"></a>
+<a href="#tools-for-cluster-analysis-" class="anchor"></a>Tools for Cluster Analysis <a href="https://kisungyou.com/T4cluster/"><img src="reference/figures/logo.png" align="right" height="150"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -100,30 +98,32 @@
 <ul>
 <li>Clustering with Vector-Valued Data</li>
 <li>Clustering with Functional Data</li>
+<li>Clustering with Empirical Distributions</li>
 <li>Clustering on the Unit Hypersphere</li>
 <li>Subspace Clustering</li>
 <li>Measures : Compare Two Clusterings</li>
+<li>Measures : Quality of a Clustering</li>
 <li>Learning with Multiple Clusterings</li>
 </ul>
 <p>and other utility functions for further use. If you request additional functionalities or have suggestions, please contact maintainer.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
-<p>You can install the released version of T4cluster from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the released version of T4cluster from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"T4cluster"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"T4cluster"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kisungyou/T4cluster"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"kisungyou/T4cluster"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="minimal-example--clustering-smiley-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minimal-example--clustering-smiley-data" class="anchor" aria-hidden="true"></a>Minimal Example : Clustering SMILEY Data</h2>
+<a href="#minimal-example--clustering-smiley-data" class="anchor"></a>Minimal Example : Clustering SMILEY Data</h2>
 <p><strong>T4cluster</strong> offers a variety of clustering algorithms in common interface. In this example, we show a basic pipeline with <code>smiley</code> dataset, which can be generated as follows;</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># load the library</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kisungyou.com/T4cluster/">T4cluster</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kisungyou.com/T4cluster/">T4cluster</a></span><span class="op">)</span>
 
 <span class="co"># generate the data</span>
 <span class="va">smiley</span> <span class="op">=</span> <span class="fu">T4cluster</span><span class="fu">::</span><span class="fu"><a href="reference/genSMILEY.html">genSMILEY</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">200</span><span class="op">)</span>
@@ -131,7 +131,7 @@
 <span class="va">label</span>  <span class="op">=</span> <span class="va">smiley</span><span class="op">$</span><span class="va">label</span>
 
 <span class="co"># visualize</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, col<span class="op">=</span><span class="va">label</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, main<span class="op">=</span><span class="st">"SMILEY Data"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, col<span class="op">=</span><span class="va">label</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, main<span class="op">=</span><span class="st">"SMILEY Data"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>where each component of the face is considered as one cluster - the data has 4 clusters. Here, we compare 4 different methods; (1) <em>k</em>-means (<code>kmeans</code>), (2) <em>k</em>-means++ (<code>kmeanspp</code>), (3) gaussian mixture model (<code>gmm</code>), and (4) spectral clustering with normalized cuts (<code>scNJW</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -142,11 +142,11 @@
 <span class="va">run4</span> <span class="op">=</span> <span class="fu">T4cluster</span><span class="fu">::</span><span class="fu"><a href="reference/scNJW.html">scNJW</a></span><span class="op">(</span><span class="va">data</span>, k<span class="op">=</span><span class="fl">4</span>, sigma <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>
 
 <span class="co"># visualize</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run1</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"k-means"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run2</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"k-means++"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run3</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"gmm"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run4</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"scNJW"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run1</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"k-means"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run2</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"k-means++"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run3</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"gmm"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">data</span>, pch<span class="op">=</span><span class="fl">19</span>, xlab<span class="op">=</span><span class="st">""</span>, ylab<span class="op">=</span><span class="st">""</span>, col<span class="op">=</span><span class="va">run4</span><span class="op">$</span><span class="va">cluster</span>, main<span class="op">=</span><span class="st">"scNJW"</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -154,7 +154,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2 data-toc-skip>Links</h2>
+<h2>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=T4cluster">https://​cloud.r-project.org/​package=T4cluster</a>
 </li>
@@ -164,44 +164,38 @@
 </li>
 </ul>
 </div>
-
 <div class="license">
-<h2 data-toc-skip>License</h2>
+<h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
-
-
 <div class="developers">
-<h2 data-toc-skip>Developers</h2>
+<h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Kisung You <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-8584-459X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
+  <div class="dev-status">
+<h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=T4cluster" class="external-link"><img src="https://www.r-pkg.org/badges/version/T4cluster" alt="CRAN status"></a></li>
-<li><a href="https://travis-ci.com/kisungyou/T4cluster" class="external-link"><img src="https://travis-ci.com/kisungyou/T4cluster.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://cran.r-project.org/package=T4cluster" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/T4cluster"></a></li>
+<li><a href="https://CRAN.R-project.org/package=T4cluster"><img src="https://www.r-pkg.org/badges/version/T4cluster" alt="CRAN status"></a></li>
+<li><a href="https://travis-ci.com/kisungyou/T4cluster"><img src="https://travis-ci.com/kisungyou/T4cluster.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://cran.r-project.org/package=T4cluster"><img src="https://cranlogs.r-pkg.org/badges/T4cluster"></a></li>
 </ul>
 </div>
-
-  </div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Kisung You.</p>
+  <p>Developed by Kisung You.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -209,8 +203,6 @@
 
   
 
-
-  
 
   </body>
 </html>
