@@ -21,8 +21,8 @@ gauss_w2median <- function(weight, mean, vars, maxiter = 100L, abstol = 1e-8) {
     .Call('_T4cluster_gauss_w2median', PACKAGE = 'T4cluster', weight, mean, vars, maxiter, abstol)
 }
 
-spkmeans_gibbs <- function(R, X, a_lambda, b_lambda, G, freq) {
-    .Call('_T4cluster_spkmeans_gibbs', PACKAGE = 'T4cluster', R, X, a_lambda, b_lambda, G, freq)
+spkmeans_gibbs <- function(burn_in, nsample, X, gamma_a, gamma_b, G, freq, printer) {
+    .Call('_T4cluster_spkmeans_gibbs', PACKAGE = 'T4cluster', burn_in, nsample, X, gamma_a, gamma_b, G, freq, printer)
 }
 
 eval_label <- function(X, parMU, parSIG, parPI) {

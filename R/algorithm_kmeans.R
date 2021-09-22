@@ -109,3 +109,9 @@ kmeans_SSE <- function(pdmat, label){
   }
   return(output)
 }
+#' @keywords internal
+#' @noRd
+kmeans_fast <- function(data, k){
+  output = arma_kmeans_random(t(data), k, 100)
+  return(base::apply(output$pdmat, 1, which.min))
+}

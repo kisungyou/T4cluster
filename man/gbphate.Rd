@@ -13,7 +13,13 @@ gbphate(data, k = 2, ...)
 
 \item{...}{extra parameters including \describe{
 \item{nnbd}{size of nearest neighborhood (default: 5).}
-\item{alpha}{decay parameter for Gaussian kernel exponent (default: 10).}
+\item{alpha}{decay parameter for Gaussian kernel exponent (default: 2).}
+\item{gamma_a}{hyperparameter of the Gamma prior (default: 0).}
+\item{gamma_b}{hyperparameter of the Gamma prior (default: 0).}
+\item{burn_in}{number of MCMC samples to be thrown away for burn-in (default: 50).}
+\item{nsample}{number of MCMC samples to be kept after burn-in (default: 50).}
+\item{random.start}{a logical to use random initialization or not (default: \code{TRUE}).}
+\item{print.progress}{a logical to show how much an algorithm is proceeded (default: \code{FALSE}.)}
 }}
 }
 \description{
