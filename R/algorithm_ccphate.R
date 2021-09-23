@@ -57,8 +57,7 @@ ccphate <- function(data, k=2, ...){
   ## RUN MULTIPLE SPHERICAL K-MEANS WITH EXTRINSIC DISTANCE
   myinit  = "kmeans"
   myprint = FALSE
-  mygeom  = FALSE 
-  
+
   M_h = array(0,c(myn,myn))
   I_h = array(0,c(myn,myn))
   
@@ -66,11 +65,7 @@ ccphate <- function(data, k=2, ...){
     # subsampling
     select_id  = base::sample(1:myn, my_subsize, replace=FALSE)
     select_dat = pseudoX[select_id,]
-    if (mygeom){
-      select_cpp = sp_gskmeans(select_dat, myk, myinit, 100, 1e-8, myprint)
-    } else {
-      select_cpp = sp_spkmeans(select_dat, myk, myinit, 100, 1e-8, myprint) 
-    }
+    select_cpp = sp_spkmeans(select_dat, myk, myinit, 100, 1e-8, myprint) 
     select_lab = round(as.vector(select_cpp$cluster)+1)
     
     # update I_h
@@ -104,21 +99,24 @@ ccphate <- function(data, k=2, ...){
   pseudoD = stats::as.dist(1-M)
   medoid_fun = utils::getFromNamespace("hidden_kmedoids", "maotai")
   medoid_run = medoid_fun(pseudoD, myk)$clustering
+  recovered  = as.vector(medoid_run)
+  # recovered = as.vector(sc_normalSM(M, myk, TRUE, 100)$labels)+1
   
   ## WRAP
   output  = list()
-  output$cluster   = as.vector(medoid_run)
+  output$cluster   = recovered
   output$consensus = structure(M, class="T4cluster:consensus")
   output$algorithm = "ccphate"
   return(structure(output, class="T4cluster"))
 }
 
+# graphics.off()
 # X = T4cluster::genSMILEY(n=100)
 # data = X$data
 # labs = X$label
 # 
 # fun_phate <- utils::getFromNamespace("hidden_PHATE","maotai")
-# run_phate <- fun_phate(dist(data), nbdk=10, alpha=2)
+# run_phate <- fun_phate(dist(data), nbdk=5, alpha=2)
 # pseudoX   <- base::sqrt(run_phate$P)
 # 
 # run3 = ccphate(pseudoX, k=3)
@@ -126,6 +124,7 @@ ccphate <- function(data, k=2, ...){
 # run5 = ccphate(pseudoX, k=5)
 # run6 = ccphate(pseudoX, k=6)
 # 
+# x11()
 # par(mfrow=c(4,2), pty="s")
 # image(run3$consensus, main="K=3"); plot(data, col=run3$cluster, pch=19)
 # image(run4$consensus, main="K=4"); plot(data, col=run4$cluster, pch=19)

@@ -176,7 +176,7 @@ arma::urowvec label_gmm(arma::mat data, int K, int maxiter){
 Rcpp::List sc_unnormalized(arma::mat W, int K, bool usekmeans, int maxiter){
   // build laplacian
   arma::mat A = W; 
-  A.diag().fill(0.0);
+  // A.diag().fill(0.0);
   // int  N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::mat Dmat = arma::diagmat(Dvec);
@@ -202,7 +202,7 @@ Rcpp::List sc_unnormalized(arma::mat W, int K, bool usekmeans, int maxiter){
 Rcpp::List sc_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter){
   // build laplacian 
   arma::mat A = W; 
-  A.diag().fill(0.0);
+  // A.diag().fill(0.0);
   int N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::vec Dhalfinv(N,fill::zeros);
@@ -238,7 +238,7 @@ Rcpp::List sc_normalNJW(arma::mat W, int K, bool usekmeans, int maxiter){
 Rcpp::List sc_normalSM(arma::mat W, int K, bool usekmeans, int maxiter){
   // build laplacian
   arma::mat A = W; 
-  A.diag().fill(0.0);
+  // A.diag().fill(0.0);
   int N = A.n_rows;
   arma::vec Dvec = arma::sum(A, 1);
   arma::vec Dinv(N,fill::zeros);

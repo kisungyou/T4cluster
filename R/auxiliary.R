@@ -8,6 +8,7 @@
 #  (05) gmm_check_list    : check list of gmm objects
 #  (06) gmm_barycenter    : given multiple models + support, compute opt.weight - obsolete
 #  (07) prec_twolabel     : check the labels for 'mclustcomp' import
+#  (08) check_clist       : a list of consensus matrices
 
 # (01) prec_input_matrix & prec_input_dist --------------------------------
 #' @keywords internal
@@ -178,3 +179,18 @@ prec_twolabel <- function(x, y, fname){
 }
 
 
+# (08) check_clist --------------------------------------------------------
+#' @keywords internal
+#' @noRd
+check_clist <- function(clist, fname){
+  if (!is.list(clist)){
+    stop(paste0("* ",fname," : 'clist' must be a list."))
+  }
+  vec_class = unlist(base::lapply(clist, inherits, "T4cluster:consensus"))
+  if (any(!vec_class)){
+    stop(paste0("* ",fname," : 'clist' must consist of 'T4cluster:consensus' objects."))
+  }
+  if (length(unique(unlist(base::lapply(clist, nrow))))!=1){
+    stop(paste0("* ",fname," : all consensus matrices should be of same size."))
+  }
+}
