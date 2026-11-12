@@ -45,30 +45,38 @@ import(Rdpack)
 import(ggplot2)
 import(maotai)
 importFrom(ADMM,admm.bp)
-importFrom(MASS,Null)
-importFrom(MASS,mvrnorm)
+importFrom(MASS,
+  Null,
+  mvrnorm
+)
 importFrom(Rcpp,evalCpp)
 importFrom(Rdimtools,do.pca)
-importFrom(fda,create.bspline.basis)
-importFrom(fda,eval.fd)
-importFrom(fda,pca.fd)
-importFrom(fda,smooth.basis)
+importFrom(fda,
+  create.bspline.basis,
+  eval.fd,
+  pca.fd,
+  smooth.basis
+)
 importFrom(lpSolve,lp)
 importFrom(mclustcomp,mclustcomp)
 importFrom(rstiefel,rustiefel)
 importFrom(scatterplot3d,scatterplot3d)
-importFrom(stats,as.dist)
-importFrom(stats,cutree)
-importFrom(stats,density)
-importFrom(stats,dist)
-importFrom(stats,ecdf)
-importFrom(stats,hclust)
-importFrom(stats,kmeans)
-importFrom(stats,knots)
-importFrom(stats,median)
-importFrom(stats,rmultinom)
-importFrom(stats,rnorm)
-importFrom(stats,runif)
-importFrom(utils,getFromNamespace)
-importFrom(utils,packageVersion)
+importFrom(stats,
+  as.dist,
+  cutree,
+  density,
+  dist,
+  ecdf,
+  hclust,
+  kmeans,
+  knots,
+  median,
+  rmultinom,
+  rnorm,
+  runif
+)
+importFrom(utils,
+  getFromNamespace,
+  packageVersion
+)
 useDynLib(T4cluster, .registration = TRUE)

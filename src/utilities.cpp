@@ -144,9 +144,9 @@ arma::urowvec label_kmeans(arma::mat data, int K, int maxiter){
   
   // run k-means
   arma::mat means;
-  bool status = arma::kmeans(means, arma::trans(data), K, random_subset, maxiter, false); // it returns (K x K) column means
+  bool status = arma::kmeans(means, arma::trans(data), K, random_subset, maxiter, false); // it returns (data.n_cols x K) column means
   if (status == false){
-    Rcpp::Rcout << "* k-means failed" << std::endl;
+    Rcpp::stop("k-means initialization failed; no valid labels are available.");
   }
   // need to compute pairwise distance matrix
   arma::mat kdist(K,N,fill::zeros);
@@ -165,7 +165,7 @@ arma::urowvec label_gmm(arma::mat data, int K, int maxiter){
   arma::gmm_full model;
   bool status = model.learn(data.t(), K, maha_dist, random_subset, maxiter, maxiter, 1e-10, false);
   if (status == false){
-    Rcpp::Rcout << "* GMM failed" << std::endl;
+    Rcpp::stop("GMM initialization failed; no valid labels are available.");
   }
   urowvec gaus_ids = model.assign(data.t(), prob_dist);
   return(gaus_ids);

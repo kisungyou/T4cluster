@@ -1,3 +1,11 @@
+# T4cluster 0.1.5
+
+* 
+
+# T4cluster 0.1.4
+
+* Minor updates to documentation.
+
 # T4cluster 0.1.3
 
 * Support for clustering empirical distributions initiated.

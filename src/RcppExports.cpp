@@ -433,6 +433,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sp_gskmeans_control
+Rcpp::List sp_gskmeans_control(arma::mat& X, int K, std::string initializer, int maxiter, double abstol, bool printer, int mean_maxiter, double mean_tol);
+RcppExport SEXP _T4cluster_sp_gskmeans_control(SEXP XSEXP, SEXP KSEXP, SEXP initializerSEXP, SEXP maxiterSEXP, SEXP abstolSEXP, SEXP printerSEXP, SEXP mean_maxiterSEXP, SEXP mean_tolSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type X(XSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< std::string >::type initializer(initializerSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type abstol(abstolSEXP);
+    Rcpp::traits::input_parameter< bool >::type printer(printerSEXP);
+    Rcpp::traits::input_parameter< int >::type mean_maxiter(mean_maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type mean_tol(mean_tolSEXP);
+    rcpp_result_gen = Rcpp::wrap(sp_gskmeans_control(X, K, initializer, maxiter, abstol, printer, mean_maxiter, mean_tol));
+    return rcpp_result_gen;
+END_RCPP
+}
 // fast_loss_prj
 arma::vec fast_loss_prj(int nS, int dS, int mS, arma::mat PS, arma::mat xS, arma::vec muS);
 RcppExport SEXP _T4cluster_fast_loss_prj(SEXP nSSEXP, SEXP dSSEXP, SEXP mSSEXP, SEXP PSSEXP, SEXP xSSEXP, SEXP muSSEXP) {
@@ -786,6 +804,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_T4cluster_cpp_sc12L", (DL_FUNC) &_T4cluster_cpp_sc12L, 5},
     {"_T4cluster_sp_spkmeans", (DL_FUNC) &_T4cluster_sp_spkmeans, 6},
     {"_T4cluster_sp_gskmeans", (DL_FUNC) &_T4cluster_sp_gskmeans, 6},
+    {"_T4cluster_sp_gskmeans_control", (DL_FUNC) &_T4cluster_sp_gskmeans_control, 8},
     {"_T4cluster_fast_loss_prj", (DL_FUNC) &_T4cluster_fast_loss_prj, 6},
     {"_T4cluster_cpp_LRR", (DL_FUNC) &_T4cluster_cpp_LRR, 3},
     {"_T4cluster_cpp_LRSC", (DL_FUNC) &_T4cluster_cpp_LRSC, 4},

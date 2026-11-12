@@ -121,6 +121,10 @@ sp_gskmeans <- function(X, K, initializer, maxiter, abstol, printer) {
     .Call(`_T4cluster_sp_gskmeans`, X, K, initializer, maxiter, abstol, printer)
 }
 
+sp_gskmeans_control <- function(X, K, initializer, maxiter, abstol, printer, mean_maxiter = 100L, mean_tol = 1e-8) {
+    .Call(`_T4cluster_sp_gskmeans_control`, X, K, initializer, maxiter, abstol, printer, mean_maxiter, mean_tol)
+}
+
 fast_loss_prj <- function(nS, dS, mS, PS, xS, muS) {
     .Call(`_T4cluster_fast_loss_prj`, nS, dS, mS, PS, xS, muS)
 }

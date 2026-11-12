@@ -1,26 +1,78 @@
 #' Geodesic Spherical K-Means
 #' 
-#' Geodesic spherical \eqn{k}-means algorithm is an counterpart of the spherical \eqn{k}-means 
+#' Geodesic spherical \eqn{k}-means algorithm is a counterpart of the spherical \eqn{k}-means
 #' algorithm by replacing the cosine similarity with the squared geodesic distance, 
 #' which is the great-circle distance under the intrinsic geometry regime 
 #' on the unit hypersphere.  If the data is not 
 #' normalized, it performs the normalization and proceeds thereafter.
 #' 
-#' @param data an \eqn{(n\times p)} matrix of row-stacked observations. If not row-stochastic, each row is normalized to be unit norm.
-#' @param k the number of clusters (default: 2).
-#' @param ... extra parameters including \describe{
-#' \item{init}{initialization method; either \code{"kmeans"} or \code{"gmm"} (default: \code{"kmeans"}).}
-#' \item{maxiter}{the maximum number of iterations (default: 10).}
-#' \item{abstol}{stopping criterion to stop the algorithm (default: \eqn{10^{-8}}).}
-#' \item{verbose}{a logical; \code{TRUE} to show iteration history or \code{FALSE} to quiet.}
+#' @param data a real numeric \eqn{(n\times p)} matrix of row-stacked observations,
+#' with \eqn{n\geq 1} and \eqn{p\geq 2}. Every entry must be finite and every row
+#' must be nonzero. Each row is normalized to have unit Euclidean norm.
+#' @param k one integer from 1 to \code{nrow(data)} (default: 2).
+#' @param ... named extra parameters, with no duplicates or unknown names:
+#' \describe{
+#' \item{init}{initialization method; \code{"kmeans"} or \code{"gmm"}
+#' (default: \code{"kmeans"}). Matching is case-insensitive and accepts
+#' unambiguous abbreviations.}
+#' \item{maxiter}{a positive integer giving the maximum number of outer
+#' iterations (default: 10). A value of 1 is honored.}
+#' \item{abstol}{a finite positive tolerance for change in the outer objective
+#' (default: \code{sqrt(.Machine$double.eps)}, approximately \eqn{1.49\times10^{-8}}).}
+#' \item{verbose}{one logical value; \code{TRUE} prints iteration information
+#' and \code{FALSE} suppresses iteration output (default: \code{FALSE}).
+#' Warnings about nonconvergence are still emitted.}
+#' \item{mean.maxiter}{a positive integer giving the maximum number of steps
+#' for each intrinsic centroid calculation (default: 100).}
+#' \item{mean.tol}{a finite positive tolerance on the norm of the average
+#' logarithmic-map vector for each centroid (default: \eqn{10^{-8}}).}
 #' }
 #' 
+#' @details
+#' Assignments minimize the great-circle distance, equivalently maximizing
+#' the inner product with a unit center. An empty cluster during initialization,
+#' reassignment, or final assignment raises an error; clusters are not silently
+#' deleted or revived. Exact assignment ties select the first center.
+#'
+#' Coincident points have zero logarithmic map. A required logarithmic map at
+#' an antipodal or numerically near-antipodal point raises an error, using a
+#' relative tangent-residual threshold of \eqn{10^{-12}}. Antipodal distances
+#' themselves remain well-defined. An initial zero resultant uses the first
+#' cluster observation as a starting point, which may trigger this explicit
+#' antipodal policy. The method does not claim a unique or globally minimizing
+#' intrinsic mean for arbitrary dispersed spherical data.
+#'
+#' Centroids are updated with damped intrinsic gradient steps and a check that
+#' the fixed-cluster objective does not increase. Returned labels are freshly
+#' assigned to the returned centers. When \code{converged} is \code{FALSE},
+#' the centers can be approximate and need not be stationary for the final
+#' partition. Inspect both outer and intrinsic solver diagnostics.
+#'
 #' @return a named list of S3 class \code{T4cluster} containing 
 #' \describe{
-#' \item{cluster}{a length-\eqn{n} vector of class labels (from \eqn{1:k}).} 
-#' \item{cost}{a value of the cost function.}
-#' \item{means}{an \eqn{(k\times p)} matrix where each row is a unit-norm class mean. }
+#' \item{cluster}{a length-\eqn{n} integer vector of final class labels, from \eqn{1:k}.}
+#' \item{cost}{the sum of squared great-circle distances,
+#' \eqn{\sum_i d_{\mathbb S}(x_i,\mu_{z_i})^2}, using the returned labels and
+#' centers. Lower values are better; no division by \eqn{n} or factor of
+#' \eqn{1/2} is applied.}
+#' \item{means}{an \eqn{(k\times p)} matrix of unit-norm centers.}
 #' \item{algorithm}{name of the algorithm.}
+#' \item{converged}{whether the algorithm satisfied its convergence checks.}
+#' \item{iterations}{the number of completed outer iterations.}
+#' \item{status}{the reason for termination.}
+#' \item{labels_stable}{whether the final partition agrees with the partition
+#' used for the last center update.}
+#' \item{objective_history}{the initial cost, the cost after each completed
+#' outer update, and the final freshly assigned cost. The last value equals
+#' \code{cost}; the final entry may duplicate its predecessor.}
+#' \item{mean_converged}{a per-cluster indicator that the average-logarithm
+#' residual is at most \code{mean.tol} for the returned partition and centers.
+#' This is a stationarity diagnostic, not a global-optimality certificate.}
+#' \item{mean_iterations}{the number of accepted steps in each cluster's last
+#' centroid solve; the final residual refresh performs no optimization.}
+#' \item{mean_residual}{per-cluster norms of the average logarithmic-map
+#' vectors, recomputed using the returned labels and centers.}
+#' \item{control}{the validated control values used for the run.}
 #' }
 #' 
 #' @examples 
@@ -50,42 +102,15 @@
 #' 
 #' @concept sphere
 #' @export
-gskmeans <- function(data, k=2, ...){
-  ## PREPARE : EXPLICIT INPUTS
-  mydata = prec_input_sphere(as.matrix(data))
-  myk    = max(1, round(k))
-  
-  ## PREPARE : IMPLICIT ONES
-  params  = list(...)
-  pnames  = names(params)
-  
-  if ("maxiter"%in%pnames){    myiter = max(5, round(params$maxiter))  } else {   myiter = 10  }
-  if ("abstol"%in%pnames){    myeps = max(params$abstol, .Machine$double.eps)  } else {    myeps = sqrt(.Machine$double.eps)  }
-  if ("init"%in% pnames){
-    myinit = match.arg(tolower(params$init), c("kmeans","gmm"))
-  } else {
-    myinit = "kmeans"
-  }
-  if ("verbose"%in%pnames){
-    myprint = as.logical(params$verbose)
-  } else {
-    myprint = FALSE
-  }
-  
-  ## RUN
-  cpprun = sp_gskmeans(mydata, myk, myinit, myiter, myeps, myprint)
-  
-  ## WRAP
-  output  = list()
-  output$cluster   = round(as.vector(cpprun$cluster+1))
-  output$cost      = as.double(cpprun$cost)
-  output$means     = cpprun$means
-  output$algorithm = "gskmeans"
-  return(structure(output, class="T4cluster"))   
+gskmeans <- function(data, k = 2, ...) {
+  mydata <- prec_input_sphere(as.matrix(data))
+  control <- prec_sphere_controls(
+    k = k, n = nrow(mydata), dots = list(...), intrinsic = TRUE
+  )
+  cpprun <- sp_gskmeans_control(
+    mydata, control$k, control$init, control$maxiter,
+    control$abstol, control$verbose,
+    control$mean.maxiter, control$mean.tol
+  )
+  prec_sphere_result(cpprun, "gskmeans", control)
 }
-
-#' @return a list containing\describe{
-#' \item{data}{an \eqn{(n\times 2)} data matrix.}
-#' \item{label}{a length-\eqn{n} vector(factor) for class labels.}
-#' } 
-

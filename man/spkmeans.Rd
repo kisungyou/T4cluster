@@ -7,30 +7,62 @@
 spkmeans(data, k = 2, ...)
 }
 \arguments{
-\item{data}{an \eqn{(n\times p)} matrix of row-stacked observations. If not row-stochastic, each row is normalized to be unit norm.}
+\item{data}{a real numeric \eqn{(n\times p)} matrix of row-stacked observations,
+with \eqn{n\geq 1} and \eqn{p\geq 2}. Every entry must be finite and every row
+must be nonzero. Each row is normalized to have unit Euclidean norm.}
 
-\item{k}{the number of clusters (default: 2).}
+\item{k}{one integer from 1 to \code{nrow(data)} (default: 2).}
 
-\item{...}{extra parameters including \describe{
-\item{init}{initialization method; either \code{"kmeans"} or \code{"gmm"} (default: \code{"kmeans"}).}
-\item{maxiter}{the maximum number of iterations (default: 10).}
-\item{abstol}{stopping criterion to stop the algorithm (default: \eqn{10^{-8}}).}
-\item{verbose}{a logical; \code{TRUE} to show iteration history or \code{FALSE} to quiet.}
+\item{...}{named extra parameters, with no duplicates or unknown names:
+\describe{
+\item{init}{initialization method; \code{"kmeans"} or \code{"gmm"}
+(default: \code{"kmeans"}). Matching is case-insensitive and accepts
+unambiguous abbreviations.}
+\item{maxiter}{a positive integer giving the maximum number of outer
+iterations (default: 10). A value of 1 is honored.}
+\item{abstol}{a finite positive tolerance for change in the outer objective
+(default: \code{sqrt(.Machine$double.eps)}, approximately \eqn{1.49\times10^{-8}}).}
+\item{verbose}{one logical value; \code{TRUE} prints iteration information
+and \code{FALSE} suppresses iteration output (default: \code{FALSE}).
+Warnings about nonconvergence are still emitted.}
 }}
 }
 \value{
 a named list of S3 class \code{T4cluster} containing 
 \describe{
-\item{cluster}{a length-\eqn{n} vector of class labels (from \eqn{1:k}).} 
-\item{cost}{a value of the cost function.}
-\item{means}{an \eqn{(k\times p)} matrix where each row is a unit-norm class mean. }
+\item{cluster}{a length-\eqn{n} integer vector of final class labels, from \eqn{1:k}.}
+\item{cost}{the sum of assigned inner products,
+\eqn{\sum_i x_i^\top \mu_{z_i}}, using normalized data and the returned
+labels and centers. Higher values are better; the associated cosine loss is
+\eqn{n-\mathrm{cost}}.}
+\item{means}{an \eqn{(k\times p)} matrix of unit-norm centers.}
 \item{algorithm}{name of the algorithm.}
+\item{converged}{whether the algorithm satisfied its convergence checks.}
+\item{iterations}{the number of completed outer iterations.}
+\item{status}{the reason for termination.}
+\item{labels_stable}{whether the final partition agrees with the partition
+used for the last center update.}
+\item{objective_history}{the initial cost, the cost after each completed
+outer update, and the final freshly assigned cost. The last value equals
+\code{cost}; the final entry may duplicate its predecessor.}
+\item{control}{the validated control values used for the run.}
 }
 }
 \description{
 Spherical \eqn{k}-means algorithm performs clustering for the data residing 
 on the unit hypersphere with the cosine similarity. If the data is not 
 normalized, it performs the normalization and proceeds thereafter.
+}
+\details{
+Assignments maximize the inner product with a unit center. An empty cluster
+during initialization, reassignment, or final assignment raises an error;
+clusters are not silently deleted or revived. If a chordal cluster has an
+exactly zero resultant, its first observation provides a valid minimizing
+unit center. Exact assignment ties select the first center.
+
+Returned labels are freshly assigned to the returned centers. When
+\code{converged} is \code{FALSE}, the centers need not be the centroids of
+this final partition. Use the diagnostic fields when assessing termination.
 }
 \examples{
 \donttest{

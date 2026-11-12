@@ -27,11 +27,114 @@ prec_input_matrix <- function(x){
 }
 #' @keywords internal
 #' @noRd
-prec_input_sphere <- function(x){
-  if (!inherits(x, "matrix")){
-    stop("* input should be a matrix.")
+prec_input_sphere <- function(x) {
+  if (!is.matrix(x) || !is.numeric(x) || is.complex(x)) {
+    stop("data must be a real numeric matrix.", call. = FALSE)
   }
-  return(x/sqrt(rowSums(x^2)))
+  if (nrow(x) < 1L || ncol(x) < 2L) {
+    stop("data must have at least one row and two columns.", call. = FALSE)
+  }
+  if (any(!is.finite(x))) {
+    stop("data must contain only finite values.", call. = FALSE)
+  }
+
+  # Scale before squaring: finite nonzero rows can be very large or very small.
+  row_scale <- apply(abs(x), 1L, max)
+  zero_rows <- which(row_scale == 0)
+  if (length(zero_rows)) {
+    stop(
+      paste0("Zero rows have no spherical direction. Row indices include: ",
+             paste(utils::head(zero_rows, 8L), collapse = ", "), "."),
+      call. = FALSE
+    )
+  }
+  scaled <- sweep(x, 1L, row_scale, "/")
+  output <- sweep(scaled, 1L, sqrt(rowSums(scaled * scaled)), "/")
+  storage.mode(output) <- "double"
+  output
+}
+
+#' @keywords internal
+#' @noRd
+prec_sphere_controls <- function(k, n, dots, intrinsic = FALSE) {
+  scalar_integer <- function(x, name, upper = .Machine$integer.max) {
+    valid <- is.numeric(x) && !is.complex(x) && length(x) == 1L &&
+      is.finite(x) && x >= 1 && x <= upper && x == floor(x)
+    if (!valid) {
+      stop(sprintf("%s must be one finite integer between 1 and %s.",
+                   name, format(upper, scientific = FALSE)), call. = FALSE)
+    }
+    as.integer(x)
+  }
+  scalar_positive <- function(x, name) {
+    valid <- is.numeric(x) && !is.complex(x) && length(x) == 1L &&
+      is.finite(x) && x > 0
+    if (!valid) {
+      stop(paste0(name, " must be one finite positive number."), call. = FALSE)
+    }
+    as.double(x)
+  }
+
+  allowed <- c("init", "maxiter", "abstol", "verbose")
+  if (intrinsic) allowed <- c(allowed, "mean.maxiter", "mean.tol")
+  dot_names <- names(dots)
+  if (length(dots)) {
+    if (is.null(dot_names) || anyNA(dot_names) || any(!nzchar(dot_names))) {
+      stop("All arguments in ... must be named.", call. = FALSE)
+    }
+    if (anyDuplicated(dot_names)) {
+      stop("Arguments in ... must not be duplicated.", call. = FALSE)
+    }
+    unknown <- setdiff(dot_names, allowed)
+    if (length(unknown)) {
+      stop(paste0("Unknown argument(s): ", paste(unknown, collapse = ", "),
+                  ". Allowed arguments: ", paste(allowed, collapse = ", "), "."),
+           call. = FALSE)
+    }
+  }
+  get_option <- function(name, default) {
+    if (name %in% dot_names) dots[[name]] else default
+  }
+  init <- get_option("init", "kmeans")
+  if (!is.character(init) || length(init) != 1L || is.na(init)) {
+    stop("init must be one character value: 'kmeans' or 'gmm'.", call. = FALSE)
+  }
+  init <- match.arg(tolower(init), c("kmeans", "gmm"))
+  verbose <- get_option("verbose", FALSE)
+  if (!is.logical(verbose) || length(verbose) != 1L || is.na(verbose)) {
+    stop("verbose must be TRUE or FALSE.", call. = FALSE)
+  }
+
+  control <- list(
+    k = scalar_integer(k, "k", upper = min(n, .Machine$integer.max)),
+    init = init,
+    maxiter = scalar_integer(get_option("maxiter", 10L), "maxiter"),
+    abstol = scalar_positive(
+      get_option("abstol", sqrt(.Machine$double.eps)), "abstol"),
+    verbose = verbose
+  )
+  if (intrinsic) {
+    control$mean.maxiter <- scalar_integer(
+      get_option("mean.maxiter", 100L), "mean.maxiter")
+    control$mean.tol <- scalar_positive(get_option("mean.tol", 1e-8), "mean.tol")
+  }
+  control
+}
+
+#' @keywords internal
+#' @noRd
+prec_sphere_result <- function(cpprun, algorithm, control) {
+  output <- list(
+    cluster = as.integer(cpprun$cluster) + 1L,
+    cost = as.double(cpprun$cost),
+    means = cpprun$means,
+    algorithm = algorithm
+  )
+  reserved <- c("cluster", "cost", "means", "algorithm", "control")
+  extra_names <- setdiff(names(cpprun), reserved)
+  if (length(extra_names)) output[extra_names] <- cpprun[extra_names]
+  output$control <- control
+  structure(output, class = "T4cluster")
 }
 #' @keywords internal
 #' @noRd
