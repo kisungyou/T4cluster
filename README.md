@@ -61,7 +61,7 @@ label  = smiley$label
 plot(data, pch=19, col=label, xlab="", ylab="", main="SMILEY Data")
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="" width="100%" style="display: block; margin: auto;" />
 
 where each component of the face is considered as one cluster - the data
 has 4 clusters. Here, we compare 4 different methods; (1) *k*-means
@@ -83,4 +83,4 @@ plot(data, pch=19, xlab="", ylab="", col=run3$cluster, main="gmm")
 plot(data, pch=19, xlab="", ylab="", col=run4$cluster, main="scNJW")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" style="display: block; margin: auto;" />
